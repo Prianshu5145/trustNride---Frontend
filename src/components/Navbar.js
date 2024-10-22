@@ -1,0 +1,130 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaUser, FaBars, FaTimes } from 'react-icons/fa'; 
+import { useAuth } from '../contexts/AuthContext'; 
+
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { token, role } = useAuth(); 
+  const isLoggedIn = !!token;
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setMenuOpen(false);
+    }
+  }, [isLoggedIn]);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  return (
+    <nav className="bg-gray-900 p-4 flex justify-between items-center z-50 relative">
+      {/* Logo */}
+      <Link to="/" className="text-white text-lg font-bold">
+        Trust N Ride
+      </Link>
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-6 text-white">
+        <Link to="/gallery" className="hover:text-gray-400">Gallery</Link>
+        <Link to="/buy" className="hover:text-gray-400">Buy a Car</Link>
+        <Link to="/sell" className="hover:text-gray-400">Sell a Car</Link>
+
+        {!isLoggedIn ? (
+          <Link to="/login" className="hover:text-gray-400">Login/Signup</Link>
+        ) : (
+          <div className="relative group">
+            <FaUser className="cursor-pointer" />
+            <div className="absolute right-0 bg-gray-700 text-white rounded hidden group-hover:block z-50">
+              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-600">Profile</Link>
+              <Link to="/logout" className="block px-4 py-2 hover:bg-gray-600">Logout</Link>
+
+              {role === 'buyer' && (
+                <>
+                
+                <Link to="/sell" className="block px-4 py-2 hover:bg-gray-600">Book Inspection</Link>
+                     </>     )}
+              {role === 'dealer' && (
+                <>
+                <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
+                  
+                  
+                </>
+              )}
+
+              {role === 'admin' && (
+                <>
+                  <Link to="/update-listing" className="block px-4 py-2 hover:bg-gray-600">Update Listing</Link>
+                  <Link to="/delete-listing" className="block px-4 py-2 hover:bg-gray-600">Delete Listing</Link>
+                  <Link to="/uploadReview" className="block px-4 py-2 hover:bg-gray-600">Update Gallery</Link>
+                  <Link to="/create-bidding" className="block px-4 py-2 hover:bg-gray-600">Create Bidding Listing</Link>
+                  <Link to="/approve-dealer" className="block px-4 py-2 hover:bg-gray-600">Approve Dealer</Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Menu Button */}
+      <div className="md:hidden">
+        {!isLoggedIn ? (
+          <Link to="/login" className="text-white">Login/Signup</Link>
+        ) : (
+          <button onClick={toggleMenu} className="text-white">
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        )}
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="md:hidden absolute top-16 right-0 bg-gray-900 text-white w-1/2 z-50 shadow-lg">
+          {isLoggedIn && (
+            <>
+              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-600">Profile</Link>
+              <Link to="/logout" className="block px-4 py-2 hover:bg-gray-600">Logout</Link>
+
+              {role === 'buyer' && (
+                <>
+                  
+            
+                  <Link to="/buy" className="block px-4 py-2 hover:bg-gray-600">Buy a Car</Link>
+                  <Link to="/sell" className="block px-4 py-2 hover:bg-gray-600">Sell a Car</Link>
+                  <Link to="/sell" className="block px-4 py-2 hover:bg-gray-600">Book Inspection of Car</Link>
+                  
+                </>
+              )}
+
+              {role === 'dealer' && (
+                <>
+                  <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
+                  
+                  
+
+                </>
+              )}
+
+              {role === 'admin' && (
+                <>
+                  <Link to="/update-listing" className="block px-4 py-2 hover:bg-gray-600">Update Listing</Link>
+                  <Link to="/delete-listing" className="block px-4 py-2 hover:bg-gray-600">Delete Listing</Link>
+                  <Link to="/uploadReview" className="block px-4 py-2 hover:bg-gray-600">Update Gallery</Link>
+                  <Link to="/create-bidding" className="block px-4 py-2 hover:bg-gray-600">Create Bidding Listing</Link>
+                  <Link to="/approve-dealer" className="block px-4 py-2 hover:bg-gray-600">Approve Dealer</Link>
+                </>
+              )}
+            </>
+          )}
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;

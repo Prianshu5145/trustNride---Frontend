@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Logout from './pages/Logout';
+import Signup from './pages/Signup';
+import CreateListing from './pages/createListings'
+import ViewAllListings from './pages/viewAllListing';
+import ViewDetails from './pages/ViewDetails';
+import InspectionBooking from './pages/inspection';
+import About from './pages/About'
+import ReviewGallery from './pages/ReviewGallery';
+import ReviewSection from './pages/Gallery';
+import   ContactUs from './pages/InquiryFormModal';
+import ForgotPassword from './pages/forgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import ExchangeCar from './pages/ExchangeCar';
 function App() {
+  const location = useLocation();  // Get the current location
+
+  // Check if the current path is login or signup
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={isAuthPage ? 'bg-loginSignup min-h-screen' : ''}>
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/create-listing" element={<CreateListing />} />
+        <Route path="/all-listings" element={< ViewAllListings/>} />
+        <Route path="/listing/:listingId" element={<ViewDetails />} />
+        <Route path="/sell" element={<InspectionBooking />} />
+        <Route path="/buy" element={< ViewAllListings/>} />
+        <Route path="/About" element={< About/>} />
+        <Route path="/uploadReview" element={< ReviewGallery/>} />
+        <Route path="/Gallery" element={< ReviewSection/>} />
+        InquiryFormModal
+        <Route path="/Make a Deal" element={< ContactUs/>} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/forgot-Password" element={<ForgotPassword />} />
+        
+        <Route path="/ExchangeCar" element={<ExchangeCar />} />
+      </Routes>
     </div>
   );
 }
