@@ -24,7 +24,7 @@ const InspectionBooking = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/inspection', {
+            const response = await fetch('https://trustnride-backend-production.up.railway.app/api/inspection', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
