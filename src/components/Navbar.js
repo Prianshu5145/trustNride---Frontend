@@ -34,7 +34,7 @@ const Navbar = () => {
         <Link to="/sell" className="hover:text-gray-400">Sell a Car</Link>
 
         {!isLoggedIn ? (
-          <Link to="/login" className="hover:text-gray-400">Login/Signup</Link>
+          <Link to="/login" className="hover:text-gray-400">Sign In/Register</Link>
         ) : (
           <div className="relative group">
             <FaUser className="cursor-pointer" />
@@ -76,7 +76,7 @@ const Navbar = () => {
       <div className="md:hidden">
   {!isLoggedIn ? (
 
-    <Link to="/login" className="text-black text-lg">Login/Signup</Link>
+    <Link to="/login" className="text-black text-lg">Sign In</Link>
 
   ) : (
     <button onClick={toggleMenu} className="text-black text-lg">

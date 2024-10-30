@@ -9,50 +9,50 @@ const ReviewSection = () => {
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729549549/IMG-20241022-WA0150_1_drhixi.jpg",
             text: "Buying the Bolero Neo from Trust N Ride was the best decision ever! The price was unbeatable, and the car is in excellent condition.",
-            name: "Ramesh",
-            address: "Sultanpur"
+            name: "Nikhil",
+            address: "Noida"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548674/IMG-20241022-WA0144_1_lkgvdc.jpg",
             text: "Trust N Ride made my dream of owning a Hyundai i20 come true. The staff were friendly, and the whole process was smooth.",
-            name: "Aarti",
-            address: "Delhi"
+            name: "Aarav",
+            address: "Sultanpur"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548669/IMG-20241022-WA0136_1_scsz3w.jpg",
             text: "I couldn’t beIlieve how easy it was to buy a Baleno through Trust N Ride. The inspection report gave me complete confidence.",
-            name: "Suresh",
-            address: "Agra"
+            name: "Pankaj",
+            address: "Moradabad"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548670/IMG-20241022-WA0159_1_ez31ip.jpg",
             text: "The best thing about buying from Trust N Ride is transparency. My Hyundai Creta is running perfectly. Highly recommended!",
-            name: "Neha",
-            address: "Lucknow"
+            name: "Ravi",
+            address: "Jhansi"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548671/IMG-20241022-WA0153_1_qmfbxv.jpg",
             text: "Great service and affordable prices! Got my Tata Nexon without any hassle. The whole experience was wonderful.",
-            name: "Rajesh",
-            address: "Kanpur"
+            name: "Ankur",
+            address: "Bijnor"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548670/IMG-20241022-WA0206_1_gsccle.jpg",
             text: "Trust N Ride made buying a car such a breeze. Loving my new Hyundai Creta. Thank you!",
-            name: "Pooja",
-            address: "Varanasi"
+            name: "Tarun",
+            address: "Etah"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548675/WhatsApp_Image_2024-10-21_at_18.47_1_m6y4aw.jpg",
             text: "Finding the right deal for a car can be tricky, but Trust N Ride made it super easy. I got an amazing deal on the S-Presso.",
-            name: "Kumar",
-            address: "Ghaziabad"
+            name: "Gajendra",
+            address: "Philibhit"
         },
         {
             image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548668/IMG-20241022-WA0143_1_g6dbjt.jpg",
             text: "Trust N Ride offered me the highest bid for my Ertiga. The paperwork was quick and hassle-free!",
-            name: "Anjali",
-            address: "Noida"
+            name: "Abhishek",
+            address: "Unno"
         },
     ];
 

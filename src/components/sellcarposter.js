@@ -1,6 +1,6 @@
 // MotivationSection.js
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const MotivationSection = () => {
     const cards = [
         {
@@ -18,7 +18,7 @@ const MotivationSection = () => {
     ];
 
     return (
-        <div className="p-8 border-b border-gray-300">
+        <div className="p-7 border-b border-gray-300">
             {/* Border Above Section */}
             <div className="border-t border-gray-300 mb-6"></div>
 
@@ -55,10 +55,12 @@ const MotivationSection = () => {
             </div>
 
             {/* Sell Your Car Button */}
-            <div className="flex justify-center mt-8">
-                <button className="bg-white text-blue-600 px-8 py-3 rounded-full shadow-md border border-blue-600 hover:bg-blue-50 transition-transform duration-200 hover:scale-105">
-                    Get the Price
-                </button>
+            <div className="flex justify-center mt-3 mb-1">
+            <Link to="/sell">
+    <button className="bg-white text-blue-600 px-5 py-3 rounded-full shadow-md border border-blue-600 hover:bg-blue-50 transition-transform duration-200 hover:scale-105">
+        Get the Price
+    </button>
+</Link>
             </div>
         </div>
     );

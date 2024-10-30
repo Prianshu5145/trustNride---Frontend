@@ -70,8 +70,8 @@ const About = () => {
                 <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">What Our Customers Say</h2>
                 <div className="space-y-6">
                     {[
-                        { review: "Selling my car through Trust N Ride was a breeze! The team was professional and fair. Highly recommended!", name: "Sarah M." },
-                        { review: "I found my dream car at an unbeatable price. The service was exceptional, and I couldn't be happier!", name: "John D." },
+                        { review: "Selling my car through Trust N Ride was a breeze! The team was professional and fair. Highly recommended!", name: "Aarav" },
+                        { review: "I found my dream car at an unbeatable price. The service was exceptional, and I couldn't be happier!", name: "Shreyansh" },
                     ].map((testimonial, index) => (
                         <div key={index} className="border border-gray-300 rounded-lg p-6 shadow-md bg-white transition-transform transform hover:scale-105">
                             <p className="text-gray-700 italic">"{testimonial.review}"</p>

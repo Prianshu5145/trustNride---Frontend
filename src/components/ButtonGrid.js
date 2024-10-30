@@ -24,7 +24,7 @@ const ButtonGrid = () => {
             </Link>
 
             {/* Button for Booking a Test Drive */}
-            <Link to="/test-drive" className="flex items-center justify-center bg-red-500 text-white p-4 rounded-lg shadow-lg">
+            <Link to="/" className="flex items-center justify-center bg-red-500 text-white p-4 rounded-lg shadow-lg">
                 <FaRoad className="mr-2" size={24} />
                 <span>Book Test Drive</span>
             </Link>

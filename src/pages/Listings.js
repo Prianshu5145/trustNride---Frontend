@@ -53,7 +53,7 @@ const Listings = () => {
 
     return (
         <div className=" border-t border-gray-200  container mx-auto px-4 py-1 border-b-2 mb-8">
-            <h2 className="text-3xl font-extrabold mb-8 text-center text-gray-800">Featured Listings</h2>
+            <h2 className="text-3xl font-extrabold mb-8 text-center text-gray-800">Ultimate Car Picks</h2>
 
             {listings.length > 0 && (
                 <>
