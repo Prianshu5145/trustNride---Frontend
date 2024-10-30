@@ -111,15 +111,15 @@ const ContactUs = () => {
           <h2 className="text-4xl font-bold mb-4">Contact Information</h2>
           <div className="flex items-center mb-2">
             <FaEnvelope className="text-blue-500 mr-2" />
-            <span>Email: <a href="mailto:info@example.com" className="text-blue-500 hover:underline">info@example.com</a></span>
+            <span>Email: <a href="mailto:info@example.com" className="text-blue-500 hover:underline">team@trustnride.in</a></span>
           </div>
           <div className="flex items-center mb-2">
             <FaPhoneAlt className="text-blue-500 mr-2" />
-            <span>Phone: <a href="tel:+1234567890" className="text-blue-500 hover:underline">+1 (234) 567-890</a></span>
+            <span>Phone: <a href="tel:+1234567890" className="text-blue-500 hover:underline">+918400943441</a></span>
           </div>
           <div className="flex items-center mb-2">
             <FaMapMarkerAlt className="text-blue-500 mr-2" />
-            <span>Address: Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur, Uttar Pradesh 224122, Akbarpur, Uttar Pradesh 228161</span>
+            <span>Address: Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur, Uttar Pradesh 224122</span>
           </div>
 
           {/* Optional Map Embed */}
