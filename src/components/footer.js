@@ -24,7 +24,7 @@ const Footer = () => {
                             <li><a href="/" className="hover:text-blue-500 transition">Home</a></li>
                             <li><a href="/About" className="hover:text-blue-500 transition">About Us</a></li>
                             <li><a href="/Gallery" className="hover:text-blue-500 transition">Gallery</a></li>
-                            <li><a href="#" className="hover:text-blue-500 transition">Contact</a></li>
+                            <li><a href="/contactus" className="hover:text-blue-500 transition">Contact</a></li>
                         </ul>
                     </div>
 
@@ -80,19 +80,19 @@ const Footer = () => {
 
                         {/* Social Media Links */}
                         <div className="flex space-x-6">
-                            <a href="#" className="hover:text-blue-500 transition">
+                            <a href="/" className="hover:text-blue-500 transition">
                                 <FaFacebookF size={20} />
                             </a>
-                            <a href="#" className="hover:text-blue-500 transition">
+                            <a href="/" className="hover:text-blue-500 transition">
                                 <FaTwitter size={20} />
                             </a>
-                            <a href="#" className="hover:text-blue-500 transition">
+                            <a href="/" className="hover:text-blue-500 transition">
                                 <FaInstagram size={20} />
                             </a>
-                            <a href="#" className="hover:text-blue-500 transition">
+                            <a href="/" className="hover:text-blue-500 transition">
                                 <FaLinkedinIn size={20} />
                             </a>
-                            <a href="#" className="hover:text-blue-500 transition">
+                            <a href="/" className="hover:text-blue-500 transition">
                                 <FaYoutube size={20} />
                             </a>
                         </div>

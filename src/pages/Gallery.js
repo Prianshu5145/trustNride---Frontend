@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 
 const ReviewSection = () => {
     const [reviews, setReviews] = useState([]);
-    const [count, setCount] = useState(1);
+    
     const [isCounting, setIsCounting] = useState(false);
     const sectionRef = useRef(null);
 

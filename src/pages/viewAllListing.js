@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Navbar from '../components/Navbar';
-import { Link } from 'react-router-dom';
+
 const ViewAllListings = () => {
   const navigate = useNavigate(); // Initialize the useNavigate hook
   const [listings, setListings] = useState([]);
