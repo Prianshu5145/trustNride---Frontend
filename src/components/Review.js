@@ -7,7 +7,7 @@ const ReviewSection = () => {
 
     const reviews = [
         {
-            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729549549/IMG-20241022-WA0150_1_drhixi.jpg",
+            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729552362/IMG-20241022-WA0150_1_cen1gu.jpg",
             text: "Buying the Bolero Neo from Trust N Ride was the best decision ever! The price was unbeatable, and the car is in excellent condition.",
             name: "Nikhil",
             address: "Noida"

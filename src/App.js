@@ -18,6 +18,7 @@ import ResetPassword from './pages/ResetPassword';
 import ExchangeCar from './pages/ExchangeCar';
 import  ContactUs2 from './pages/Contactus';
 function App() {
+  
   const location = useLocation();  // Get the current location
 
   // Check if the current path is login or signup
