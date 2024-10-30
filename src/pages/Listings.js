@@ -16,7 +16,7 @@ const Listings = () => {
     useEffect(() => {
         const fetchListings = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/listings/alllisting');
+                const response = await axios.get('https://trustnride-backend-production.up.railway.app/api/listings/alllisting');
                 setListings(response.data.slice(0, 15)); // Limit to first 15 listings only
             } catch (error) {
                 console.error('Error fetching listings:', error);

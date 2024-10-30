@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 
 const ReviewSection = () => {
     const [reviews, setReviews] = useState([]);
-    
+    const [count, setCount] = useState(1);
     const [isCounting, setIsCounting] = useState(false);
     const sectionRef = useRef(null);
 
@@ -21,7 +21,7 @@ const ReviewSection = () => {
 
     const fetchReviews = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/reviews');
+            const response = await axios.get('https://trustnride-backend-production.up.railway.app/api/reviews');
             setReviews(response.data);
         } catch (error) {
             console.error('Error fetching reviews:', error);

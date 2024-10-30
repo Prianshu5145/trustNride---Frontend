@@ -28,7 +28,7 @@ const Login = () => {
     setMessage(''); // Clear previous messages
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await axios.post('https://trustnride-backend-production.up.railway.app/api/auth/login', { email, password });
       const { token, role, message } = response.data; // Assuming backend sends a message too
       login(token, role); // Save token and role in context
       setMessage(message); // Set success message from backend (if available)

@@ -165,7 +165,7 @@ const CreateListing = () => {
     listingData.images.forEach((image) => formData.append('images', image));
 
     try {
-      const response = await axios.post('http://localhost:5000/api/listings/create', formData, {
+      const response = await axios.post('https://trustnride-backend-production.up.railway.app/create', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log('Listing created successfully', response.data);
