@@ -17,9 +17,7 @@ const About = () => {
                 <div className="bg-white shadow-lg rounded-lg p-8">
                     <h2 className="text-3xl font-bold text-gray-800 mb-4">Welcome to a New Era of Car Buying</h2>
                     <p className="text-lg text-gray-700 mb-4">
-                        At TRUST N RIDE, we are passionate about revolutionizing the second-hand car market. With a commitment 
-                        to transparency, quality, and unparalleled customer service, we aim to make the process of buying and 
-                        selling cars effortless and rewarding.
+                    At TRUST N RIDE, we are passionate about revolutionizing the second-hand car market. As a customer-to-customer (C2C) platform, we empower buyers and sellers to connect directly, allowing us to offer better prices and faster RC transfers. With a commitment to transparency, quality, and unparalleled customer service, we aim to make the process of buying and selling cars effortless and rewarding.
                     </p>
                     <p className="text-lg text-gray-700 mb-4">
                         As a proud franchise of Cars24, we leverage our industry expertise to ensure you receive the best prices 
@@ -55,7 +53,7 @@ const About = () => {
                 <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Meet Our Founders</h2>
                 <div className="flex flex-col lg:flex-row justify-center items-start space-y-6 lg:space-y-0 lg:space-x-8">
                     {[
-                        { name: 'Piyush', title: 'Founder', description: 'Driven by a passion for automobiles, Piyush envisions transforming the second-hand car market to make it more accessible and reliable.', img: '/path/to/piyush.jpg' },
+                        { name: 'Piyush', title: 'Founder', description: 'Driven by a passion for automobiles, Piyush envisions transforming the second-hand car market to make it more accessible and reliable.', img:"https://res.cloudinary.com/dztz5ltuq/image/upload/c_crop,w_751,h_1000/v1730242442/WhatsApp_Image_2024-10-30_at_04.23.15_f69ce65b_a1cznw.jpg" },
                         { name: 'Satish', title: 'Co-Founder', description: 'With years of experience in the automotive industry, Satish is dedicated to ensuring every customer leaves satisfied, making their car buying experience seamless.', img: '/path/to/satish.jpg' },
                     ].map((founder, index) => (
                         <div key={index} className="flex flex-col items-center border border-gray-300 rounded-lg p-6 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 bg-white">

@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react';
 const ImageSlider = () => {
   // Image arrays for mobile and laptop views
   const mobileImages = [
-    '/images/range-rover-2015653_640.jpg', // Mobile image paths
-    '/images/range-rover-autobiography-p400e-lwb-2018-front-al-3840x2400.jpg',
-    '/images/OIP.jpeg',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1730237481/WhatsApp_Image_2024-10-30_at_02.58.57_0d98de69_t2salr.jpg', // Mobile image paths
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1730236995/Designer_9_n1okmq.jpg',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1730236998/Designer_3_jef4op.jpg',
   ];
 
   const laptopImages = [
-    '/images/range-rover-2015653_640.jpg', // Mobile image paths
-    '/images/range-rover-autobiography-p400e-lwb-2018-front-al-3840x2400.jpg',
-    '/images/range-rover-2015653_640.jpg',
+   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1730237481/WhatsApp_Image_2024-10-30_at_02.58.57_0d98de69_t2salr.jpg', // Mobile image paths
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1730236995/Designer_9_n1okmq.jpg',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1730236998/Designer_3_jef4op.jpg',
   ];
 
   // State to hold the current image index
@@ -41,7 +41,7 @@ const ImageSlider = () => {
   const currentImage = isMobile ? mobileImages[currentImageIndex] : laptopImages[currentImageIndex];
 
   return (
-    <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-sm">
+    <div className="relative w-full h-84 md:h-full overflow-hidden rounded-sm">
       {/* Image slider */}
       <img
         src={currentImage}

@@ -11,14 +11,14 @@ const ExchangeCar = () => {
         {/* Hero Image */}
         <div className="relative">
           <img
-            src="images/WhatsApp Image 2024-10-20 at 03.20.27_6a6b339d.jpg"
+            src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1730233011/exchangeimage_shnpzd.webp"
             alt="Exchange your car"
-            className="hidden lg:block w-full h-64 object-cover rounded-b-lg shadow-md"
+            className="hidden lg:block w-full h-84 object-cover rounded-b-lg shadow-md"
           />
           <img
-            src="images/WhatsApp Image 2024-10-20 at 03.20.27_6a6b339d.jpg"
+            src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1730233011/exchangeimage_shnpzd.webp"
             alt="Exchange your car"
-            className="block lg:hidden w-full h-48 object-cover rounded-b-lg shadow-md"
+            className="block lg:hidden w-full h-full object-cover rounded-b-lg shadow-md"
           />
         </div>
 
@@ -26,7 +26,7 @@ const ExchangeCar = () => {
         <section className="p-6 md:p-12 bg-white shadow-lg rounded-lg mt-4 mx-4">
           <h2 className="text-3xl font-bold mb-4 text-blue-600">What are Car Exchange Offers?</h2>
           <p className="text-gray-700 mb-4">
-            The CARS24 Exchange Offer is an efficient solution for those who want to upgrade their ride on a budget. When you sell your used car to us and buy the next one from us, you get an exclusive car exchange discount on the vehicle you purchase. The CARS24 Exchange Offer eliminates the hassles of multiple buyers and sellers and gives an excellent used car exchange experience to all our customers.
+            The <strong>Trust N Ride Exchange Offer</strong> is an efficient solution for those who want to upgrade their ride on a budget. When you sell your used car to us and buy your next car through us, you get an exclusive exchange discount. This offer eliminates the hassle of dealing with multiple buyers and sellers, ensuring a seamless car exchange experience for our customers.
           </p>
         </section>
 
@@ -34,7 +34,7 @@ const ExchangeCar = () => {
         <section className="p-6 md:p-12 bg-gradient-to-r from-blue-100 to-blue-50 rounded-lg shadow-lg mt-4 mx-4">
           <h2 className="text-3xl font-bold mb-4 text-blue-600">Why Choose Trust N Ride?</h2>
           <p className="text-gray-700 mb-4">
-            Trust N Ride offers an unparalleled car selling and buying experience. When you sell with Trust N Ride, you get a great price, instant payment, and hassle-free documentation. All our customers are protected under the Seller Protection Policy that ensures legal and financial aid until the RC is transferred to the new owner’s name.
+            Trust N Ride offers a better price and fast RC transfer because we sell cars directly to customers (C2C). This eliminates intermediaries, ensuring better deals and quicker ownership transfers. When you sell with Trust N Ride, you get instant payment and hassle-free documentation. All our customers are also protected under the <strong>Seller Protection Policy</strong>, offering legal and financial aid until the RC is transferred to the new owner.
           </p>
         </section>
 
@@ -63,7 +63,7 @@ const ExchangeCar = () => {
                 <h3 className="font-semibold text-xl text-blue-500">Sell Your Car</h3>
               </div>
               <p className="text-gray-600 mb-4">Sell your used car to us for a great price!</p>
-              <Link to="/sell" className="text-blue-600 font-bold hover:underline">Sell Now</Link>
+              
             </div>
 
             {/* Get Exchange Bonus Card */}
@@ -75,7 +75,7 @@ const ExchangeCar = () => {
                 <h3 className="font-semibold text-xl text-blue-500">Get Exchange Bonus</h3>
               </div>
               <p className="text-gray-600 mb-4">Receive a unique exchange bonus coupon after selling your car.</p>
-              <Link to="/exchange" className="text-blue-600 font-bold hover:underline">Get Bonus</Link>
+             
             </div>
 
             {/* Browse Cars Card */}
@@ -87,7 +87,7 @@ const ExchangeCar = () => {
                 <h3 className="font-semibold text-xl text-blue-500">Browse Cars</h3>
               </div>
               <p className="text-gray-600 mb-4">Browse thousands of MRL-certified cars and choose the one you love!</p>
-              <Link to="/browse" className="text-blue-600 font-bold hover:underline">Browse Now</Link>
+              <Link to="/alllistings" className="text-blue-600 font-bold hover:underline">Browse Now</Link>
             </div>
 
             {/* Test Drive Card */}
@@ -99,7 +99,7 @@ const ExchangeCar = () => {
                 <h3 className="font-semibold text-xl text-blue-500">Test Drive</h3>
               </div>
               <p className="text-gray-600 mb-4">Test drive your dream car before making a purchase.</p>
-              <Link to="/test-drive" className="text-blue-600 font-bold hover:underline">Book Test Drive</Link>
+              
             </div>
 
             {/* Coupon Redemption Card */}
@@ -113,7 +113,7 @@ const ExchangeCar = () => {
               <p className="text-gray-600 mb-4">
                 Redeem your coupon during payment to get up to ₹20,000 off after the final negotiated price.
               </p>
-              <Link to="/redeem" className="text-blue-600 font-bold hover:underline">Redeem Now</Link>
+              
             </div>
           </div>
         </section>

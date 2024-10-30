@@ -17,7 +17,7 @@ const ReviewSection = () => {
         "Customer Joy is Our Greatest Achievement",
         "A Journey of Trust, Miles of Smiles",
         "Happiness drives every journey with us."
-    ]; // Array of headings
+    ];
 
     const fetchReviews = async () => {
         try {
@@ -68,7 +68,7 @@ const ReviewSection = () => {
             []
         );
 
-    const reviewChunks = chunkArray(reviews, 3); // Group reviews in chunks of 3 for mobile
+    const reviewChunks = chunkArray(reviews, 4); // Keep chunk size for 4
 
     return (
         <div>
@@ -91,11 +91,13 @@ const ReviewSection = () => {
                             <h4 className="text-lg font-bold text-gray-800 mb-2">
                                 {headings[index % headings.length]}
                             </h4>
-                            <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide">
+
+                            {/* Responsive Grid and Sliding Behavior */}
+                            <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-4">
                                 {chunk.map((review, idx) => (
                                     <div
                                         key={idx}
-                                        className="min-w-[66%] sm:min-w-0 md:w-full relative bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 snap-center"
+                                        className="min-w-[66%] sm:min-w-[33%] md:min-w-0 relative bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 snap-center"
                                     >
                                         {/* Sticker above the image */}
                                         <div className="bg-blue-300 text-gray-800 font-bold text-xs py-1 px-2 rounded-full absolute top-6 left-2 shadow-md z-20">

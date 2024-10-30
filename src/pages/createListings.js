@@ -296,6 +296,7 @@ const CreateListing = () => {
                 <option value="Petrol">Petrol</option>
                 <option value="Diesel">Diesel</option>
                 <option value="Electric">Electric</option>
+                <option value="Petrol+CNG">Petrol+CNG</option>
               </select>
             </div>
 
