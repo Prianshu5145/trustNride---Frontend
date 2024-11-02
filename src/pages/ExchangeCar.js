@@ -51,7 +51,7 @@ const ExchangeCar = () => {
                 <h3 className="font-semibold text-xl text-blue-500">Book Inspection</h3>
               </div>
               <p className="text-gray-600 mb-4">Schedule an inspection for your car before the exchange.</p>
-              <Link to="/book-inspection" className="text-blue-600 font-bold hover:underline">Book Now</Link>
+              <Link to="/sell" className="text-blue-600 font-bold hover:underline">Book Now</Link>
             </div>
 
             {/* Sell Car Card */}
@@ -86,7 +86,7 @@ const ExchangeCar = () => {
                 </div>
                 <h3 className="font-semibold text-xl text-blue-500">Browse Cars</h3>
               </div>
-              <p className="text-gray-600 mb-4">Browse thousands of MRL-certified cars and choose the one you love!</p>
+              <p className="text-gray-600 mb-4">Browse thousands of certified cars and choose the one you love!</p>
               <Link to="/alllistings" className="text-blue-600 font-bold hover:underline">Browse Now</Link>
             </div>
 
