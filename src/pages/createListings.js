@@ -166,14 +166,27 @@ const [loading, setLoading] = useState(false);
     listingData.images.forEach((image) => formData.append('images', image));
 
     try {
-      const response = await axios.post('https://trustnride-backend-production.up.railway.app/api/listings/create', formData, {
+      const response = await axios.post('https://backend.trustnride.in/api/listings/create', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log('Listing created successfully', response.data);
-      alert('Listing created successfully');
+    
+      // Display the success message from the backend
+      alert(response.data.message); // or set a state variable to display it in the UI
+    
     } catch (error) {
       console.error('Error creating listing', error);
+    
+      // Display the error message from the backend
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(error.response.data.message); // or set a state variable to display it in the UI
+      } else {
+        alert('An unexpected error occurred.'); // Fallback message for unexpected errors
+      }
+    } finally {
+      setLoading(false); // Reset loading state regardless of success or failure
     }
+    
   };
  
   return (
@@ -663,7 +676,7 @@ const [loading, setLoading] = useState(false);
             />
           </div>
 
-          <button
+           <button
             type="submit"
             className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center justify-center"
             disabled={loading} // Disable button while loading
