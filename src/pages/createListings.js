@@ -87,28 +87,28 @@ const CreateListing = () => {
   const handleFileChange = (field, e) => {
     const files = Array.from(e.target.files); // Convert FileList to Array
     const newListingData = { ...listingData };
-  
+
     if (field === 'images') {
-      // Handle multiple listing images
-      newListingData[field] = files; // Store multiple images in the listingData
+        // If we already have images in listingData, append new ones instead of replacing
+        newListingData[field] = [...(newListingData[field] || []), ...files];
     } else if (['lhsTyre', 'rhsTyre', 'lhsRearTyre', 'rhsRearTyre'].includes(field)) {
-      // Handle single tyre images
-      const file = files[0]; // Only allow one image per tyre
-      newListingData.inspectionReport.exterior[field].image = file; // Set the single tyre image
+        // Only allow one image per tyre
+        const file = files[0];
+        newListingData.inspectionReport.exterior[field].image = file;
     } else if (field === 'spareTyre') {
-      // Handle spare part image
-      const file = files[0]; // Only one image for spare part
-      console.log("spareTyre",file);
-      newListingData.inspectionReport.exterior.spareTyre.image = file; // Set the spare part image
+        // Only one image for spare part
+        const file = files[0];
+        newListingData.inspectionReport.exterior.spareTyre.image = file;
     } else if (field === 'video') {
-      // Handle single engine video
-      const file = files[0]; // Only one video
-      newListingData.inspectionReport.engine.video = file; // Set the engine video
+        // Only one video for engine
+        const file = files[0];
+        newListingData.inspectionReport.engine.video = file;
     }
-  console.log(newListingData.inspectionReport.exterior.spareTyre.image);
+
     // Update the state with the new data
     setListingData(newListingData);
-  };
+};
+
   
   
   
@@ -218,39 +218,56 @@ const CreateListing = () => {
             />
           </div>
 
-          {/* Images Upload */}
-          <div>
+         {/* Images Upload */}
+<div>
   <label className="block text-gray-700">Upload Images</label>
   <input
     className="mb-4 w-full px-3 py-2 border rounded-md"
     type="file"
     multiple
+    accept="image/*"
+    capture="environment"
     onChange={(e) => handleFileChange('images', e)}
   />
 </div>
-<div>
-            <label className="block text-gray-700">Fair Market Value</label>
-            <input
-              className="mb-4 w-full px-3 py-2 border rounded-md"
-              type="String"
-              name="FairMarketValue"
-              value={listingData.FairMarketValue}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-          <label className="block text-gray-700">KM</label>
-            <input
-              className="mb-4 w-full px-3 py-2 border rounded-md"
-              type="String"
-              name="KM"
-              value={listingData.KM}
-              onChange={handleChange}
-              required
-            />
-          </div>
 
+{/* Preview for Uploaded Images */}
+<div className="grid grid-cols-3 gap-4">
+  {listingData.images?.map((file, index) => (
+    <img
+      key={index}
+      src={URL.createObjectURL(file)}
+      alt={`Preview ${index + 1}`}
+      className="w-full h-auto rounded-md"
+    />
+  ))}
+</div>
+
+{/* Fair Market Value */}
+<div>
+  <label className="block text-gray-700">Fair Market Value</label>
+  <input
+    className="mb-4 w-full px-3 py-2 border rounded-md"
+    type="text"
+    name="FairMarketValue"
+    value={listingData.FairMarketValue}
+    onChange={handleChange}
+    required
+  />
+</div>
+
+{/* KM */}
+<div>
+  <label className="block text-gray-700">KM</label>
+  <input
+    className="mb-4 w-full px-3 py-2 border rounded-md"
+    type="text"
+    name="KM"
+    value={listingData.KM}
+    onChange={handleChange}
+    required
+  />
+</div>
 
           {/* Overview Section */}
           <h3 className="text-xl font-semibold mt-6">Overview</h3>
