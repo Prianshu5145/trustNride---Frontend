@@ -112,9 +112,10 @@ const CreateListing = () => {
   
   
   
-
+const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     // Append basic fields
     formData.append('title', listingData.title);
@@ -664,9 +665,17 @@ const CreateListing = () => {
 
           <button
             type="submit"
-            className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center justify-center"
+            disabled={loading} // Disable button while loading
           >
-            Create Listing
+            {loading ? (
+              <>
+                <div className="loader mr-2"></div>
+                Submitting...
+              </>
+            ) : (
+              'Create Listing'
+            )}
           </button>
         </form>
       </div>
