@@ -41,12 +41,12 @@ const ImageSlider = () => {
   const currentImage = isMobile ? mobileImages[currentImageIndex] : laptopImages[currentImageIndex];
 
   return (
-    <div className="relative w-screen h-84 md:h-[73vh] overflow-hidden rounded-sm">
+    <div className="relative w-full h-78 md:h-[73vh] overflow-hidden rounded-sm">
       {/* Image slider */}
       <img
         src={currentImage}
         alt="Slideshow"
-        className="w-full h-full object-cover transition-all duration-400 ease-in-out"
+        className="w-full h-78 object-cover transition-all duration-400 ease-in-out"
       />
 
       {/* Pagination indicators */}
