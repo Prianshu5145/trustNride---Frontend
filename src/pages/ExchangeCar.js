@@ -13,7 +13,7 @@ const ExchangeCar = () => {
           <img
             src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1730233011/exchangeimage_shnpzd.webp"
             alt="Exchange your car"
-            className="hidden lg:block w-full h-84 object-cover rounded-b-lg shadow-md"
+            className="hidden lg:block w-full h-[73vh] object-cover rounded-b-lg shadow-md"
           />
           <img
             src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1730233011/exchangeimage_shnpzd.webp"
@@ -87,7 +87,7 @@ const ExchangeCar = () => {
                 <h3 className="font-semibold text-xl text-blue-500">Browse Cars</h3>
               </div>
               <p className="text-gray-600 mb-4">Browse thousands of certified cars and choose the one you love!</p>
-              <Link to="/alllistings" className="text-blue-600 font-bold hover:underline">Browse Now</Link>
+              <Link to="/buy" className="text-blue-600 font-bold hover:underline">Browse Now</Link>
             </div>
 
             {/* Test Drive Card */}

@@ -16,7 +16,7 @@ const Home = () => {
       <ImageSlider />
       <ButtonGrid/>
       <Listings/>
-      <LiveAuction/>
+      
       <MotivationSection/>
       <ReviewSection/>
       <Footer/>
