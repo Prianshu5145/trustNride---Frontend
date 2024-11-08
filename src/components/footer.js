@@ -32,7 +32,7 @@ const Footer = () => {
                     <div className="w-full sm:w-1/2 flex-1">
                         <h3 className="text-xl font-semibold mb-3">Get in Touch</h3>
                         <p className="text-gray-400">
-                          TRUST N RIDE  Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur, Uttar Pradesh 224122
+                          TRUST N RIDE  Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur,Ambedkar nagar, Uttar Pradesh 224122
                         </p>
                         <p className="mt-2 text-gray-400">
                             Email: 

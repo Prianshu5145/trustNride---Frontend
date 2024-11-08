@@ -119,21 +119,22 @@ const ContactUs = () => {
           </div>
           <div className="flex items-center mb-2">
             <FaMapMarkerAlt className="text-blue-500 mr-2" />
-            <span>Address: Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur, Uttar Pradesh 224122</span>
+            <span>Address: Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur, Ambedkar nagar, Uttar Pradesh 224122</span>
           </div>
 
           {/* Optional Map Embed */}
           <div className="mt-4">
             <h3 className="text-lg font-bold mb-2">Our Location</h3>
-            <iframe
-              title="Location Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096287!2d144.9537363153155!3d-37.8172099797518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0d4e09c1%3A0x5013a1c5eb9e03b5!2sTrust%20N%20Ride!5e0!3m2!1sen!2sus!4v1631202871670!5m2!1sen!2sus"
-              width="600"
-              height="450"
-              className="border-0 mt-4 rounded-lg shadow-md"
-              allowFullScreen=""
-              loading="lazy"
-            ></iframe>
+            <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.392903938901!2d82.51539389999999!3d26.410794499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39908d9b2e62801f%3A0xacf2488631543744!2sTRUSTNRIDE!5e0!3m2!1sen!2sin!4v1731089436320!5m2!1sen!2sin"
+    width="600" 
+    height="450"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy" 
+    referrerPolicy="no-referrer-when-downgrade">
+</iframe>
+
           </div>
         </div>
       </div>
