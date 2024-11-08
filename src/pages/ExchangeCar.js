@@ -125,10 +125,10 @@ const ExchangeCar = () => {
             If you have any doubts or need more information, feel free to contact us:
           </p>
           <p className="text-gray-700 mb-2 text-center">
-            <strong>Email:</strong> support@trustnride.com
+            <strong>Email:</strong> team@trustnride.com
           </p>
           <p className="text-gray-700 mb-2 text-center">
-            <strong>Mobile:</strong> +91 12345 67890
+            <strong>Mobile:</strong> +918400943441
           </p>
         </section>
       </div>

@@ -1,16 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TRUST N RIDE",
+  "name": "TRUST N RIDE - Second-Hand Car Platform",
   "icons": [
-    
     {
-      "src": "logo193.jpg",
+      "src": "logo193.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
-    
-   
-    
   ],
   "start_url": ".",
   "display": "standalone",
