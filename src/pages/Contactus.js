@@ -127,7 +127,7 @@ const ContactUs = () => {
             <h3 className="text-lg font-bold mb-2">Our Location</h3>
             <iframe 
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.392903938901!2d82.51539389999999!3d26.410794499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39908d9b2e62801f%3A0xacf2488631543744!2sTRUSTNRIDE!5e0!3m2!1sen!2sin!4v1731089436320!5m2!1sen!2sin"
-    width="600" 
+    width="300" 
     height="450"
     style={{ border: 0 }}
     allowFullScreen
