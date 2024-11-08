@@ -42,7 +42,7 @@ const ImageSlider = () => {
   const currentImage = isMobile ? mobileImages[currentImageIndex] : laptopImages[currentImageIndex];
 
   return (
-    <div className="relative w-full h-84 md:h-[92vh] md:w-full overflow-hidden rounded-sm">
+    <div className="relative w-full h-84 lg:h-[92vh] lg:w-full overflow-hidden rounded-sm">
       {/* Image slider */}
       <img
         src={currentImage}
