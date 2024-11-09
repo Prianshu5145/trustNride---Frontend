@@ -77,7 +77,7 @@ const ViewDetails = () => {
     return (
         
        <div> <Navbar/>
-       <div className="container mx-auto px-4 py-6">
+       <div className="container mx-auto px-4 py-1">
            
        {listing && (
            <>
@@ -98,7 +98,7 @@ const ViewDetails = () => {
                <img
                    src={image}
                    alt={`Image ${index + 1}`}
-                   className="w-full h-96 object-cover cursor-pointer"
+                   className="w-full h-96 lg:w-full lg:h-[93vh] object-cover cursor-pointer"
                    onClick={() => openImageModal(index, image)} // Pass image to the modal function
                />
            </SwiperSlide>
