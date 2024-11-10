@@ -7,13 +7,13 @@ const ReviewSection = () => {
 
     const reviews = [
         {
-            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729552362/IMG-20241022-WA0150_1_cen1gu.jpg",
+            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1731196874/IMG-20241022-WA0150_1_cen1gu.jpg",
             text: "Buying the Bolero Neo from Trust N Ride was the best decision ever! The price was unbeatable, and the car is in excellent condition.",
             name: "Nikhil",
             address: "Noida"
         },
         {
-            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548674/IMG-20241022-WA0144_1_lkgvdc.jpg",
+            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1731196984/IMG-20241022-WA0144_1_lkgvdc.jpg",
             text: "Trust N Ride made my dream of owning a Hyundai i20 come true. The staff were friendly, and the whole process was smooth.",
             name: "Aarav",
             address: "Sultanpur"
@@ -25,7 +25,7 @@ const ReviewSection = () => {
             address: "Moradabad"
         },
         {
-            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1729548670/IMG-20241022-WA0159_1_ez31ip.jpg",
+            image: "https://res.cloudinary.com/dztz5ltuq/image/upload/v1731195970/IMG-20241022-WA0159_1_ez31ip.jpg",
             text: "The best thing about buying from Trust N Ride is transparency. My Hyundai Creta is running perfectly. Highly recommended!",
             name: "Ravi",
             address: "Jhansi"
@@ -110,7 +110,7 @@ const ReviewSection = () => {
                             className="relative flex-shrink-0 w-3/4 sm:w-auto bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 h-95" // Set fixed height and added relative
                         >
                             {/* Sticker above the image */}
-                            <div className="bg-blue-300 text-gray-800 font-bold text-xs py-1 px-2 rounded-full absolute top-6 left-2 shadow-md z-20">
+                            <div className="bg-blue-300 text-gray-800 font-bold text-xs py-1 px-2 rounded-full absolute top-5 left-1 shadow-md z-20">
                                People we made happy
                             </div>
                             {/* Increased the height of the image */}
@@ -122,7 +122,7 @@ const ReviewSection = () => {
                             <div className="p-4">
                                 <p className="text-gray-900">{review.text}</p>
                                 {/* Added name and address with faded background */}
-                                <div className="mt-1 p-1 bg-gray-300 rounded text-gray-600">
+                                <div className="mt-0 p-1 bg-gray-300 rounded text-gray-600">
                                     {review.name} | {review.address}
                                 </div>
                             </div>
