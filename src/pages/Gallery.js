@@ -97,10 +97,10 @@ const ReviewSection = () => {
                                 {chunk.map((review, idx) => (
                                     <div
                                         key={idx}
-                                        className="min-w-[66%] sm:min-w-[33%] md:min-w-0 relative bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 snap-center"
+                                        className="min-w-[70%] sm:min-w-[40%] md:min-w-0 relative bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 snap-center"
                                     >
                                         {/* Sticker above the image */}
-                                        <div className="bg-blue-300 text-gray-800 font-bold text-xs py-1 px-2 rounded-full absolute top-6 left-2 shadow-md z-20">
+                                        <div className="bg-blue-300 text-gray-800 font-bold text-xs py-1 px-1 rounded-full absolute top-5 left-2 shadow-md z-20">
                                             People we made happy
                                         </div>
                                         {/* Review Image */}
