@@ -25,18 +25,33 @@ const About = () => {
                     By collaborating with leading industry partners, we bring together extensive expertise to deliver the best prices and exceptional service, ensuring an outstanding experience every step of the way.
                     </p>
                     <div>
-                
-                    <img 
-                        src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731339174/IMG-20241111-WA0017_i5nrtn.jpg" 
-                        alt="Welcoming office" 
-                        className="w-full h-auto rounded-lg shadow-2xl"
-                    />
+                    <div className="space-y-4">
+    
+    <div className="relative">
+        <h1 className="text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-blue-400 bg-opacity-90 p-2 rounded-br-lg absolute top-0 left-0 m-2 shadow-lg">
+        Spaces We Love to Work In
+        </h1>
+        <img 
+            src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731339174/IMG-20241111-WA0017_i5nrtn.jpg" 
+            alt="Welcoming office" 
+            className="w-full h-auto rounded-lg shadow-2xl"
+        />
+    </div>
+
+   
+    <div className="relative">
+        <h1 className="text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-blue-400 bg-opacity-90 p-2 rounded-br-lg absolute top-0 left-0 m-2 shadow-lg">
+        Spaces We Love to Work In
+        </h1>
+        <img 
+            src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731339174/IMG-20241111-WA0018_e6r4mv.jpg" 
+            alt="Welcoming office" 
+            className="w-full h-auto rounded-lg shadow-2xl"
+        />
+    </div>
+</div>
+
                     </div>
-                    <img 
-                        src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731339174/IMG-20241111-WA0018_e6r4mv.jpg" 
-                        alt="Welcoming office" 
-                        className="w-full h-auto rounded-lg shadow-2xl"
-                    />
                 </div>
             </section>
 
