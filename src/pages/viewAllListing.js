@@ -17,8 +17,8 @@ const ViewAllListings = () => {
   // Dynamic text loading
   const phrases = [
     "Welcome to Trust N Ride!",
+    "TICK TOCK SOLD!!",
     "View your favorite car!",
-    "Make it yours today!",
     "Ride with confidence!",
     "Find your dream car!"
   ];

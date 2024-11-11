@@ -128,7 +128,7 @@ const ExchangeCar = () => {
             <strong>Email:</strong> team@trustnride.com
           </p>
           <p className="text-gray-700 mb-2 text-center">
-            <strong>Mobile:</strong> +918400943441
+            <strong>Mobile:</strong> +919792983625
           </p>
         </section>
       </div>

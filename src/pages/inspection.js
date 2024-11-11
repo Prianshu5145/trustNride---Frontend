@@ -157,11 +157,11 @@ const InspectionBooking = () => {
                             },
                             {
                                 title: 'Get the Best Price',
-                                text: 'Our partner CARS24 will offer the best price for your car.',
+                                text: 'Our partner will offer the best price for your car.',
                             },
                             {
                                 title: 'Redirect to CARS24',
-                                text: 'You’ll be redirected to CARS24 for the final process.',
+                                text: 'You’ll be redirected to our partner site for the final process.',
                             },
                             {
                                 title: 'Easy Documentation',

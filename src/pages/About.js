@@ -1,6 +1,8 @@
 import React from 'react';
 import Footer from '../components/footer'; // Adjust the import path if necessary
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
+
 const About = () => {
     return (
         <div><Navbar/>
@@ -20,11 +22,18 @@ const About = () => {
                     At TRUST N RIDE, we are passionate about revolutionizing the second-hand car market. As a customer-to-customer (C2C) platform, we empower buyers and sellers to connect directly, allowing us to offer better prices and faster RC transfers. With a commitment to transparency, quality, and unparalleled customer service, we aim to make the process of buying and selling cars effortless and rewarding.
                     </p>
                     <p className="text-lg text-gray-700 mb-4">
-                        As a proud franchise of Cars24, we leverage our industry expertise to ensure you receive the best prices 
-                        and service available.
+                    By collaborating with leading industry partners, we bring together extensive expertise to deliver the best prices and exceptional service, ensuring an outstanding experience every step of the way.
                     </p>
+                    <div>
+                
                     <img 
-                        src="/path/to/image.jpg" 
+                        src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731339174/IMG-20241111-WA0017_i5nrtn.jpg" 
+                        alt="Welcoming office" 
+                        className="w-full h-auto rounded-lg shadow-2xl"
+                    />
+                    </div>
+                    <img 
+                        src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731339174/IMG-20241111-WA0018_e6r4mv.jpg" 
                         alt="Welcoming office" 
                         className="w-full h-auto rounded-lg shadow-2xl"
                     />
@@ -84,9 +93,14 @@ const About = () => {
             <section className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-800 mb-4">Ready to Experience TRUST N RIDE?</h2>
                 <p className="text-md text-gray-600 mb-4">Join our community of satisfied customers and discover the easiest way to buy or sell your car today!</p>
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition transform hover:scale-105">
-                    Contact Us
-                </button>
+                
+
+<Link to="/contact">
+    <button className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition transform hover:scale-105">
+        Contact Us
+    </button>
+</Link>
+
             </section>
 
             
