@@ -14,39 +14,37 @@ const Footer = () => {
                     </p>
                 </div>
 
-                {/* Explore & Get in Touch Section */}
-                <div className="flex flex-wrap gap-8 justify-between items-start mb-10">
+                {/* Explore & Contact Sections */}
+                <div className="flex flex-wrap gap-8 justify-between items-start mb-5">
                     
-                    {/* Explore Section */}
+                    {/* Explore Links */}
                     <div className="w-full sm:w-1/2 flex-1">
                         <h3 className="text-xl font-semibold mb-3">Explore</h3>
                         <ul className="space-y-2">
                             <li><a href="/" className="hover:text-blue-500 transition">Home</a></li>
                             <li><a href="/About" className="hover:text-blue-500 transition">About Us</a></li>
                             <li><a href="/Gallery" className="hover:text-blue-500 transition">Gallery</a></li>
-                            <li><a href="/Contact" className="hover:text-blue-500 transition">Contact</a></li>
+                            <li><a href="/Contact" className="hover:text-blue-500 transition">Contact Us</a></li>
                         </ul>
-                    </div>
-
-                    {/* Get in Touch Section */}
-                    <div className="w-full sm:w-1/2 flex-1">
-                        <h3 className="text-xl font-semibold mb-3">Get in Touch</h3>
+                        <br/>
+                        
+                        <div className="mb-10">
+                    <h3 className="text-xl font-semibold mb-3">Get in Touch</h3>
+                    
+                    <div className="mt-3 space-y-2">
                         <p className="text-gray-400">
-                          TRUST N RIDE  Gata Num- 57, near RING ROAD, near NEW JAIHERO, Akbarpur, Ratanpur,Ambedkar nagar, Uttar Pradesh 224122
-                        </p>
-                        <p className="mt-2 text-gray-400">
                             Email: 
                             <a 
-                                href="mailto:trustnride@gmail.com" 
+                                href="mailto:team@trustnride.in" 
                                 className="hover:text-blue-500 transition ml-1"
                             >
                                 team@trustnride.in
                             </a>
                         </p>
-                        <p className="mt-2 text-gray-400">
+                        <p className="text-gray-400">
                             Phone: 
                             <a 
-                                href="tel:+918400943441" 
+                                href="tel:+919792983625" 
                                 className="hover:text-blue-500 transition ml-1"
                             >
                                 +919792983625
@@ -54,25 +52,29 @@ const Footer = () => {
                         </p>
                     </div>
                 </div>
+                    </div>
 
-                {/* Newsletter Subscription */}
-                <div className="mb-10">
-                    <h3 className="text-xl font-semibold mb-3">Stay Connected</h3>
-                    <p className="text-gray-400">Subscribe to our newsletter and never miss an update.</p>
-                    <form className="mt-3 flex">
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            className="w-full p-2 rounded-l-lg focus:outline-none text-gray-900"
-                        />
-                        <button className="bg-blue-600 px-4 rounded-r-lg hover:bg-blue-700 transition">
-                            Subscribe
-                        </button>
-                    </form>
+
+                    {/* Registered Office Address */}
+                    <div className="w-full sm:w-1/2 flex-1">
+                        <h3 className="text-xl font-semibold mb-3">Registered Office Address:</h3>
+                        <p className="text-gray-400">
+                            TRUST N RIDE, Gata Num- 57, Near RING ROAD, Near NEW JAIHERO, Akbarpur, Ratanpur, Ambedkar Nagar, Uttar Pradesh 224122
+                        </p>
+                        <p className="mt-2 text-gray-400">
+                            GSTIN: <span className="font-semibold">09AAVFT6318H1ZJ</span> {/* Example GSTIN */}
+                        </p>
+                    </div>
                 </div>
 
+                {/* Contact Information (Mobile & Email) */}
+                
+
+                {/* Newsletter Subscription */}
+                
+
                 {/* Divider */}
-                <div className="border-t border-gray-700 mt-10 pt-6">
+                <div className="border-t border-gray-700 mt-2 pt-6">
                     <div className="flex justify-between items-center flex-wrap gap-4">
                         
                         {/* Copyright Text */}

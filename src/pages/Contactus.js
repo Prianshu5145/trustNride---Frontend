@@ -111,11 +111,11 @@ const ContactUs = () => {
           <h2 className="text-4xl font-bold mb-4">Contact Information</h2>
           <div className="flex items-center mb-2">
             <FaEnvelope className="text-blue-500 mr-2" />
-            <span>Email: <a href="mailto:info@example.com" className="text-blue-500 hover:underline">team@trustnride.in</a></span>
+            <span>Email: <a href="mailto:team@trustnride.in" className="text-blue-500 hover:underline">team@trustnride.in</a></span>
           </div>
           <div className="flex items-center mb-2">
             <FaPhoneAlt className="text-blue-500 mr-2" />
-            <span>Phone: <a href="tel:+1234567890" className="text-blue-500 hover:underline">+919792983625</a></span>
+            <span>Phone: <a href="tel:+919792983625" className="text-blue-500 hover:underline">+919792983625</a></span>
           </div>
           <div className="flex items-center mb-2">
             <FaMapMarkerAlt className="text-blue-500 mr-2" />

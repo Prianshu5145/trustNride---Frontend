@@ -134,13 +134,28 @@ const ReviewSection = () => {
                 <div className="mt-6">
                     <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
                         <h4 className="text-lg font-bold text-gray-800">Are You Here? Let's See Our Journey!</h4>
-                        <p className="text-gray-700">Join us as we take you through the unforgettable moments and experiences we've shared.</p>
+                        <p className="text-gray-700">Discover the unforgettable and memorable experiences that define TRUST N RIDE.</p>
                         <button
-    className="bg-blue-600 text-white font-semibold py-1 px-2 rounded hover:bg-blue-700 transition duration-300"
+    className="text-blue-600 font-semibold py-1 px-1 rounded-lg border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out flex items-center gap-2"
     onClick={() => (window.location.href = "/Gallery")} // Adjust link as needed
 >
-    Explore Now
+    Discover More Stories
+    <svg
+        className="w-4 h-4 text-blue-600 group-hover:text-white transition duration-300"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+    >
+        <path
+            fillRule="evenodd"
+            d="M10.293 14.293a1 1 0 0 1 0-1.414L13.586 10H3a1 1 0 1 1 0-2h10.586L10.293 5.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0z"
+            clipRule="evenodd"
+        />
+    </svg>
 </button>
+
+
                     </div>
                 </div>
             </div>
