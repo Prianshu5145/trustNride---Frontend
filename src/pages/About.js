@@ -28,7 +28,7 @@ const About = () => {
                     <div className="space-y-4">
     
     <div className="relative">
-        <h1 className="text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-blue-400 bg-opacity-90 p-2 rounded-br-lg absolute top-0 left-0 m-2 shadow-lg">
+        <h1 className="text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-400 bg-opacity-90 py-1 rounded-br-lg absolute top-0 left-0 m-2 shadow-lg">
         Spaces We Love to Work In
         </h1>
         <img 
@@ -40,7 +40,7 @@ const About = () => {
 
    
     <div className="relative">
-        <h1 className="text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-blue-400 bg-opacity-90 p-2 rounded-br-lg absolute top-0 left-0 m-2 shadow-lg">
+        <h1 className="text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-400 bg-opacity-90  py-1 rounded-br-lg absolute top-0 left-0 m-2 shadow-lg">
         Spaces We Love to Work In
         </h1>
         <img 
