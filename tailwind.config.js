@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         // You can also define background images here if you plan to use them as CSS backgrounds
-        'loginSignup-mobile': "url('https://res.cloudinary.com/dztz5ltuq/image/upload/v1730327457/Designer_13_b4taaq.jpg')",  // Path to your mobile background image
+        'loginSignup-mobile': "url('https://res.cloudinary.com/dztz5ltuq/image/upload/v1731529280/WhatsApp_Image_2024-11-14_at_01.49.22_9998f31d_mkgycc.jpg')",  // Path to your mobile background image
         'loginSignup-desktop': "url('https://res.cloudinary.com/dztz5ltuq/image/upload/v1730327577/Designer_14_rjoyyr.jpg')", // Path to your desktop background image
       },
       screens: {
