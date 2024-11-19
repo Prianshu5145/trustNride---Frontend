@@ -26,6 +26,26 @@ module.exports = {
       opacity: {
         '80': '0.8',  // Custom opacity for faded effect
       },
+      keyframes: {
+        flip: {
+          '0%, 100%': { transform: 'rotateY(0deg)' },
+          '50%': { transform: 'rotateY(180deg)' },
+        },
+        bounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        fade: {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '0.5' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        flip: 'flip 1.5s infinite',
+        bounce: 'bounce 1s infinite',
+        fade: 'fade 2s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

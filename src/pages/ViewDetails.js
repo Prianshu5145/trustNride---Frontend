@@ -17,7 +17,7 @@ const ViewDetails = () => {
     const [tireImages, setTireImages] = useState([]); // Array to hold tire images
     const [currentTireIndex, setCurrentTireIndex] = useState(0); // Track current tire index
     const [isTireImage, setIsTireImage] = useState(false); // Track if the image is a tire image
-
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchListing = async () => {
             try {
@@ -32,6 +32,9 @@ const ViewDetails = () => {
             } catch (error) {
                 console.error('Error fetching listing:', error);
             }
+            finally {
+                setIsLoading(false); // Stop spinner after fetching
+              }
         };
 
         fetchListing();
@@ -78,8 +81,39 @@ const ViewDetails = () => {
         
        <div> <Navbar/>
        <div className="container mx-auto px-4 py-1">
-           
-       {listing && (
+       {isLoading ? (
+          <div className="flex flex-col items-center justify-center h-screen bg-white">
+  {/* Spinner Container */}
+  <div className="relative w-28 h-28">
+    {/* Outer Circle with Gradient */}
+    <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+    
+    {/* Inner Circle */}
+    <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+      {/* Logo with Flip Animation */}
+      <img
+        src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+        alt="Car Logo"
+        className="w-12 h-12 animate-flip"
+      />
+    </div>
+  </div>
+
+  {/* Text Section */}
+  <p className="mt-6 text-lg font-semibold text-gray-700">
+  <p className="mt-8 text-xl md:text-2xl font-bold text-gray-800 text-center">
+    We’re preparing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">your dream ride....</span>
+  </p>
+  Your journey, our commitment —  <span className="text-blue-500">Trust N Ride</span>
+  </p>
+</div>
+
+        ) :
+
+
+
+
+           (   listing && (
            <>
                {/* Image Carousel */}
                <div className="rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200">
@@ -420,7 +454,8 @@ Steering
 
                </div>
            </>
-       )}
+       ))}
+       
 
        {/* Modal for viewing full-size images */}
       {/* Modal for Image View */}
