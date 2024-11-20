@@ -100,11 +100,11 @@ const ViewDetails = () => {
   </div>
 
   {/* Text Section */}
-  <p className="mt-6 text-lg font-semibold text-gray-700">
+  <p className="mt-6 text-sm lg:text-md font-semibold text-gray-500">
   <p className="mt-8 text-xl md:text-2xl font-bold text-gray-800 text-center">
-    We’re preparing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">your dream ride....</span>
+    We’re preparing for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">your dream ride....</span>
   </p>
-  Your journey, our commitment —  <span className="text-blue-500">Trust N Ride</span>
+  Your journey, our commitment —  <span className="text-blue-400">TRUST N RIDE</span>
   </p>
 </div>
 

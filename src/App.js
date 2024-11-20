@@ -12,7 +12,7 @@ import InspectionBooking from './pages/inspection';
 import About from './pages/About'
 import ReviewGallery from './pages/ReviewGallery';
 import ReviewSection from './pages/Gallery';
-import   ContactUs from './pages/InquiryFormModal';
+import ContactUs from './pages/InquiryFormModal';
 import ForgotPassword from './pages/forgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import ExchangeCar from './pages/ExchangeCar';

@@ -130,7 +130,7 @@ const Listings = () => {
                                                             e.stopPropagation(); // Prevent click from bubbling up to the card
                                                             handleViewDetails(listing._id);
                                                         }}
-                                                        className="block lg:hidden mt-2 w-full bg-white text-blue-600 py-1  rounded-md text-xs font-semibold hover:bg-gray-100 transition-colors"
+                                                        className="block  mt-2 w-full bg-white text-blue-600 py-1  rounded-md text-xs font-semibold hover:bg-gray-100 transition-colors"
                                                     >
                                                         View Details
                                                     </button>
