@@ -33,20 +33,20 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/create-listing" element={<CreateListing />} />
-        <Route path="/all-listings" element={< ViewAllListings/>} />
+        <Route path="/all-listings" element={<ViewAllListings/>} />
         <Route path="/listing/:listingId" element={<ViewDetails />} />
         <Route path="/sell" element={<InspectionBooking />} />
-        <Route path="/buy" element={< ViewAllListings/>} />
-        <Route path="/About" element={< About/>} />
-        <Route path="/uploadReview" element={< ReviewGallery/>} />
-        <Route path="/Gallery" element={< ReviewSection/>} />
+        <Route path="/buy" element={<ViewAllListings/>} />
+        <Route path="/About" element={<About/>} />
+        <Route path="/uploadReview" element={<ReviewGallery/>} />
+        <Route path="/Gallery" element={<ReviewSection/>} />
         InquiryFormModal
-        <Route path="/Make a Deal" element={< ContactUs/>} />
+        <Route path="/Make a Deal" element={<ContactUs/>} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/forgot-Password" element={<ForgotPassword />} />
        
         <Route path="/ExchangeCar" element={<ExchangeCar />} />
-        <Route path="/Contact" element={< ContactUs2 />} />
+        <Route path="/Contact" element={<ContactUs2 />} />
       </Routes>
     </div>
   );
