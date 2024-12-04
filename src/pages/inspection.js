@@ -31,7 +31,7 @@ const InspectionBooking = () => {
             });
 
             if (response.ok) {
-                window.location.href = 'https://www.cars24.com/sell-used-cars/';
+                alert('Your Response is Submitted Successfully and We will getback to You Soon');
             } else {
                 alert('Failed to book inspection. Please try again.');
             }
