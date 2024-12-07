@@ -17,6 +17,7 @@ import ForgotPassword from './pages/forgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import ExchangeCar from './pages/ExchangeCar';
 import  ContactUs2 from './pages/Contactus';
+import CreateNOCForm from './pages/RtoNOC';
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -47,6 +48,7 @@ function App() {
        
         <Route path="/ExchangeCar" element={<ExchangeCar />} />
         <Route path="/Contact" element={<ContactUs2 />} />
+        <Route path="/rtoNoc" element={<CreateNOCForm />} />
       </Routes>
     </div>
   );

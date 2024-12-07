@@ -45,7 +45,7 @@ const InspectionBooking = () => {
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white">
-            <Navbar />
+            <Navbar/>
 
             {loading && (
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
