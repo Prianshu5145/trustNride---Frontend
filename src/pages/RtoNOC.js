@@ -197,7 +197,7 @@ const CreateNOCForm = () => {
     <input
       type="file"
       accept="image/*"
-      capture="environment" // Enables live camera for capturing images
+       // Enables live camera for capturing images
       multiple
       onChange={(e) => handleFileChange(e, field)}
       className="w-full p-2 border border-gray-300 rounded-lg"
