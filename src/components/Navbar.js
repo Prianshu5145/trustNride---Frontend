@@ -53,8 +53,9 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch Rto Doc</Link>
-                  
+                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
+                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
+
 
                  
                 </>
@@ -117,7 +118,8 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch Rto Doc</Link>
+                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
+                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
 
                   
                   

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import Navbar from './Navbar';
 const TRANSFERWITHLOAN = () => {
   const [images, setImages] = useState({
     form28: [],
@@ -8,6 +8,7 @@ const TRANSFERWITHLOAN = () => {
     form30: [],
     form34: [],
     noc: [],
+    CarRc:[],
     customerAadharCard: [],
     customerPhoto: null,
     ownerAadharCard: [],
@@ -20,6 +21,7 @@ const TRANSFERWITHLOAN = () => {
     form30: [],
     form34: [],
     noc: [],
+  CarRc:[],
     customerAadharCard: [],
     customerPhoto: null,
     ownerAadharCard: [],
@@ -105,7 +107,8 @@ const TRANSFERWITHLOAN = () => {
     Object.keys(nocData).forEach((field) => {
       formData.append(field, nocData[field]);
     });
-
+    const savedRole = localStorage.getItem('role');
+    if (savedRole === 'dealer'){
     try {
       const response = await axios.post('https://trustnride-backend-production.up.railway.app/api/rtotransfer/transferwithloan', formData, {
         headers: {
@@ -118,10 +121,16 @@ const TRANSFERWITHLOAN = () => {
       alert('failed to submit');
     } finally {
       setLoading(false); // Hide spinner after submission
+    }}
+    else {
+      // If the role is not 'dealer', set an error or handle unauthorized access
+      alert('Unauthorized: Not a dealer');
+      setLoading(false);
     }
   };
 
   return (
+    <div><Navbar/>
     <div className="max-w-3xl mx-auto p-4 bg-white rounded-lg shadow-lg">
       <h1 className="text-2xl font-semibold text-center mb-6">SEND DOCUMENT FOR TRANSFER WITH HYPO</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -210,10 +219,10 @@ const TRANSFERWITHLOAN = () => {
           <h3 className="text-xl font-medium">Upload Documents</h3>
 
           {/* Image Uploads */}
-          {['form28', 'form29','form30','form34','noc','customerAadharCard', 'customerPhoto', 'ownerAadharCard', 'ownerPhoto', 'blankPaperPhoto'].map((field) => (
+          {['form28', 'form29','form30','form34','CarRc','noc','customerAadharCard', 'customerPhoto', 'ownerAadharCard', 'ownerPhoto', 'blankPaperPhoto'].map((field) => (
             <div key={field} className="space-y-2">
               <label htmlFor={field} className="block text-lg font-medium">
-                Upload {field.replace(/([A-Z])/g, ' $1')} {field !== 'noc' && field !== 'blankPaperPhoto' && <span className="text-red-500"> *</span>}
+                Upload {field.replace(/([A-Z])/g, ' $1')} {field !== 'noc'&& field !== 'blankPaperPhoto' && <span className="text-red-500"> *</span>}
               </label>
               <input
                 type="file"
@@ -288,7 +297,7 @@ const TRANSFERWITHLOAN = () => {
               </div>
             </div>
           ) : (
-            'Submit NOC'
+            'Submit Document'
           )}
         </button>
       </form>
@@ -308,7 +317,7 @@ const TRANSFERWITHLOAN = () => {
           </div>
         </div>
       )}
-    </div>
+    </div></div>
   );
 };
 

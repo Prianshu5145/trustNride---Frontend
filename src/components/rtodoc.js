@@ -12,7 +12,7 @@ const DispatchOptions = () => {
   return (
     <div><Navbar/>
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-50 to-blue-100">
-    <h1 className="text-2xl font-bold mb-10 text-blue-700">Select a Dispatch Option</h1>
+    <h1 className="text-2xl font-bold mb-10 text-blue-700">Select a Dispatch Doc Option</h1>
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 w-full max-w-6xl">
       {/* Option 1 */}
       <div

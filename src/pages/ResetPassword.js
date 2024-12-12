@@ -18,7 +18,7 @@ const ResetPassword = () => {
       setLoading(false);
       return;
     }
-    console.log(token);
+    
     try {
       const response = await fetch('https://trustnride-backend-production.up.railway.app/api/auth/reset-password', {
         method: 'POST',
