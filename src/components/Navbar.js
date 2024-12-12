@@ -53,8 +53,8 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                  <Link to="/rtoNoc" className="block px-4 py-2 hover:bg-gray-600">SEND NOC DOCUMENT</Link>
-                  <Link to="/rtotransferwithloan" className="block px-4 py-2 hover:bg-gray-600">SEND TRANSFER WITH HYPO DOCUMENT</Link>
+                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch Rto Doc</Link>
+                  
 
                  
                 </>
@@ -117,8 +117,7 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                  <Link to="/rtoNoc" className="block px-4 py-2 hover:bg-gray-600">SEND NOC DOCUMENT</Link>
-                  <Link to="/rtotransferwithloan" className="block px-4 py-2 hover:bg-gray-600">SEND TRANSFER WITH HYPO DOCUMENT</Link>
+                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch Rto Doc</Link>
 
                   
                   

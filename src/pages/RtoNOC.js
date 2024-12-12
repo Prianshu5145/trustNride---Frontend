@@ -104,10 +104,10 @@ const CreateNOCForm = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log('NOC Created:', response.data);
+      
       setSubmissionSuccess(true); // Set submission success
     } catch (error) {
-      console.error('Error creating NOC:', error);
+      alert('document Submission is failed');
     } finally {
       setLoading(false); // Hide spinner after submission
     }
@@ -184,7 +184,7 @@ const CreateNOCForm = () => {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="customerPhoneNumber" className="block text-lg font-medium">Customer Phone Number <span className="text-red-500">*</span></label>
+          <label htmlFor="customerPhoneNumber" className="block text-lg font-medium">Car Owner Phone Number <span className="text-red-500">*</span></label>
           <input
             type="tel"
             id="customerPhoneNumber"
@@ -205,7 +205,7 @@ const CreateNOCForm = () => {
           {['form28', 'customerAadharCard', 'customerPhoto', 'ownerAadharCard', 'ownerPhoto', 'blankPaperPhoto'].map((field) => (
             <div key={field} className="space-y-2">
               <label htmlFor={field} className="block text-lg font-medium">
-                Upload {field.replace(/([A-Z])/g, ' $1')} <span className="text-red-500">*</span>
+                Upload {field.replace(/([A-Z])/g, ' $1')} {field !== 'blankPaperPhoto' && <span className="text-red-500"> *</span>}
               </label>
               <input
                 type="file"

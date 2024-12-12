@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const TRANSFERWITHLOAN = () => {
+const TRANSFERWITHOUTLOAN = () => {
   const [images, setImages] = useState({
     form28: [],
     form29: [],
     form30: [],
-    form34: [],
-    noc: [],
+    noc:[],
     customerAadharCard: [],
     customerPhoto: null,
     ownerAadharCard: [],
@@ -18,8 +17,7 @@ const TRANSFERWITHLOAN = () => {
     form28: [],
     form29: [],
     form30: [],
-    form34: [],
-    noc: [],
+   noc:[],
     customerAadharCard: [],
     customerPhoto: null,
     ownerAadharCard: [],
@@ -107,7 +105,7 @@ const TRANSFERWITHLOAN = () => {
     });
 
     try {
-      const response = await axios.post('https://trustnride-backend-production.up.railway.app/api/rtotransfer/transferwithloan', formData, {
+      const response = await axios.post('https://trustnride-backend-production.up.railway.app/api/rtotransferwithouthypo/transferwithoutloan', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -123,7 +121,7 @@ const TRANSFERWITHLOAN = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-4 bg-white rounded-lg shadow-lg">
-      <h1 className="text-2xl font-semibold text-center mb-6">SEND DOCUMENT FOR TRANSFER WITH HYPO</h1>
+      <h1 className="text-2xl font-semibold text-center mb-6">SEND DOCUMENT FOR TRANSFER WITHOUT HYPO</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-2">
           <label htmlFor="CarTitle" className="block text-lg font-medium">Car Title <span className="text-red-500">*</span></label>
@@ -210,7 +208,7 @@ const TRANSFERWITHLOAN = () => {
           <h3 className="text-xl font-medium">Upload Documents</h3>
 
           {/* Image Uploads */}
-          {['form28', 'form29','form30','form34','noc','customerAadharCard', 'customerPhoto', 'ownerAadharCard', 'ownerPhoto', 'blankPaperPhoto'].map((field) => (
+          {['form28', 'form29','form30','noc','customerAadharCard', 'customerPhoto', 'ownerAadharCard', 'ownerPhoto', 'blankPaperPhoto'].map((field) => (
             <div key={field} className="space-y-2">
               <label htmlFor={field} className="block text-lg font-medium">
                 Upload {field.replace(/([A-Z])/g, ' $1')} {field !== 'noc' && field !== 'blankPaperPhoto' && <span className="text-red-500"> *</span>}
@@ -298,7 +296,7 @@ const TRANSFERWITHLOAN = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
             <h2 className="text-xl font-semibold text-green-600">Document Submitted Successfully!</h2>
-            <p className="mt-2 text-gray-700">Your TRANSFER WITH HYPO DOCUMENT  submission is complete.THANK YOU.</p>
+            <p className="mt-2 text-gray-700">Your TRANSFER WITHOUT HYPO DOCUMENT  submission is complete.THANK YOU.</p>
             <button
               onClick={() => setSubmissionSuccess(false)}
               className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
@@ -312,4 +310,4 @@ const TRANSFERWITHLOAN = () => {
   );
 };
 
-export default TRANSFERWITHLOAN;
+export default TRANSFERWITHOUTLOAN;

@@ -19,6 +19,8 @@ import ExchangeCar from './pages/ExchangeCar';
 import  ContactUs2 from './pages/Contactus';
 import CreateNOCForm from './pages/RtoNOC';
 import TRANSFERWITHLOAN from './components/Teansferwithloan'
+import TRANSFERWITHOUTLOAN from './components/transferwithoutloan'
+import DispatchOptions from './components/rtodoc';
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -42,7 +44,7 @@ function App() {
         <Route path="/About" element={<About/>} />
         <Route path="/uploadReview" element={<ReviewGallery/>} />
         <Route path="/Gallery" element={<ReviewSection/>} />
-        InquiryFormModal
+        
         <Route path="/Make a Deal" element={<ContactUs/>} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/forgot-Password" element={<ForgotPassword />} />
@@ -52,9 +54,14 @@ function App() {
         <Route path="/rtoNoc" element={<CreateNOCForm />} />
         
         <Route path="/rtotransferwithloan" element={<TRANSFERWITHLOAN />} />
+        <Route path="/rtotransferwithoutloan" element={<TRANSFERWITHOUTLOAN />} />
+        
+        <Route path="/rtodoc" element={< DispatchOptions/>} />
         
       </Routes>
+      
     </div>
+                     
   );
 }
 
