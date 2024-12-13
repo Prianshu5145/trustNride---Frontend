@@ -60,7 +60,7 @@ const TRANSFERWITHOUTLOAN = () => {
       const compressedImages = await Promise.all(
         fileArray.map(async (file) => {
           const options = {
-            maxSizeMB: 0.3, // Maximum file size (e.g., 0.5 MB)
+            maxSizeMB: 0.1, // Maximum file size (e.g., 0.5 MB)
            // Maximum dimensions (e.g., 1920px)
             useWebWorker: true, // Use web workers for faster processing
           };
