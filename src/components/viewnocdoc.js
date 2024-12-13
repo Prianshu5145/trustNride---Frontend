@@ -106,14 +106,15 @@ const NocDocuments = ({ nocs }) => {
             </h2>
 
             <p className="text-black text-lg"><strong className="mr-4">AGENT NAME:</strong> {noc.agentName}</p>
-            <p className="text-black text-lg"><strong className="mr-4">CAR REG NUM:</strong> {noc.carRegistrationNumber}</p>
-            <p className="text-black text-lg"><strong className="mr-4">RTO NAME:</strong> {noc.rtoName}</p>
             <p className="text-blue-600 text-lg">
               <strong className="text-black mr-4">AGENT PHONE:</strong>
               <a href={`tel:${noc.agentPhoneNumber}`} className="hover:underline">
                 {noc.agentPhoneNumber}
               </a>
             </p>
+            <p className="text-black text-lg"><strong className="mr-4">CAR REG NUM:</strong> {noc.carRegistrationNumber}</p>
+            <p className="text-black text-lg"><strong className="mr-4">RTO NAME:</strong> {noc.rtoName}</p>
+            
             <p className="text-blue-600 text-lg">
               <strong className="text-black mr-4">OWNER PHONE:</strong>
               <a href={`tel:${noc.customerPhoneNumber}`} className="hover:underline">
@@ -150,7 +151,7 @@ const NocDocuments = ({ nocs }) => {
                 <img
                   src={noc.customerPhoto}
                   alt="Customer"
-                  className="w-36 h-36 rounded-full object-cover"
+                  className="w-28 h-28 rounded-full object-cover"
                 />
                 <p className="text-center text-md mt-2 text-black">Customer</p>
               </div>
@@ -159,7 +160,7 @@ const NocDocuments = ({ nocs }) => {
                 <img
                   src={noc.ownerPhoto}
                   alt="Owner"
-                  className="w-36 h-36 rounded-full object-cover"
+                  className="w-28 h-28 rounded-full object-cover"
                 />
                 <p className="text-center text-md mt-2 text-black">Owner</p>
               </div>
@@ -205,7 +206,7 @@ const NocDocuments = ({ nocs }) => {
               <img
                 src={modalImages[modalIndex]}
                 alt={`Modal Image ${modalIndex}`}
-                className="w-full md:w-96 h-auto max-h-[70vh] object-contain rounded-md shadow-lg border border-indigo-300"
+                className="w-full h-full md:w-96  max-h-[70vh] object-contain rounded-md shadow-lg border border-indigo-300"
               />
 
               <button

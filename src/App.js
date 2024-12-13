@@ -57,8 +57,8 @@ function App() {
         <Route path="/rtotransferwithloan" element={<TRANSFERWITHLOAN />} />
         <Route path="/rtotransferwithoutloan" element={<TRANSFERWITHOUTLOAN />} />
         
-        <Route path="/rtodoc" element={< DispatchOptions/>} />
-        <Route path="/viewnoc" element={< NocDocuments/>} />
+        <Route path="/rtodoc" element={<DispatchOptions/>} />
+        <Route path="/viewnoc" element={<NocDocuments/>} />
         
       </Routes>
       
