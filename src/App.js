@@ -22,6 +22,7 @@ import TRANSFERWITHLOAN from './components/Teansferwithloan'
 import TRANSFERWITHOUTLOAN from './components/transferwithoutloan'
 import DispatchOptions from './components/rtodoc';
 import NocDocuments from './components/viewnocdoc';
+import TokenForm from './components/token';
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -59,6 +60,7 @@ function App() {
         
         <Route path="/rtodoc" element={<DispatchOptions/>} />
         <Route path="/viewnoc" element={<NocDocuments/>} />
+        <Route path="/token" element={<TokenForm/>} />
         
       </Routes>
       
