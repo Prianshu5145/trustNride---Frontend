@@ -172,8 +172,8 @@ const TokenForm = () => {
             `INVOICE No : T${tokenCount}/2024\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code:BDBL0001000\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Token Amount', 'Deal Amount'], // Row 3
-        ['1', `Car Token Payment-${formData.carTitle}`, `${formData.REGNO}`, ` ${formData.tokenAmount}`,  `${formData.dealDoneAmount}`], // Row 4
-        [`Total Amount in Rupees:\n${h} ONLY`, `Total Amount: ${formData.tokenAmount}\nPayment Mode: ${paymentM}`], // Row 5
+        ['1', `Car Token Payment-${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.tokenAmount}`,  `${formData.dealDoneAmount}`], // Row 4
+        [`Total Amount in Rupees:\nRUPEES ${h} ONLY`, `Total Amount: ${formData.tokenAmount}\nPayment Mode: ${paymentM}`], // Row 5
     ];
 
     let y = startY;
@@ -306,23 +306,7 @@ const handleSubmit = async (e) => {
     setSubmissionSuccess(true);
 
     // Optionally, reset the form
-    setFormData({
-      carTitle: '',
-      carModel: '',
-      customerName: '',
-      customerMobile: '',
-      whatsappMobile: '',
-      customerAddress: '',
-      customerEmail: '',
-      tokenAmount: '',
-      dateOfPaymentReceived:'',
-      paymentMode: '',
-      paymentTo: '',
-      dealDoneAmount: '',
-      fairMarketValue: '',
-      carRegistrationNumber: '',
-      loanOrCash: '',
-    });
+   
   } catch (error) {
     console.error('Error submitting token:', error);
     alert('Failed to submit the token application. Please try again.');
