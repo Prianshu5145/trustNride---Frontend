@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { jsPDF } from 'jspdf';
 import { toWords } from 'number-to-words';
+import withAuthorization from "../components/authentication";
 const TokenForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -556,4 +557,4 @@ const handleSubmit = async (e) => {
   );
 };
 
-export default TokenForm;
+export default   withAuthorization(TokenForm, ["Employee"]);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import imageCompression from 'browser-image-compression';
 import Navbar from '../components/Navbar';
-
+import withAuthorization from "../components/authentication";
 const TRANSFERWITHLOAN = () => {
   const [images, setImages] = useState({
     form28: [],
@@ -37,6 +37,7 @@ const TRANSFERWITHLOAN = () => {
     agentPhoneNumber: '',
     carRegistrationNumber: '',
     customerPhoneNumber: '',
+    ownerPhoneNumber:'',
     CarTitle: '',
     status: 'pending',
   });
@@ -132,7 +133,7 @@ const TRANSFERWITHLOAN = () => {
     });
 
     const savedRole = localStorage.getItem('role');
-    if (savedRole === 'dealer') {
+     {
       try {
         await axios.post('https://trustnride-backend-production.up.railway.app/api/rtotransfer/transferwithloan', formData, {
           headers: {
@@ -146,10 +147,9 @@ const TRANSFERWITHLOAN = () => {
       } finally {
         setLoading(false);
       }
-    } else {
-      alert('Unauthorized: Not a dealer');
-      setLoading(false);
-    }
+    } 
+      
+   
   };
 
   return (
@@ -161,7 +161,7 @@ const TRANSFERWITHLOAN = () => {
           {/* Input fields */}
 
           
-          {['CarTitle', 'agentName', 'rtoName', 'agentPhoneNumber', 'carRegistrationNumber', 'customerPhoneNumber'].map((field) => (
+          {['CarTitle', 'agentName', 'rtoName', 'agentPhoneNumber', 'carRegistrationNumber', 'customerPhoneNumber','ownerPhoneNumber'].map((field) => (
             <div key={field} className="space-y-2">
               <label htmlFor={field} className="block text-lg font-medium">
                 {field.replace(/([A-Z])/g, ' $1')} <span className="text-red-500">*</span>
@@ -283,4 +283,4 @@ const TRANSFERWITHLOAN = () => {
   );
 };
 
-export default TRANSFERWITHLOAN;
+export default  withAuthorization(TRANSFERWITHLOAN, ["Employee"]);;

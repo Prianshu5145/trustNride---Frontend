@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
-
+import withAuthorization from "../components/authentication";
 const CreateListing = () => {
   const [listingData, setListingData] = useState({
     title: '',
@@ -696,4 +696,4 @@ const [loading, setLoading] = useState(false);
   );
 };
 
-export default CreateListing;
+export default   withAuthorization(CreateListing, ["Employee"]);;

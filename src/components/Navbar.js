@@ -47,7 +47,7 @@ const Navbar = () => {
                 
                 <Link to="/sell" className="block px-4 py-2 hover:bg-gray-600">Book Inspection</Link>
                      </>     )}
-              {role === 'dealer' && (
+              {role === 'Employee' && (
                 <>
                 <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
                 </>
               )}
 
-              {role === 'dealer' && (
+              {role === 'Employee' && (
                 <>
                   <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>

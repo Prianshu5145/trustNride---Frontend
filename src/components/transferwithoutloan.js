@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import imageCompression from 'browser-image-compression';
 import Navbar from '../components/Navbar';
-
+import withAuthorization from "../components/authentication";
 const TRANSFERWITHOUTLOAN = () => {
   const [images, setImages] = useState({
     form28: [],
@@ -36,6 +36,8 @@ const TRANSFERWITHOUTLOAN = () => {
     agentPhoneNumber: '',
     carRegistrationNumber: '',
     customerPhoneNumber: '',
+    ownerPhoneNumber: '',
+    
     CarTitle: '',
     status: 'pending',
   });
@@ -131,7 +133,7 @@ const TRANSFERWITHOUTLOAN = () => {
     });
 
     const savedRole = localStorage.getItem('role');
-    if (savedRole === 'dealer') {
+    if (savedRole === 'Employee') {
       try {
         await axios.post('https://trustnride-backend-production.up.railway.app/api/rtotransferwithouthypo/transferwithoutloan', formData, {
           headers: {
@@ -160,7 +162,7 @@ const TRANSFERWITHOUTLOAN = () => {
           {/* Input fields */}
 
           
-          {['CarTitle', 'agentName', 'rtoName', 'agentPhoneNumber', 'carRegistrationNumber', 'customerPhoneNumber'].map((field) => (
+          {['CarTitle', 'agentName', 'rtoName', 'agentPhoneNumber', 'carRegistrationNumber', 'customerPhoneNumber','ownerPhoneNumber'].map((field) => (
             <div key={field} className="space-y-2">
               <label htmlFor={field} className="block text-lg font-medium">
                 {field.replace(/([A-Z])/g, ' $1')} <span className="text-red-500">*</span>
@@ -282,4 +284,4 @@ const TRANSFERWITHOUTLOAN = () => {
   );
 };
 
-export default TRANSFERWITHOUTLOAN;
+export default   withAuthorization(TRANSFERWITHOUTLOAN, ["Employee"]);

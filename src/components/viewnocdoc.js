@@ -19,7 +19,7 @@ const fetchData = async (endpoint) => {
   const savedRole = localStorage.getItem('role');
 
   // Check if the role is 'dealer' before calling the backend
-  if (savedRole === 'dealer') {
+  
     try {
       const response = await axios.get(endpoint);
       setData(response.data.nocs || []); // Assuming the response contains a `nocs` field
@@ -28,12 +28,12 @@ const fetchData = async (endpoint) => {
       console.error(err);
     } finally {
       setLoading(false);
+      setLoading(false);
     }
-  } else {
-    // If the role is not 'dealer', set an error or handle unauthorized access
-    setError('Unauthorized: Not a dealer');
-    setLoading(false);
-  }
+  
+    
+    
+  
 };
 
 

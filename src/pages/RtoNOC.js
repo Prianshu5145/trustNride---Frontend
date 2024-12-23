@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import imageCompression from 'browser-image-compression';
 import Navbar from '../components/Navbar';
-
+import withAuthorization from "../components/authentication";
 const CreateNOCForm = () => {
   const [images, setImages] = useState({
     form28: [],
@@ -30,6 +30,7 @@ const CreateNOCForm = () => {
     agentPhoneNumber: '',
     carRegistrationNumber: '',
     customerPhoneNumber: '',
+    ownerPhoneNumber:'',
     CarTitle: '',
     status: 'pending',
   });
@@ -125,7 +126,7 @@ const CreateNOCForm = () => {
     });
 
     const savedRole = localStorage.getItem('role');
-    if (savedRole === 'dealer') {
+    if (savedRole === 'Employee') {
       try {
         await axios.post('https://trustnride-backend-production.up.railway.app/api/rto/noc', formData, {
           headers: {
@@ -154,7 +155,7 @@ const CreateNOCForm = () => {
           {/* Input fields */}
 
          
-          {['CarTitle', 'agentName', 'rtoName', 'agentPhoneNumber', 'carRegistrationNumber', 'customerPhoneNumber'].map((field) => (
+          {['CarTitle', 'agentName', 'rtoName', 'agentPhoneNumber', 'carRegistrationNumber', 'customerPhoneNumber','ownerPhoneNumber'].map((field) => (
             <div key={field} className="space-y-2">
               <label htmlFor={field} className="block text-lg font-medium">
                 {field.replace(/([A-Z])/g, ' $1')} <span className="text-red-500">*</span>
@@ -275,4 +276,4 @@ const CreateNOCForm = () => {
   );
 };
 
-export default CreateNOCForm;
+export default   withAuthorization(CreateNOCForm, ["Employee"]);
