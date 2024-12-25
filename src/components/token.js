@@ -525,7 +525,7 @@ const handleSubmit = async (e) => {
 
                 {/* Text Below the Spinner */}
                 <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
-                  <strong>TKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
+                  <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
                 </p>
               </div>
             </div>
