@@ -236,7 +236,7 @@ const fetchdealCount = async () => {
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Payment Received', 'Final Deal Amount'], // Row 3
         ['1', `Car Payment of -${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.totalAmountGotTillNowExcludingToken}`,  `${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
-        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${paymentM}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier:${formData.tokenAmount}\nReceivable Loan Payment Due:${formData.amountComeFromLoan}\nRemaining Payment Due from Customer: ${formData.holdFromCustomer}+RTO`], // Row 5
+        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier:${formData.tokenAmount}\nReceivable Loan Payment Due:${formData.amountComeFromLoan}\nRemaining Payment Due from Customer: ${formData.holdFromCustomer}+RTO`], // Row 5
     ];
 
     let y = startY;
@@ -344,8 +344,8 @@ const pdfBlob = doc.output("blob");
 
 //const totalamountreceived = Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount);
 
-
-
+formData.totalAmountGotFromCustomerTillNowIncludingToken = Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount);
+formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount);
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Deal Form</h1>
