@@ -88,7 +88,7 @@ const fetchdealCount = async () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-  setLoading(true);
+    setLoading(true);
   try {
     // Generate the PDF file
     const pdfFile = await generateInvoice();
@@ -128,7 +128,10 @@ const fetchdealCount = async () => {
  };
   
   const generateInvoice = () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      unit: 'mm',
+      format: [210, 357], // A4 width (210mm) and increased height (350mm)
+    });
 
     // Full-width header image
     const imgWidth = 210; // A4 width in mm
@@ -236,7 +239,7 @@ const fetchdealCount = async () => {
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Payment Received', 'Final Deal Amount'], // Row 3
         ['1', `Car Payment of -${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.totalAmountGotTillNowExcludingToken}`,  `${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
-        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier:${formData.tokenAmount}\nReceivable Loan Payment Due:${formData.amountComeFromLoan}\nRemaining Payment Due from Customer: ${formData.holdFromCustomer}+RTO`], // Row 5
+        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier:${formData.tokenAmount}\nReceivable Loan Payment Due:${formData.amountComeFromLoan}\nDue Payment from Customer: ${formData.holdFromCustomer}+RTO CHARGE`], // Row 5
     ];
 
     let y = startY;
@@ -306,33 +309,37 @@ const fetchdealCount = async () => {
     );
 
     doc.text(`Proprietor`, pageWidth - 40, 242);
-    doc.line(0, 245, pageWidth, 245);
+    doc.line(0, 244, pageWidth, 244);
     doc.setFont("helvetica", "bold"); // Use "bold" for a darker heading
-    doc.setFontSize(15); // Adjust the size for a heading style
+    doc.setFontSize(18); // Adjust the size for a heading style
 
     // Add the text with a bold style
     doc.text('Terms and Conditions', 6, 250);
     doc.setFontSize(10);
-    doc.text('1. Non-Returnable After Delivery: Once the car is delivered, it is understood that the Customer has thoroughly inspected it\n    and accepted its condition. Therefore, the car is considered sold and cannot be returned under any circumstances,\n    except in the case of loan cancellation by the loan company.', 5, 255);
-    doc.text('2. Remaining Payment Due from Customer: If this payment is not cleared, the car transfer or NOC process will not be\n    initiated. Trust N Ride will try to complete the process within 90 working days from the date it is initiated.', 5, 268);
-    doc.text('3. Loan Cancellation: If the loan is canceled,Trust N Ride will try to secure a loan from another Company.If the loan is not\n    approved, Trust N Ride may retrieve the car and issue a full refund,provided the car is in the same condition as delivery.', 5, 277);
-    doc.text('4. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.', 5, 287);
-   
-    doc.setFont("helvetica", "normal");
+    doc.text('1. Non-Returnable After Delivery: Once the car is delivered, it is understood that the Customer has thoroughly inspected \n    it and accepted its condition. Therefore, the car is considered sold and cannot be returned under any circumstances,\n    except in the case of loan cancellation by the loan company.', 5, 255);
+    doc.text('2. Due Payment from Customer: If this payment is not cleared, the car transfer or NOC process will not be initiated.\n    Trust N Ride will try to complete the process within 90 working days from the date it is initiated.', 5, 269);
+    doc.text('3. Loan Cancellation: If the loan is canceled,Trust N Ride will try to secure a loan from another Company.If the loan is not\n    approved,Trust N Ride may retrieve the car and issue a full refund,provided the car is in the same condition as delivery.', 5, 278);
+    doc.text('4. Liability Transfer: If anything happens to the car after the invoice date, including any incidents, damages, accidents,\n    theft, misuse or challan, the customer will be fully responsible. Trust N Ride holds no accountability beyond this date.', 5, 288);
+    doc.text('5. Pre-Liability: Any legal issues, incidents,challan or claims related to the car that occur prior to the invoice date will be\n    handled by Trust N Ride. The company will assume full responsibility for any such matters before the invoice date.', 5, 298);
+    
+    doc.text('6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.', 5, 308);
+    doc.setFontSize(12);
+    doc.text('By e signing below, the customer confirms reading, understanding, and agreeing to all Terms and - \nConditions,acknowledges the sale, and accepts all liabilities and responsibilities as outlined.', 5, 315);
+    doc.setFont("helvetica", "normal"); 
     doc.setFontSize(10);
-    doc.text(' This is a system-generated invoice, digitally signed and approved for authenticity. For inquiries or support,please visit our website at \n  https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 292);
+    doc.text(' This is a system-generated invoice, e signed and approved for authenticity. For inquiries or support,please visit our website at \n  https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 350);
 
     // Open PDF in a new tab
-    var blobUrl = doc.output('bloburl');
+    //var blobUrl = doc.output('bloburl');
   
      
-   window.open(blobUrl, '_blank');
+  // window.open(blobUrl, '_blank');
    //const dataUrl = doc.output('dataurl');
 //window.open(dataUrl);
 
 //doc.save('example.pdf');
 const pdfBlob = doc.output("blob");
-   return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
+  return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
 };
 
 
