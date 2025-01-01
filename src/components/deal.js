@@ -1,6 +1,9 @@
 import React, { useState,useEffect } from 'react';
+import axios from 'axios';
+import withAuthorization from "../components/authentication";
 import { jsPDF } from 'jspdf';
 const DealForm = () => {
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
     totalAmountGotTillNowExcludingToken: '',
     amountPaidToSatish: '',
@@ -34,9 +37,94 @@ const DealForm = () => {
     });
   };
 
+
+const [dealCount, setdealCount] = useState(null);
+
+const fetchdealCount = async () => {
+    try {
+      // Send a GET request to the API endpoint
+      const response = await fetch('https://trustnride-backend-production.up.railway.app/api/deal/deal/count');
+  
+      // Check if the response status is OK (200)
+      if (response.ok) {
+        const data = await response.json(); // Parse the JSON response
+        const dealCount = data.count;
+        // Extract the 'count' field from the response
+        setdealCount(dealCount+1);
+        console.log('deal count:', dealCount); // Log the token count (or do something with it)
+        
+        // You can use the tokenCount in your UI as needed, for example:
+        // document.getElementById('tokenCountDisplay').textContent = `Token Count: ${tokenCount}`;
+      } else {
+        console.error('Failed to fetch token count');
+      }
+    } catch (error) {
+      console.error('Error fetching token count:', error);
+    }
+  };
+  useEffect(() => {
+  // Call the function to fetch the token count when needed (e.g., on page load or a button click)
+  fetchdealCount();
+  
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const [loading, setLoading] = useState(false);
+  
   const handleSubmit = async (e) => {
+    e.preventDefault();
+  setLoading(true);
+  try {
+    // Generate the PDF file
+    const pdfFile = await generateInvoice();
+
+    // Prepare form data for multipart submission
+    const formDataToSend = new FormData();
+    Object.keys(formData).forEach((key) => {
+      formDataToSend.append(key, formData[key]);
+    });
+
+    // Append the PDF file
+    formDataToSend.append("pdfFile", pdfFile);
+
+    // Submit form data to the backend
+    const response = await axios.post(
+      'https://trustnride-backend-production.up.railway.app/api/deal/create',
+      formDataToSend,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    // Notify the user
+    setSubmissionSuccess(true);
+
+    // Optionally, reset the form
    
-   generateInvoice();
+  } catch (error) {
+    console.error('Error submitting Deal form:', error);
+    alert('Failed to submit the deal form. Please try again.');
+  }
+  finally {
+    setLoading(false); // Set loading to false after submission completes
+  }
  };
   
   const generateInvoice = () => {
@@ -46,7 +134,7 @@ const DealForm = () => {
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/c_crop,w_1652,h_418/v1734381599/PayoutTrustnRide1_Copy-1_fyylg5.png',
+        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
         'PNG',
         0,
         0,
@@ -144,7 +232,7 @@ const DealForm = () => {
         ['INVOICE FOR PAYMENT RECEIVED'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.customerWhatsappNumber}`,
-            `INVOICE No : T1/2024\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0001000\nBranch: Akbarpur Branch`,
+            `INVOICE No : T${dealCount}/2025\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0001000\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Payment Received', 'Final Deal Amount'], // Row 3
         ['1', `Car Payment of -${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.totalAmountGotTillNowExcludingToken}`,  `${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
@@ -243,17 +331,13 @@ const DealForm = () => {
 //window.open(dataUrl);
 
 //doc.save('example.pdf');
+const pdfBlob = doc.output("blob");
+   return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
 };
 
 
 
 
-
-useEffect(() => {
-  
-  
-  
-}, []);
 
 
 
@@ -601,12 +685,54 @@ useEffect(() => {
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
-            Submit
+            {loading ? (
+            <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+              {/* Spinner and Text Container */}
+              <div className="flex flex-col items-center">
+                {/* Outer Circle with Gradient */}
+                <div className="relative w-28 h-28 mb-4">
+                  <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+
+                  {/* Inner Circle */}
+                  <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                    {/* Logo with Flip Animation */}
+                    <img
+                      src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                      alt="Car Logo"
+                      className="w-12 h-12 animate-flip"
+                    />
+                  </div>
+                </div>
+
+                {/* Text Below the Spinner */}
+                <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                  <strong>Deal FORM IS SUBMITTING.... PLEASE WAIT </strong>
+                </p>
+              </div>
+            </div>
+          ) : (
+            'Submit Deal Form'
+          )}
           </button>
         </div>
       </form>
+      {submissionSuccess && (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+              <h2 className="text-xl font-semibold text-green-600">Deal Form Submitted Successfully!</h2>
+              <p className="mt-2 text-gray-700">THANK YOU.</p>
+              <button
+                onClick={() => setSubmissionSuccess(false)}
+                className="mt-4 px-6 py-2 bg-blue-500 text
+                white rounded-lg hover:bg-blue-600 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
     </div>
   );
 };
 
-export default DealForm;
+export default  withAuthorization(DealForm, ["Employee"]);

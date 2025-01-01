@@ -44,7 +44,7 @@ const TokenForm = () => {
         const data = await response.json(); // Parse the JSON response
         const tokenCount = data.count; 
         // Extract the 'count' field from the response
-        setTokenCount(tokenCount+1);
+        setTokenCount(tokenCount-1);
         console.log('Token count:', tokenCount); // Log the token count (or do something with it)
         
         // You can use the tokenCount in your UI as needed, for example:
@@ -72,7 +72,7 @@ const TokenForm = () => {
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/c_crop,w_1652,h_418/v1734381599/PayoutTrustnRide1_Copy-1_fyylg5.png',
+        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
         'PNG',
         0,
         0,
@@ -170,7 +170,7 @@ const TokenForm = () => {
         ['INVOICE FOR TOKEN'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.whatsappMobile}`,
-            `INVOICE No : T${tokenCount}/2024\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code:BDBL0001000\nBranch: Akbarpur Branch`,
+            `INVOICE No : T${tokenCount}/2025\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code:BDBL0001000\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Token Amount', 'Deal Amount'], // Row 3
         ['1', `Car Token Payment-${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.tokenAmount}`,  `${formData.dealDoneAmount}`], // Row 4

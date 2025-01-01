@@ -56,6 +56,7 @@ const Navbar = () => {
                   <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
                   <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Generate Token Invoice</Link>
+                  <Link to="/deal" className="block px-4 py-2 hover:bg-gray-600">Generate Deal Invoice</Link>
 
 
                  
@@ -122,7 +123,7 @@ const Navbar = () => {
                   <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
                   <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Generate Token Invoice</Link>
-
+                  <Link to="/deal" className="block px-4 py-2 hover:bg-gray-600">Generate Deal Invoice</Link>
                   
                   
 
