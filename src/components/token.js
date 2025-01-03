@@ -33,7 +33,49 @@ const TokenForm = () => {
   
     const [tokenCount, setTokenCount] = useState(null); // State to hold the token count
     const [error, setError] = useState(null); // State to handle any errors
-  
+    function numberToWordsIndian(num) {
+      const belowTwenty = [
+        "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+        "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+      ];
+    
+      const tens = [
+        "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+      ];
+    
+      const placeValues = ["", "Thousand", "Lakh", "Crore"];
+    
+      if (num === 0) return belowTwenty[0];
+    
+      let parts = []; // Store number parts in words
+      let place = 0;  // Index to track Thousand, Lakh, Crore
+      
+      while (num > 0) {
+        let chunk;
+        if (place === 0) {
+          // First chunk is three digits
+          chunk = num % 1000;
+          num = Math.floor(num / 1000);
+        } else {
+          // After first chunk, all others are two digits
+          chunk = num % 100;
+          num = Math.floor(num / 100);
+        }
+    
+        if (chunk > 0) {
+          parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
+        }
+        place++;
+      }
+    
+      return parts.join(" ").trim().toUpperCase();
+    }
+    
+    function convertChunk(num, belowTwenty, tens) {
+      if (num < 20) return belowTwenty[num];
+      if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
+      return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
+    }
   const fetchTokenCount = async () => {
     try {
       // Send a GET request to the API endpoint
@@ -106,49 +148,7 @@ const TokenForm = () => {
     const rowHeights = [8, 37, 9, 60, 20]; // Row heights
     const colWidths = [81, 87]; // Columns for row 2 (example)
 
-    function numberToWordsIndian(num) {
-      const belowTwenty = [
-        "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-        "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
-      ];
     
-      const tens = [
-        "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
-      ];
-    
-      const placeValues = ["", "Thousand", "Lakh", "Crore"];
-    
-      if (num === 0) return belowTwenty[0];
-    
-      let parts = []; // Store number parts in words
-      let place = 0;  // Index to track Thousand, Lakh, Crore
-      
-      while (num > 0) {
-        let chunk;
-        if (place === 0) {
-          // First chunk is three digits
-          chunk = num % 1000;
-          num = Math.floor(num / 1000);
-        } else {
-          // After first chunk, all others are two digits
-          chunk = num % 100;
-          num = Math.floor(num / 100);
-        }
-    
-        if (chunk > 0) {
-          parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
-        }
-        place++;
-      }
-    
-      return parts.join(" ").trim().toUpperCase();
-    }
-    
-    function convertChunk(num, belowTwenty, tens) {
-      if (num < 20) return belowTwenty[num];
-      if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
-      return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
-    }
     
     // Example usage
      // Output: FIVE LAKH NINETY NINE THOUSAND NINE HUNDRED NINETY NINE
@@ -415,7 +415,17 @@ const handleSubmit = async (e) => {
             className="w-full p-2 border border-gray-300 rounded mt-2"
           />
         </div>
-
+        <div className="mb-4">
+          <label className="block text-gray-700">Token Amount in Words</label>
+          <input
+            type="text"
+            name="Token Amount in Words"
+            value={numberToWordsIndian(`${formData.tokenAmount}`)}
+           
+            required
+            className="w-full p-2 border border-gray-300 rounded mt-2"
+          />
+        </div>
         <div className="mb-4">
         <label className="block text-gray-700">Date of Token Received in Bank/Cash</label>
         <input
@@ -468,6 +478,17 @@ const handleSubmit = async (e) => {
           />
         </div>
         <div className="mb-4">
+          <label className="block text-gray-700">Deal Amount in Words</label>
+          <input
+            type="text"
+            name="Token Amount in Words"
+            value={numberToWordsIndian(`${formData.dealDoneAmount}`)}
+           
+            required
+            className="w-full p-2 border border-gray-300 rounded mt-2"
+          />
+        </div>
+        <div className="mb-4">
           <label className="block text-gray-700">Fair Market Value</label>
           <input
             type="number"
@@ -503,6 +524,8 @@ const handleSubmit = async (e) => {
             <option value="Cash">Cash</option>
           </select>
         </div>
+        
+        
         <div>
         <button
           type="submit"

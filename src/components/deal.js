@@ -70,7 +70,49 @@ const fetchdealCount = async () => {
 
 
 
-
+  function numberToWordsIndian(num) {
+    const belowTwenty = [
+      "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+    ];
+  
+    const tens = [
+      "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+    ];
+  
+    const placeValues = ["", "Thousand", "Lakh", "Crore"];
+  
+    if (num === 0) return belowTwenty[0];
+  
+    let parts = []; // Store number parts in words
+    let place = 0;  // Index to track Thousand, Lakh, Crore
+    
+    while (num > 0) {
+      let chunk;
+      if (place === 0) {
+        // First chunk is three digits
+        chunk = num % 1000;
+        num = Math.floor(num / 1000);
+      } else {
+        // After first chunk, all others are two digits
+        chunk = num % 100;
+        num = Math.floor(num / 100);
+      }
+  
+      if (chunk > 0) {
+        parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
+      }
+      place++;
+    }
+  
+    return parts.join(" ").trim().toUpperCase();
+  }
+  
+  function convertChunk(num, belowTwenty, tens) {
+    if (num < 20) return belowTwenty[num];
+    if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
+    return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
+  }
 
 
 
@@ -168,49 +210,7 @@ const fetchdealCount = async () => {
     const rowHeights = [8, 37, 13, 50, 34]; // Row heights
     const colWidths = [81, 87]; // Columns for row 2 (example)
 
-    function numberToWordsIndian(num) {
-      const belowTwenty = [
-        "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-        "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
-      ];
     
-      const tens = [
-        "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
-      ];
-    
-      const placeValues = ["", "Thousand", "Lakh", "Crore"];
-    
-      if (num === 0) return belowTwenty[0];
-    
-      let parts = []; // Store number parts in words
-      let place = 0;  // Index to track Thousand, Lakh, Crore
-      
-      while (num > 0) {
-        let chunk;
-        if (place === 0) {
-          // First chunk is three digits
-          chunk = num % 1000;
-          num = Math.floor(num / 1000);
-        } else {
-          // After first chunk, all others are two digits
-          chunk = num % 100;
-          num = Math.floor(num / 100);
-        }
-    
-        if (chunk > 0) {
-          parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
-        }
-        place++;
-      }
-    
-      return parts.join(" ").trim().toUpperCase();
-    }
-    
-    function convertChunk(num, belowTwenty, tens) {
-      if (num < 20) return belowTwenty[num];
-      if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
-      return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
-    }
     
     // Example usage
      // Output: FIVE LAKH NINETY NINE THOUSAND NINE HUNDRED NINETY NINE
@@ -360,7 +360,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-2">
-              Total Amount Received <strong>Excluding</strong> Token
+              Total Amount Received <strong className="font-bold text-black">Excluding</strong> Token
             </label>
             <input
               type="number"
@@ -370,7 +370,19 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
               className="border rounded p-2"
             />
           </div>
-
+          <div className="flex flex-col">
+            <label className="text-gray-700 font-medium mb-2">
+               Amount Received <strong>Excluding</strong> Token in Words
+            </label>
+            <input
+              type="text"
+              name="totalAmountGotTillNowExcludingToken"
+              value={ numberToWordsIndian(`${formData.totalAmountGotTillNowExcludingToken}`)}
+              
+              className="border rounded p-2"
+            />
+          </div>
+         
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-2">
               Amount Paid to Satish
@@ -540,7 +552,18 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
               className="border rounded p-2"
             />
           </div>
-
+          <div className="flex flex-col">
+            <label className="text-gray-700 font-medium mb-2">
+               Deal done Amount in Words
+            </label>
+            <input
+              type="text"
+              name="totalAmountGotTillNowExcludingToken"
+              value={ numberToWordsIndian(`${formData.dealAmount}`)}
+              
+              className="border rounded p-2"
+            />
+          </div>
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-2">
               Any final Discount for Customer in Deal Amount
@@ -553,11 +576,22 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
               className="border rounded p-2"
             />
           </div>
-
+          <div className="flex flex-col">
+            <label className="text-gray-700 font-medium mb-2">
+               final Discount in Deal Amount  in Words
+            </label>
+            <input
+              type="text"
+              name="totalAmountGotTillNowExcludingToken"
+              value={ numberToWordsIndian(`${formData.anyFinalDiscountFromDealAmount}`)}
+              
+              className="border rounded p-2"
+            />
+          </div>
           <div className="flex flex-col">
           
             <label className="text-gray-700 font-medium mb-2">
-              Total Amount Received <strong>Including</strong> token
+              Total Amount Received <strong className="font-bold text-black">Including</strong> token
             </label>
             <input
               type="number"
@@ -567,7 +601,18 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
               className="border rounded p-2"
             />
           </div>
-
+          <div className="flex flex-col">
+            <label className="text-gray-700 font-medium mb-2">
+              Total Amount Including Token in Words
+            </label>
+            <input
+              type="text"
+              name="totalAmountGotTillNowExcludingToken"
+              value={ numberToWordsIndian(`${Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}`)}
+              
+              className="border rounded p-2"
+            />
+          </div>
           <div className="flex flex-col">
             <label className="text-gray-700 font-medium mb-2">
              Amount Come from Loan
@@ -580,7 +625,18 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
               className="border rounded p-2"
             />
           </div>
-          
+          <div className="flex flex-col">
+            <label className="text-gray-700 font-medium mb-2">
+               Amount Come from Loan in Words
+            </label>
+            <input
+              type="text"
+              name="totalAmountGotTillNowExcludingToken"
+              value={ numberToWordsIndian(`${formData.amountComeFromLoan}`)}
+              
+              className="border rounded p-2"
+            />
+          </div>
 
 
           <div className="flex flex-col">
