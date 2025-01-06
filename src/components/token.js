@@ -170,7 +170,7 @@ const TokenForm = () => {
 
     // Data
     const tableData = [
-        ['INVOICE FOR TOKEN'], // Row 1
+        ['INVOICE FOR TOKEN PAYMENT'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.whatsappMobile}`,
             `INVOICE No : T${tokenCount}/2025\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code:BDBL0001000\nBranch: Akbarpur Branch`,

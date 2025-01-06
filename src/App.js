@@ -24,7 +24,7 @@ import DispatchOptions from './components/rtodoc';
 import NocDocuments from './components/viewnocdoc';
 import TokenForm from './components/token';
 import DealForm from './components/deal';
-
+import PurchaseTokenForm from './components/purchasetoken';
 
 function App() {
   
@@ -65,9 +65,11 @@ function App() {
         <Route path="/viewnoc" element={<NocDocuments/>} />
         <Route path="/token" element={<TokenForm/>} />
         <Route path="/deal" element={<DealForm/>} />
-
+        <Route path="/purchasetoken" element={<PurchaseTokenForm/>} />
        
       </Routes>
+      
+      
       
     </div>
                      

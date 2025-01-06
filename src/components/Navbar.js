@@ -55,9 +55,9 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
                   <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
-                  <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Generate Token Invoice</Link>
+                  <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
                   <Link to="/deal" className="block px-4 py-2 hover:bg-gray-600">Generate Deal Invoice</Link>
-
+                  <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
 
                  
                 </>
@@ -122,11 +122,12 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
                   <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
-                  <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Generate Token Invoice</Link>
+                  <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
                   <Link to="/deal" className="block px-4 py-2 hover:bg-gray-600">Generate Deal Invoice</Link>
-                  
+                  <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
                   
 
+                  
                 </>
               )}
 
