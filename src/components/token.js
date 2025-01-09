@@ -110,7 +110,7 @@ const TokenForm = () => {
   const generateInvoice = () => {
     const doc = new jsPDF({
       unit: 'mm',
-      format: [210, 353], // A4 width (210mm) and increased height (350mm)
+      format: [210, 351], // A4 width (210mm) and increased height (350mm)
     });
 
     // Full-width header image
@@ -261,7 +261,7 @@ const TokenForm = () => {
     doc.text('5. Jurisdiction: Any disputes are subject to the jurisdiction of Ambedkarnagar Court.', 5, 314);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 348);
+    doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 346);
 
     // Open PDF in a new tab
     //var blobUrl = doc.output('bloburl');
@@ -319,6 +319,7 @@ const handleSubmit = async (e) => {
   finally {
     setLoading(false); // Set loading to false after submission completes
   }
+ 
 };
 
   
