@@ -110,7 +110,7 @@ const TokenForm = () => {
   const generateInvoice = () => {
     const doc = new jsPDF({
       unit: 'mm',
-      format: [210, 315], // A4 width (210mm) and increased height (350mm)
+      format: [210, 353], // A4 width (210mm) and increased height (350mm)
     });
 
     // Full-width header image
@@ -254,20 +254,20 @@ const TokenForm = () => {
     // Add the text with a bold style
     doc.text('Terms and Conditions', 6, 244);
     doc.setFontSize(10);
-    doc.text('1. Non-Refundable: The token amount is non-refundable under any circumstances.', 5, 250);
-    doc.text('2. Validity: The token is valid for 15 days from the invoice date or In case of a loan, it is valid up to 7 days from the date\n    You got loan approval.', 5, 256);
-    doc.text('3. Adjustment: The token will be adjusted against the final payment.', 5, 266);
-    doc.text('4. Cancellation: If deal is canceled by the buyer, the token is forfeited; if canceled by the seller, the token will be refunded.', 5, 272);
-    doc.text('5. Jurisdiction: Any disputes are subject to the jurisdiction of Ambedkarnagar Court.', 5, 278);
+    doc.text('1. Non-Refundable: By providing the token, the buyer agrees to purchase the vehicle,and the token is partially refundable,\n     with deductions applied as per the cancellation point stated below, under any circumstances.', 5, 250);
+    doc.text('2. Validity: The token is valid for 15 days from this invoice date or In case of a loan, it is valid up to 7 days from the date\n    You got final loan approval from loan Company.', 5, 259);
+    doc.text('3. Adjustment: The token will be adjusted against the final payment.', 5, 269);
+    doc.text('4. Cancellation: \n\n i. If Deal is canceled by the buyer (for a valid token): Rs.10,000 will be deducted from the token amount,and the remaining\n    will be refunded. If the token amount is less than Rs.10,000, the entire token will be forfeited.\n\n ii. If Deal is canceled by the buyer (for a invalid token): Rs20,000 will be deducted from the token amount, and the\n     remaining will be refunded. If the token amount is less than Rs20,000, the entire token will be forfeited.\n\niii. If the Deal is canceled by the TRUST N RIDE: The full token amount will be refunded. ', 5, 275);
+    doc.text('5. Jurisdiction: Any disputes are subject to the jurisdiction of Ambedkarnagar Court.', 5, 314);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\n our website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 309);
+    doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 348);
 
     // Open PDF in a new tab
     //var blobUrl = doc.output('bloburl');
   
      
-   // window.open(blobUrl, '_blank');
+   //window.open(blobUrl, '_blank');
    //doc.save();
    const pdfBlob = doc.output("blob");
    return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
