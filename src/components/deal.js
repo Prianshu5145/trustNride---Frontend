@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import withAuthorization from "../components/authentication";
+import Navbar from '../components/Navbar';
 import { jsPDF } from 'jspdf';
 const DealForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
@@ -354,447 +355,447 @@ const pdfBlob = doc.output("blob");
 formData.totalAmountGotFromCustomerTillNowIncludingToken = Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount);
 formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount);
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Deal Form</h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Total Amount Received <strong className="font-bold text-black">Excluding</strong> Token
-            </label>
-            <input
-              type="number"
-              name="totalAmountGotTillNowExcludingToken"
-              value={formData.totalAmountGotTillNowExcludingToken}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-               Amount Received <strong>Excluding</strong> Token in Words
-            </label>
-            <input
-              type="text"
-              name="totalAmountGotTillNowExcludingToken"
-              value={ numberToWordsIndian(`${formData.totalAmountGotTillNowExcludingToken}`)}
-              
-              className="border rounded p-2"
-            />
-          </div>
-         
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Satish
-            </label>
-            <input
-              type="number"
-              name="amountPaidToSatish"
-              value={formData.amountPaidToSatish}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Satish By
-            </label>
-            <select
-              name="amountPaidToSatishBy"
-              value={formData.amountPaidToSatishBy}
-              onChange={handleChange}
-              className="border rounded p-2 bg-white"
-            >
-              <option value="cash">Cash</option>
-              <option value="inpersonalaccount">In Personal Account</option>
-              <option value="inpersonalaccount+cash">In Personal Account + Cash</option>
-              <option value="Does not Know">Does not Know</option>
-              <option value="not applicable">Not Applicable</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Piyush
-            </label>
-            <input
-              type="number"
-              name="amountPaidToPiyush"
-              value={formData.amountPaidToPiyush}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Piyush By
-            </label>
-            <select
-              name="amountPaidToPiyushBy"
-              value={formData.amountPaidToPiyushBy}
-              onChange={handleChange}
-              className="border rounded p-2 bg-white"
-            >
-              <option value="cash">Cash</option>
-              <option value="inpersonalaccount">In Personal Account</option>
-              <option value="inpersonalaccount+cash">In Personal Account + Cash</option>
-              <option value="Does not Know">Does not Know</option>
-              <option value="not applicable">Not Applicable</option>
-            </select>
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Company Account
-            </label>
-            <input
-              type="number"
-              name="amountPaidToCompanyAccount"
-              value={formData.amountPaidToCompanyAccount}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Ompraksh
-            </label>
-            <input
-              type="number"
-              name="amountPaidToOmprakash"
-              value={formData.amountPaidToOmprakash}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Amount Paid to Omprakash By
-            </label>
-            <select
-              name="amountPaidToOmprakashBy"
-              value={formData.amountPaidToOmprakashBy}
-              onChange={handleChange}
-              className="border rounded p-2 bg-white"
-            >
-              <option value="cash">Cash</option>
-              <option value="inpersonalaccount">In Personal Account</option>
-              <option value="inpersonalaccount+cash">In Personal Account + Cash</option>
-              <option value="Does not Know">Does not Know</option>
-              <option value="not applicable">Not Applicable</option>
-            </select>
-          </div>
-          
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Customer Payment Mode
-            </label>
-            <select
-              name="CustomerPaymentMode"
-              value={formData.CustomerPaymentMode}
-              onChange={handleChange}
-              className="border rounded p-2 bg-white"
-            >
-              <option value="cash">Cash</option>
-              <option value="In Account">In Account</option>
-              <option value="Cash+In Account">In Account + Cash</option>
-              
-            </select>
-          </div>
-          
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Token Amount Received
-            </label>
-            <input
-              type="number"
-              name="tokenAmount"
-              value={formData.tokenAmount}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-  
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Token Amount Paid to
-            </label>
-            <select
-              name="tokenAmountPaidTo"
-              value={formData.tokenAmountPaidTo}
-              onChange={handleChange}
-              className="border rounded p-2 bg-white"
-            >
-              <option value="piyush">Piyush</option>
-              <option value="omprakash">Omprakash</option>
-              <option value="satish">Satish</option>
-              <option value="InCompany">In Company</option>
-              
-              
-            </select>
-          </div>
-          {/* Add more fields in the same pattern here */}
-
-
-
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Deal Amount
-            </label>
-            <input
-              type="number"
-              name="dealAmount"
-              value={formData.dealAmount}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-               Deal done Amount in Words
-            </label>
-            <input
-              type="text"
-              name="totalAmountGotTillNowExcludingToken"
-              value={ numberToWordsIndian(`${formData.dealAmount}`)}
-              
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Any final Discount for Customer in Deal Amount
-            </label>
-            <input
-              type="number"
-              name="anyFinalDiscountFromDealAmount"
-              value={formData.anyFinalDiscountFromDealAmount}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-               final Discount in Deal Amount  in Words
-            </label>
-            <input
-              type="text"
-              name="totalAmountGotTillNowExcludingToken"
-              value={ numberToWordsIndian(`${formData.anyFinalDiscountFromDealAmount}`)}
-              
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-          
-            <label className="text-gray-700 font-medium mb-2">
-              Total Amount Received <strong className="font-bold text-black">Including</strong> token
-            </label>
-            <input
-              type="number"
-              name="totalAmountGotFromCustomerTillNowIncludingToken"
-              value={Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-              Total Amount Including Token in Words
-            </label>
-            <input
-              type="text"
-              name="totalAmountGotTillNowExcludingToken"
-              value={ numberToWordsIndian(`${Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}`)}
-              
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Amount Come from Loan
-            </label>
-            <input
-              type="number"
-              name="amountComeFromLoan"
-              value={formData.amountComeFromLoan}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-               Amount Come from Loan in Words
-            </label>
-            <input
-              type="text"
-              name="totalAmountGotTillNowExcludingToken"
-              value={ numberToWordsIndian(`${formData.amountComeFromLoan}`)}
-              
-              className="border rounded p-2"
-            />
-          </div>
-
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Hold from Customer(dont include loan amount)
-            </label>
-            <input
-              type="number"
-              name="holdFromCustomer"
-              value={Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount)}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
+    <div><Navbar/><div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Deal Form</h1>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Total Amount Received <strong className="font-bold text-black">Excluding</strong> Token
+          </label>
+          <input
+            type="number"
+            name="totalAmountGotTillNowExcludingToken"
+            value={formData.totalAmountGotTillNowExcludingToken}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+             Amount Received <strong>Excluding</strong> Token in Words
+          </label>
+          <input
+            type="text"
+            name="totalAmountGotTillNowExcludingToken"
+            value={ numberToWordsIndian(`${formData.totalAmountGotTillNowExcludingToken}`)}
+            
+            className="border rounded p-2"
+          />
+        </div>
        
-          
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Car Title
-            </label>
-            <input
-              type="text"
-              name="carTitle"
-              value={formData.carTitle}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Car Registration Number
-            </label>
-            <input
-              type="text"
-              name="carRegistrationNumber"
-              value={formData.carRegistrationNumber}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Customer whatsapp Number
-            </label>
-            <input
-              type="number"
-              name="customerWhatsappNumber"
-              value={formData.customerWhatsappNumber}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Customer Mobile Number
-            </label>
-            <input
-              type="number"
-              name="customerMobileNumber"
-              value={formData.customerMobileNumber}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Customer Name
-            </label>
-            <input
-              type="text"
-              name="customerName"
-              value={formData.customerName}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-
-          <div className="flex flex-col">
-            <label className="text-gray-700 font-medium mb-2">
-             Customer Address
-            </label>
-            <input
-              type="text"
-              name="customerAddress"
-              value={formData.customerAddress}
-              onChange={handleChange}
-              className="border rounded p-2"
-            />
-          </div>
-
-
-
-
-
-
-
-
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Satish
+          </label>
+          <input
+            type="number"
+            name="amountPaidToSatish"
+            value={formData.amountPaidToSatish}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
         </div>
 
-        <div className="text-center">
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Satish By
+          </label>
+          <select
+            name="amountPaidToSatishBy"
+            value={formData.amountPaidToSatishBy}
+            onChange={handleChange}
+            className="border rounded p-2 bg-white"
           >
-            {loading ? (
-            <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
-              {/* Spinner and Text Container */}
-              <div className="flex flex-col items-center">
-                {/* Outer Circle with Gradient */}
-                <div className="relative w-28 h-28 mb-4">
-                  <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
-
-                  {/* Inner Circle */}
-                  <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
-                    {/* Logo with Flip Animation */}
-                    <img
-                      src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
-                      alt="Car Logo"
-                      className="w-12 h-12 animate-flip"
-                    />
-                  </div>
-                </div>
-
-                {/* Text Below the Spinner */}
-                <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
-                  <strong>Deal FORM IS SUBMITTING.... PLEASE WAIT </strong>
-                </p>
-              </div>
-            </div>
-          ) : (
-            'Submit Deal Form'
-          )}
-          </button>
+            <option value="cash">Cash</option>
+            <option value="inpersonalaccount">In Personal Account</option>
+            <option value="inpersonalaccount+cash">In Personal Account + Cash</option>
+            <option value="Does not Know">Does not Know</option>
+            <option value="not applicable">Not Applicable</option>
+          </select>
         </div>
-      </form>
-      {submissionSuccess && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
-              <h2 className="text-xl font-semibold text-green-600">Deal Form Submitted Successfully!</h2>
-              <p className="mt-2 text-gray-700">THANK YOU.</p>
-              <button
-                onClick={() => setSubmissionSuccess(false)}
-                className="mt-4 px-6 py-2 bg-blue-500 text
-                white rounded-lg hover:bg-blue-600 transition"
-              >
-                Close
-              </button>
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Piyush
+          </label>
+          <input
+            type="number"
+            name="amountPaidToPiyush"
+            value={formData.amountPaidToPiyush}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Piyush By
+          </label>
+          <select
+            name="amountPaidToPiyushBy"
+            value={formData.amountPaidToPiyushBy}
+            onChange={handleChange}
+            className="border rounded p-2 bg-white"
+          >
+            <option value="cash">Cash</option>
+            <option value="inpersonalaccount">In Personal Account</option>
+            <option value="inpersonalaccount+cash">In Personal Account + Cash</option>
+            <option value="Does not Know">Does not Know</option>
+            <option value="not applicable">Not Applicable</option>
+          </select>
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Company Account
+          </label>
+          <input
+            type="number"
+            name="amountPaidToCompanyAccount"
+            value={formData.amountPaidToCompanyAccount}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Ompraksh
+          </label>
+          <input
+            type="number"
+            name="amountPaidToOmprakash"
+            value={formData.amountPaidToOmprakash}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Amount Paid to Omprakash By
+          </label>
+          <select
+            name="amountPaidToOmprakashBy"
+            value={formData.amountPaidToOmprakashBy}
+            onChange={handleChange}
+            className="border rounded p-2 bg-white"
+          >
+            <option value="cash">Cash</option>
+            <option value="inpersonalaccount">In Personal Account</option>
+            <option value="inpersonalaccount+cash">In Personal Account + Cash</option>
+            <option value="Does not Know">Does not Know</option>
+            <option value="not applicable">Not Applicable</option>
+          </select>
+        </div>
+        
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Customer Payment Mode
+          </label>
+          <select
+            name="CustomerPaymentMode"
+            value={formData.CustomerPaymentMode}
+            onChange={handleChange}
+            className="border rounded p-2 bg-white"
+          >
+            <option value="cash">Cash</option>
+            <option value="In Account">In Account</option>
+            <option value="Cash+In Account">In Account + Cash</option>
+            
+          </select>
+        </div>
+        
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Token Amount Received
+          </label>
+          <input
+            type="number"
+            name="tokenAmount"
+            value={formData.tokenAmount}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Token Amount Paid to
+          </label>
+          <select
+            name="tokenAmountPaidTo"
+            value={formData.tokenAmountPaidTo}
+            onChange={handleChange}
+            className="border rounded p-2 bg-white"
+          >
+            <option value="piyush">Piyush</option>
+            <option value="omprakash">Omprakash</option>
+            <option value="satish">Satish</option>
+            <option value="InCompany">In Company</option>
+            
+            
+          </select>
+        </div>
+        {/* Add more fields in the same pattern here */}
+
+
+
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Deal Amount
+          </label>
+          <input
+            type="number"
+            name="dealAmount"
+            value={formData.dealAmount}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+             Deal done Amount in Words
+          </label>
+          <input
+            type="text"
+            name="totalAmountGotTillNowExcludingToken"
+            value={ numberToWordsIndian(`${formData.dealAmount}`)}
+            
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Any final Discount for Customer in Deal Amount
+          </label>
+          <input
+            type="number"
+            name="anyFinalDiscountFromDealAmount"
+            value={formData.anyFinalDiscountFromDealAmount}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+             final Discount in Deal Amount  in Words
+          </label>
+          <input
+            type="text"
+            name="totalAmountGotTillNowExcludingToken"
+            value={ numberToWordsIndian(`${formData.anyFinalDiscountFromDealAmount}`)}
+            
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+        
+          <label className="text-gray-700 font-medium mb-2">
+            Total Amount Received <strong className="font-bold text-black">Including</strong> token
+          </label>
+          <input
+            type="number"
+            name="totalAmountGotFromCustomerTillNowIncludingToken"
+            value={Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Total Amount Including Token in Words
+          </label>
+          <input
+            type="text"
+            name="totalAmountGotTillNowExcludingToken"
+            value={ numberToWordsIndian(`${Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}`)}
+            
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Amount Come from Loan
+          </label>
+          <input
+            type="number"
+            name="amountComeFromLoan"
+            value={formData.amountComeFromLoan}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+             Amount Come from Loan in Words
+          </label>
+          <input
+            type="text"
+            name="totalAmountGotTillNowExcludingToken"
+            value={ numberToWordsIndian(`${formData.amountComeFromLoan}`)}
+            
+            className="border rounded p-2"
+          />
+        </div>
+
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Hold from Customer(dont include loan amount)
+          </label>
+          <input
+            type="number"
+            name="holdFromCustomer"
+            value={Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount)}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+     
+        
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Car Title
+          </label>
+          <input
+            type="text"
+            name="carTitle"
+            value={formData.carTitle}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Car Registration Number
+          </label>
+          <input
+            type="text"
+            name="carRegistrationNumber"
+            value={formData.carRegistrationNumber}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Customer whatsapp Number
+          </label>
+          <input
+            type="number"
+            name="customerWhatsappNumber"
+            value={formData.customerWhatsappNumber}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Customer Mobile Number
+          </label>
+          <input
+            type="number"
+            name="customerMobileNumber"
+            value={formData.customerMobileNumber}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Customer Name
+          </label>
+          <input
+            type="text"
+            name="customerName"
+            value={formData.customerName}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+           Customer Address
+          </label>
+          <input
+            type="text"
+            name="customerAddress"
+            value={formData.customerAddress}
+            onChange={handleChange}
+            className="border rounded p-2"
+          />
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+
+      <div className="text-center">
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          {loading ? (
+          <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+            {/* Spinner and Text Container */}
+            <div className="flex flex-col items-center">
+              {/* Outer Circle with Gradient */}
+              <div className="relative w-28 h-28 mb-4">
+                <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+
+                {/* Inner Circle */}
+                <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                  {/* Logo with Flip Animation */}
+                  <img
+                    src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                    alt="Car Logo"
+                    className="w-12 h-12 animate-flip"
+                  />
+                </div>
+              </div>
+
+              {/* Text Below the Spinner */}
+              <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                <strong>Deal FORM IS SUBMITTING.... PLEASE WAIT </strong>
+              </p>
             </div>
           </div>
+        ) : (
+          'Submit Deal Form'
         )}
-    </div>
+        </button>
+      </div>
+    </form>
+    {submissionSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+            <h2 className="text-xl font-semibold text-green-600">Deal Form Submitted Successfully!</h2>
+            <p className="mt-2 text-gray-700">THANK YOU.</p>
+            <button
+              onClick={() => setSubmissionSuccess(false)}
+              className="mt-4 px-6 py-2 bg-blue-500 text
+              white rounded-lg hover:bg-blue-600 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+  </div></div>
   );
 };
 

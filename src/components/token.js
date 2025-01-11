@@ -3,6 +3,7 @@ import axios from 'axios';
 import { jsPDF } from 'jspdf';
 import { toWords } from 'number-to-words';
 import withAuthorization from "../components/authentication";
+import Navbar from '../components/Navbar';
 const TokenForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -325,263 +326,263 @@ const handleSubmit = async (e) => {
   
 
   return (
-    <div className="container mx-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold mb-5">Token Application Form</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-gray-700">Car Title</label>
-          <input
-            type="text"
-            name="carTitle"
-            value={formData.carTitle}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Car Model</label>
-          <input
-            type="text"
-            name="carModel"
-            value={formData.carModel}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-       
-        <div className="mb-4">
-          <label className="block text-gray-700">Customer Name</label>
-          <input
-            type="text"
-            name="customerName"
-            value={formData.customerName}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Customer Mobile</label>
-          <input
-            type="text"
-            name="customerMobile"
-            value={formData.customerMobile}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">WhatsApp Mobile</label>
-          <input
-            type="text"
-            name="whatsappMobile"
-            value={formData.whatsappMobile}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Customer Address</label>
-          <input
-            type="text"
-            name="customerAddress"
-            value={formData.customerAddress}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Customer Email (Optional)</label>
-          <input
-            type="email"
-            name="customerEmail"
-            value={formData.customerEmail}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Token Amount</label>
-          <input
-            type="number"
-            name="tokenAmount"
-            value={formData.tokenAmount}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Token Amount in Words</label>
-          <input
-            type="text"
-            name="Token Amount in Words"
-            value={numberToWordsIndian(`${formData.tokenAmount}`)}
-           
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-        <label className="block text-gray-700">Date of Token Received in Bank/Cash</label>
+    <div><Navbar/><div className="container mx-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
+    <h1 className="text-2xl font-bold mb-5">Token Application Form</h1>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label className="block text-gray-700">Car Title</label>
         <input
-  type="date"
-  name="dateOfPaymentReceived" // Name should match the key in your state object
-  value={formData.dateOfPaymentReceived} // Use formData to populate the value
-  onChange={handleChange} // Call the handleChange function when the date changes
-  className="border rounded px-2 py-1"
+          type="text"
+          name="carTitle"
+          value={formData.carTitle}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Car Model</label>
+        <input
+          type="text"
+          name="carModel"
+          value={formData.carModel}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+     
+      <div className="mb-4">
+        <label className="block text-gray-700">Customer Name</label>
+        <input
+          type="text"
+          name="customerName"
+          value={formData.customerName}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Customer Mobile</label>
+        <input
+          type="text"
+          name="customerMobile"
+          value={formData.customerMobile}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">WhatsApp Mobile</label>
+        <input
+          type="text"
+          name="whatsappMobile"
+          value={formData.whatsappMobile}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Customer Address</label>
+        <input
+          type="text"
+          name="customerAddress"
+          value={formData.customerAddress}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Customer Email (Optional)</label>
+        <input
+          type="email"
+          name="customerEmail"
+          value={formData.customerEmail}
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Token Amount</label>
+        <input
+          type="number"
+          name="tokenAmount"
+          value={formData.tokenAmount}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Token Amount in Words</label>
+        <input
+          type="text"
+          name="Token Amount in Words"
+          value={numberToWordsIndian(`${formData.tokenAmount}`)}
+         
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+      <label className="block text-gray-700">Date of Token Received in Bank/Cash</label>
+      <input
+type="date"
+name="dateOfPaymentReceived" // Name should match the key in your state object
+value={formData.dateOfPaymentReceived} // Use formData to populate the value
+onChange={handleChange} // Call the handleChange function when the date changes
+className="border rounded px-2 py-1"
 /></div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700">Payment Mode</label>
-          <select
-            name="paymentMode"
-            value={formData.paymentMode}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          >
-            <option value="">Select Payment Mode</option>
-            <option value="Cash">Cash</option>
-            <option value="Personal Account">Personal Account</option>
-            <option value="Company Account">Company Account</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Payment To</label>
-          <select
-            name="paymentTo"
-            value={formData.paymentTo}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          >
-            <option value="">Select Payment To</option>
-            <option value="Piyush">Piyush</option>
-            <option value="Ramesh">Ramesh</option>
-            <option value="Omprakash">Omprakash</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Deal Done Amount</label>
-          <input
-            type="number"
-            name="dealDoneAmount"
-            value={formData.dealDoneAmount}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Deal Amount in Words</label>
-          <input
-            type="text"
-            name="Token Amount in Words"
-            value={numberToWordsIndian(`${formData.dealDoneAmount}`)}
-           
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Fair Market Value</label>
-          <input
-            type="number"
-            name="fairMarketValue"
-            value={formData.fairMarketValue}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Car Registration Number</label>
-          <input
-            type="text"
-            name="carRegistrationNumber"
-            value={formData.carRegistrationNumber}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Loan or Cash</label>
-          <select
-            name="loanOrCash"
-            value={formData.loanOrCash}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          >
-            <option value="">Select Loan or Cash</option>
-            <option value="Loan">Loan</option>
-            <option value="Cash">Cash</option>
-          </select>
-        </div>
-        
-        
-        <div>
-        <button
-          type="submit"
-          className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+      <div className="mb-4">
+        <label className="block text-gray-700">Payment Mode</label>
+        <select
+          name="paymentMode"
+          value={formData.paymentMode}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
         >
-          {loading ? (
-            <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
-              {/* Spinner and Text Container */}
-              <div className="flex flex-col items-center">
-                {/* Outer Circle with Gradient */}
-                <div className="relative w-28 h-28 mb-4">
-                  <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
-
-                  {/* Inner Circle */}
-                  <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
-                    {/* Logo with Flip Animation */}
-                    <img
-                      src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
-                      alt="Car Logo"
-                      className="w-12 h-12 animate-flip"
-                    />
-                  </div>
-                </div>
-
-                {/* Text Below the Spinner */}
-                <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
-                  <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
-                </p>
-              </div>
-            </div>
-          ) : (
-            'Submit Token Form'
-          )}
-        </button>
+          <option value="">Select Payment Mode</option>
+          <option value="Cash">Cash</option>
+          <option value="Personal Account">Personal Account</option>
+          <option value="Company Account">Company Account</option>
+        </select>
       </div>
-      </form>
-      {submissionSuccess && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
-              <h2 className="text-xl font-semibold text-green-600">Token Form Submitted Successfully!</h2>
-              <p className="mt-2 text-gray-700">THANK YOU.</p>
-              <button
-                onClick={() => setSubmissionSuccess(false)}
-                className="mt-4 px-6 py-2 bg-blue-500 text
-                white rounded-lg hover:bg-blue-600 transition"
-              >
-                Close
-              </button>
+      <div className="mb-4">
+        <label className="block text-gray-700">Payment To</label>
+        <select
+          name="paymentTo"
+          value={formData.paymentTo}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        >
+          <option value="">Select Payment To</option>
+          <option value="Piyush">Piyush</option>
+          <option value="Ramesh">Ramesh</option>
+          <option value="Omprakash">Omprakash</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Deal Done Amount</label>
+        <input
+          type="number"
+          name="dealDoneAmount"
+          value={formData.dealDoneAmount}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Deal Amount in Words</label>
+        <input
+          type="text"
+          name="Token Amount in Words"
+          value={numberToWordsIndian(`${formData.dealDoneAmount}`)}
+         
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Fair Market Value</label>
+        <input
+          type="number"
+          name="fairMarketValue"
+          value={formData.fairMarketValue}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Car Registration Number</label>
+        <input
+          type="text"
+          name="carRegistrationNumber"
+          value={formData.carRegistrationNumber}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Loan or Cash</label>
+        <select
+          name="loanOrCash"
+          value={formData.loanOrCash}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        >
+          <option value="">Select Loan or Cash</option>
+          <option value="Loan">Loan</option>
+          <option value="Cash">Cash</option>
+        </select>
+      </div>
+      
+      
+      <div>
+      <button
+        type="submit"
+        className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+      >
+        {loading ? (
+          <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+            {/* Spinner and Text Container */}
+            <div className="flex flex-col items-center">
+              {/* Outer Circle with Gradient */}
+              <div className="relative w-28 h-28 mb-4">
+                <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+
+                {/* Inner Circle */}
+                <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                  {/* Logo with Flip Animation */}
+                  <img
+                    src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                    alt="Car Logo"
+                    className="w-12 h-12 animate-flip"
+                  />
+                </div>
+              </div>
+
+              {/* Text Below the Spinner */}
+              <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
+              </p>
             </div>
           </div>
+        ) : (
+          'Submit Token Form'
         )}
-
-
-
+      </button>
     </div>
+    </form>
+    {submissionSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+            <h2 className="text-xl font-semibold text-green-600">Token Form Submitted Successfully!</h2>
+            <p className="mt-2 text-gray-700">THANK YOU.</p>
+            <button
+              onClick={() => setSubmissionSuccess(false)}
+              className="mt-4 px-6 py-2 bg-blue-500 text
+              white rounded-lg hover:bg-blue-600 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+
+
+  </div></div>
   );
 };
 

@@ -3,6 +3,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import withAuthorization from "../components/authentication";
 import "react-datepicker/dist/react-datepicker.css";
+import Navbar from '../components/Navbar';
 import { jsPDF } from 'jspdf';
 const PurchaseTokenForm = () => {
   const [ownerName, setOwnerName] = useState('');
@@ -304,145 +305,145 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 border rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Create Purchase Token</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-semibold">Owner Name</label>
-          <input
-            type="text"
-            value={ownerName}
-            onChange={(e) => setOwnerName(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+    <div><Navbar/><div className="max-w-lg mx-auto p-4 border rounded shadow-md">
+    <h2 className="text-2xl font-bold mb-4">Create Purchase Token</h2>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="block text-sm font-semibold">Owner Name</label>
+        <input
+          type="text"
+          value={ownerName}
+          onChange={(e) => setOwnerName(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Owner WhatsApp</label>
-          <input
-            type="text"
-            value={ownerWhatsApp}
-            onChange={(e) => setOwnerWhatsApp(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Owner WhatsApp</label>
+        <input
+          type="text"
+          value={ownerWhatsApp}
+          onChange={(e) => setOwnerWhatsApp(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Car Title</label>
-          <input
-            type="text"
-            value={carTitle}
-            onChange={(e) => setCarTitle(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Car Title</label>
+        <input
+          type="text"
+          value={carTitle}
+          onChange={(e) => setCarTitle(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Car Registration Number</label>
-          <input
-            type="text"
-            value={carRegistrationNumber}
-            onChange={(e) => setCarRegistrationNumber(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Car Registration Number</label>
+        <input
+          type="text"
+          value={carRegistrationNumber}
+          onChange={(e) => setCarRegistrationNumber(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Token Amount</label>
-          <input
-            type="number"
-            value={tokenAmount}
-            onChange={(e) => setTokenAmount(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Token Amount</label>
+        <input
+          type="number"
+          value={tokenAmount}
+          onChange={(e) => setTokenAmount(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Approx Deal Amount</label>
-          <input
-            type="number"
-            value={approxDealAmount}
-            onChange={(e) => setApproxDealAmount(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Approx Deal Amount</label>
+        <input
+          type="number"
+          value={approxDealAmount}
+          onChange={(e) => setApproxDealAmount(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Owner Address</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setaddress(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Owner Address</label>
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setaddress(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-semibold">Car Model</label>
-          <input
-            type="text"
-            value={carModel}
-            onChange={(e) => setCarModel(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-semibold">Car Model</label>
+        <input
+          type="text"
+          value={carModel}
+          onChange={(e) => setCarModel(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
 
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-        {loading ? (
-            <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
-              {/* Spinner and Text Container */}
-              <div className="flex flex-col items-center">
-                {/* Outer Circle with Gradient */}
-                <div className="relative w-28 h-28 mb-4">
-                  <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+      <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+      {loading ? (
+          <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+            {/* Spinner and Text Container */}
+            <div className="flex flex-col items-center">
+              {/* Outer Circle with Gradient */}
+              <div className="relative w-28 h-28 mb-4">
+                <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
 
-                  {/* Inner Circle */}
-                  <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
-                    {/* Logo with Flip Animation */}
-                    <img
-                      src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
-                      alt="Car Logo"
-                      className="w-12 h-12 animate-flip"
-                    />
-                  </div>
+                {/* Inner Circle */}
+                <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                  {/* Logo with Flip Animation */}
+                  <img
+                    src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                    alt="Car Logo"
+                    className="w-12 h-12 animate-flip"
+                  />
                 </div>
-
-                {/* Text Below the Spinner */}
-                <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
-                  <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
-                </p>
               </div>
-            </div>
-          ) : (
-            'Submit Token Form'
-          )}
-        </button>
-      </form>
 
-      {submissionSuccess && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
-              <h2 className="text-xl font-semibold text-green-600">Token Form Submitted Successfully!</h2>
-              <p className="mt-2 text-gray-700">THANK YOU.</p>
-              <button
-                onClick={() => setSubmissionSuccess(false)}
-                className="mt-4 px-6 py-2 bg-blue-500 text
-                white rounded-lg hover:bg-blue-600 transition"
-              >
-                Close
-              </button>
+              {/* Text Below the Spinner */}
+              <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
+              </p>
             </div>
           </div>
+        ) : (
+          'Submit Token Form'
         )}
-    </div>
+      </button>
+    </form>
+
+    {submissionSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+            <h2 className="text-xl font-semibold text-green-600">Token Form Submitted Successfully!</h2>
+            <p className="mt-2 text-gray-700">THANK YOU.</p>
+            <button
+              onClick={() => setSubmissionSuccess(false)}
+              className="mt-4 px-6 py-2 bg-blue-500 text
+              white rounded-lg hover:bg-blue-600 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+  </div></div>
   );
 };
 
