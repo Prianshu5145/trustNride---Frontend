@@ -131,42 +131,42 @@ const fetchdealCount = async () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  try {
-    // Generate the PDF file
-    const pdfFile = await generateInvoice();
-
-    // Prepare form data for multipart submission
-    const formDataToSend = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataToSend.append(key, formData[key]);
-    });
-
-    // Append the PDF file
-    formDataToSend.append("pdfFile", pdfFile);
-
-    // Submit form data to the backend
-    const response = await axios.post(
-      'https://trustnride-backend-production.up.railway.app/api/deal/create',
-      formDataToSend,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
-    // Notify the user
-    setSubmissionSuccess(true);
-
-    // Optionally, reset the form
-   
-  } catch (error) {
-    console.error('Error submitting Deal form:', error);
-    alert('Failed to submit the deal form. Please try again.');
-  }
-  finally {
-    setLoading(false); // Set loading to false after submission completes
-  }
+    try {
+      // Generate the PDF file
+      const pdfFile = await generateInvoice();
+  
+      // Prepare form data for multipart submission
+      const formDataToSend = new FormData();
+      Object.keys(formData).forEach((key) => {
+        formDataToSend.append(key, formData[key]);
+      });
+  
+      // Append the PDF file
+      formDataToSend.append("pdfFile", pdfFile);
+  
+      // Submit form data to the backend
+      const response = await axios.post(
+        'https://trustnride-backend-production.up.railway.app/api/deal/create',
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+  
+      // Notify the user
+      setSubmissionSuccess(true);
+  
+      // Optionally, reset the form
+     
+    } catch (error) {
+      console.error('Error submitting Deal form:', error);
+      alert('Failed to submit the deal form. Please try again.');
+    }
+    finally {
+      setLoading(false); // Set loading to false after submission completes
+    }
  };
   
   const generateInvoice = () => {
@@ -235,11 +235,11 @@ const fetchdealCount = async () => {
         ['INVOICE FOR PAYMENT RECEIVED'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.customerWhatsappNumber}`,
-            `INVOICE No : T${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0001000\nBranch: Akbarpur Branch`,
+            `INVOICE No : D${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Payment Received', 'Final Deal Amount'], // Row 3
-        ['1', `Car Payment of -${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.totalAmountGotTillNowExcludingToken}`,  `${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
-        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier:${formData.tokenAmount}\nReceivable Loan Payment Due:${formData.amountComeFromLoan}\nDue Payment from Customer: ${formData.holdFromCustomer}+RTO CHARGE`], // Row 5
+        ['1', `Car Payment of -${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
+        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: Rs. ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier: Rs. ${formData.tokenAmount}\nReceivable Loan Payment Due: Rs. ${formData.amountComeFromLoan}\nDue Payment from Customer: Rs. ${formData.holdFromCustomer}+RTO CHARGE`], // Row 5
     ];
 
     let y = startY;
@@ -330,7 +330,7 @@ const fetchdealCount = async () => {
     doc.text(' This is a system-generated invoice, e signed and approved for authenticity. For inquiries or support,please visit our website at \n  https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 350);
 
     // Open PDF in a new tab
-    //var blobUrl = doc.output('bloburl');
+   // var blobUrl = doc.output('bloburl');
   
      
   // window.open(blobUrl, '_blank');
@@ -339,7 +339,7 @@ const fetchdealCount = async () => {
 
 //doc.save('example.pdf');
 const pdfBlob = doc.output("blob");
-  return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
+ return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
 };
 
 

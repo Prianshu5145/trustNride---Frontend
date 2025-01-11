@@ -173,11 +173,11 @@ const TokenForm = () => {
         ['INVOICE FOR TOKEN PAYMENT'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.whatsappMobile}`,
-            `INVOICE No : T${tokenCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code:BDBL0001000\nBranch: Akbarpur Branch`,
+            `INVOICE No : TS${tokenCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REG NO', 'Token Amount', 'Deal Amount'], // Row 3
-        ['1', `Car Token Payment-${formData.carTitle}`, `${formData.carRegistrationNumber}`, ` ${formData.tokenAmount}`,  `${formData.dealDoneAmount}`], // Row 4
-        [`Total Amount in Rupees:\nRUPEES ${h} ONLY`, `Total Amount: ${formData.tokenAmount}\nPayment Mode: ${paymentM}`], // Row 5
+        ['1', `Car Token Payment-${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.tokenAmount}`,  `Rs. ${formData.dealDoneAmount}`], // Row 4
+        [`Total Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Total Payment Received: Rs. ${formData.tokenAmount}\nPayment Mode: ${paymentM}`], // Row 5
     ];
 
     let y = startY;
@@ -264,10 +264,10 @@ const TokenForm = () => {
     doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 346);
 
     // Open PDF in a new tab
-    //var blobUrl = doc.output('bloburl');
+   // var blobUrl = doc.output('bloburl');
   
      
-   //window.open(blobUrl, '_blank');
+  // window.open(blobUrl, '_blank');
    //doc.save();
    const pdfBlob = doc.output("blob");
    return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });

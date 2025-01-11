@@ -201,11 +201,11 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           ['INVOICE FOR TOKEN PAYMENT'], // Row 1
           [
               `Customer Name:\n ${ownerName}\nCustomer Address: ${address} \nMobile No: ${ownerWhatsApp}`,
-              `INVOICE No : TP${purchasetokenCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code:BDBL0001000\nBranch: Akbarpur Branch`,
+              `INVOICE No : TP${purchasetokenCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
           ], // Row 2
           ['S.No', 'Description of Goods', 'REG NO', 'Token Amount', 'Tentative Deal Amount'], // Row 3
-          ['1', `Car Token Payment-${carTitle}`, `${carRegistrationNumber}`, ` ${tokenAmount}`,  `${approxDealAmount}`], // Row 4
-          [`Total Amount in Rupees:\nRUPEES ${h} ONLY`, `Total Amount: ${tokenAmount}\nPayment Mode: In Account`], // Row 5
+          ['1', `Car Token Payment-${carTitle}`, `${carRegistrationNumber}`, `Rs. ${tokenAmount}`,  `Rs. ${approxDealAmount}`], // Row 4
+          [`Total Amount Paid in Rupees:\nRUPEES ${h} ONLY`, `Total Amount Paid: Rs. ${tokenAmount}\nPayment Mode: In Account`], // Row 5
       ];
   
       let y = startY;
@@ -297,7 +297,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
       //var blobUrl = doc.output('bloburl');
     
        
-     //window.open(blobUrl, '_blank');
+    // window.open(blobUrl, '_blank');
      //doc.save();
      const pdfBlob = doc.output("blob");
      return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
