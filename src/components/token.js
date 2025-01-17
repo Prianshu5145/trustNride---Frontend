@@ -573,6 +573,7 @@ className="border rounded px-2 py-1"
           'Submit Token Form'
         )}
       </button>
+      <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
     </div>
     </form>
     {submissionSuccess && (

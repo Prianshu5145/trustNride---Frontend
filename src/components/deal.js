@@ -791,6 +791,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
           'Submit Deal Form'
         )}
         </button>
+        <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
       </div>
     </form>
     {submissionSuccess && (

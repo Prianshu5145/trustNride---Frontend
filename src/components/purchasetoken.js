@@ -426,6 +426,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           'Submit Token Form'
         )}
       </button>
+      <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
     </form>
 
     {submissionSuccess && (
