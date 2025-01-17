@@ -357,6 +357,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
   return (
     <div><Navbar/><div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
     <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Deal Form</h1>
+    <h1 className="text-1xl font-bold text-gray-900 mb-6">Note:  Do not Consider any RTO Charges in your Mind while filling this form. This form is only for Deal Amount Details</h1>
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col">
@@ -373,7 +374,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-             Amount Received <strong>Excluding</strong> Token in Words
+             Total Amount Received <strong>Excluding</strong> Token <strong>in Words</strong>
           </label>
           <input
             type="text"
@@ -516,6 +517,18 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             className="border rounded p-2"
           />
         </div>
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-2">
+            Token Amount Received <strong>in Words</strong>
+          </label>
+          <input
+            type="text"
+            name="tokenAmountinwords"
+            value={numberToWordsIndian(`${formData.tokenAmount}`)}
+           
+            className="border rounded p-2"
+          />
+        </div>
 
 
         <div className="flex flex-col">
@@ -543,7 +556,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
 
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-            Deal Amount
+            Deal done Amount
           </label>
           <input
             type="number"
@@ -555,7 +568,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-             Deal done Amount in Words
+             Deal done Amount <strong>in Words</strong>
           </label>
           <input
             type="text"
@@ -567,7 +580,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-            Any final Discount for Customer in Deal Amount
+            Any final Discount for Customer in Deal done Amount
           </label>
           <input
             type="number"
@@ -579,7 +592,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-             final Discount in Deal Amount  in Words
+             final Discount in Deal Amount done <strong> in Words</strong>
           </label>
           <input
             type="text"
@@ -592,7 +605,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         <div className="flex flex-col">
         
           <label className="text-gray-700 font-medium mb-2">
-            Total Amount Received <strong className="font-bold text-black">Including</strong> token
+            Total Amount Received <strong className="font-bold text-black">Including</strong> Token
           </label>
           <input
             type="number"
@@ -604,7 +617,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-            Total Amount Including Token in Words
+            Total Amount Including Token <strong>in Words</strong> 
           </label>
           <input
             type="text"
@@ -628,7 +641,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-             Amount Come from Loan in Words
+             Amount Come from Loan  <strong>in Words</strong>
           </label>
           <input
             type="text"
@@ -642,7 +655,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
 
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
-           Hold from Customer(dont include loan amount)
+           Hold from Customer (<strong>RTO CHARGES CHHODH KE</strong>)
           </label>
           <input
             type="number"

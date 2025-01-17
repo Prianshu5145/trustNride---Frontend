@@ -418,7 +418,7 @@ const handleSubmit = async (e) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Token Amount in Words</label>
+        <label className="block text-gray-700">Token Amount <strong>in Words</strong> </label>
         <input
           type="text"
           name="Token Amount in Words"
@@ -480,7 +480,7 @@ className="border rounded px-2 py-1"
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Deal Amount in Words</label>
+        <label className="block text-gray-700">Deal Amount <strong>in Words</strong> </label>
         <input
           type="text"
           name="Token Amount in Words"
@@ -497,6 +497,17 @@ className="border rounded px-2 py-1"
           name="fairMarketValue"
           value={formData.fairMarketValue}
           onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700">Fair Market Value <strong>in Words</strong></label>
+        <input
+          type="text"
+          name="fairMarketValueinwords"
+          value={numberToWordsIndian(`${formData.fairMarketValue}`)}
+          
           required
           className="w-full p-2 border border-gray-300 rounded mt-2"
         />
