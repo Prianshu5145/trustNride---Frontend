@@ -173,7 +173,7 @@ const fetchdealCount = async () => {
   const generateInvoice = () => {
     const doc = new jsPDF({
       unit: 'mm',
-      format: [210, 357], // A4 width (210mm) and increased height (350mm)
+      format: [210, 364], // A4 width (210mm) and increased height (350mm)
     });
 
     // Full-width header image
@@ -209,7 +209,7 @@ const fetchdealCount = async () => {
     const margin = 20; // Left margin
     const startY = 68; // Start position for the table
     const rowHeights = [8, 37, 13, 50, 34]; // Row heights
-    const colWidths = [81, 87]; // Columns for row 2 (example)
+    const colWidths = [81, 91]; // Columns for row 2 (example)
 
     
     
@@ -233,14 +233,14 @@ const fetchdealCount = async () => {
 
     // Data
     const tableData = [
-        ['INVOICE FOR PAYMENT RECEIVED'], // Row 1
+        ['DELIVERY - INVOICE FOR PAYMENT RECEIVED'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.customerWhatsappNumber}`,
             `INVOICE No : D${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
-        ['S.No', 'Description of Goods', 'REG NO', 'Payment Received', 'Final Deal Amount'], // Row 3
-        ['1', `Car Payment of -${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
-        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: Rs. ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-------------------------------------------------------------------------------\nToken Payment Received Earlier: Rs. ${formData.tokenAmount}\nReceivable Loan Payment Due: Rs. ${formData.amountComeFromLoan}\nDue Payment from Customer: Rs. ${formData.holdFromCustomer}+RTO CHARGE`], // Row 5
+        ['S.No', 'Description of Goods', 'REGISTRATION NO.', 'Payment Received', 'Final Deal Amount'], // Row 3
+        ['1', `Vehicle Payment of - ${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
+        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: Rs. ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-----------------------------------------------------------------------------------\nToken Payment Received Earlier: Rs. ${formData.tokenAmount}\nReceivable Loan Payment Due: Rs. ${formData.amountComeFromLoan}\nDue Payment from Customer: Rs. ${formData.holdFromCustomer}+RTO CHARGES`], // Row 5
     ];
 
     let y = startY;
@@ -281,13 +281,13 @@ const fetchdealCount = async () => {
     };
 
     // Draw table rows
-    drawRow(tableData[0], [168], rowHeights[0], true); // Row 1: 1 column (first row centered)
+    drawRow(tableData[0], [172], rowHeights[0], true); // Row 1: 1 column (first row centered)
     drawRow(tableData[1], colWidths, rowHeights[1]); // Row 2: 2 columns
-    drawRow(tableData[2], [20, 61, 29, 29, 29], rowHeights[2]); // Row 3: 5 columns
-    drawRow(tableData[3], [20, 61, 29, 29, 29], rowHeights[3]); // Row 4: 5 columns
+    drawRow(tableData[2], [20, 61, 30.344, 30.344, 30.344], rowHeights[2]); // Row 3: 5 columns
+    drawRow(tableData[3], [20, 61, 30.344, 30.344, 30.344], rowHeights[3]); // Row 4: 5 columns
     drawRow(tableData[4], colWidths, rowHeights[4]); // Row 5: 2 columns
 
-    doc.text(`For TRUSTNRIDE`, pageWidth - 50, 214);
+    doc.text(`For TRUST N RIDE`, pageWidth - 50, 214);
     doc.text(`Place of Supply: Uttar Pradesh`, 8, 217);
 
     const imgWidth1 = 40; // A4 width in mm
@@ -317,24 +317,24 @@ const fetchdealCount = async () => {
     // Add the text with a bold style
     doc.text('Terms and Conditions', 6, 250);
     doc.setFontSize(10);
-    doc.text('1. Non-Returnable After Delivery: Once the car is delivered, it is understood that the Customer has thoroughly inspected \n    it and accepted its condition. Therefore, the car is considered sold and cannot be returned under any circumstances,\n    except in the case of loan cancellation by the loan company.', 5, 255);
-    doc.text('2. Due Payment from Customer: If this payment is not cleared, the car transfer or NOC process will not be initiated.\n    Trust N Ride will try to complete the process within 90 working days from the date it is initiated.', 5, 269);
-    doc.text('3. Loan Cancellation: If the loan is canceled,Trust N Ride will try to secure a loan from another Company.If the loan is not\n    approved,Trust N Ride may retrieve the car and issue a full refund,provided the car is in the same condition as delivery.', 5, 278);
-    doc.text('4. Liability Transfer: If anything happens to the car after the invoice date, including any incidents, damages, accidents,\n    theft, misuse or challan, the customer will be fully responsible. Trust N Ride holds no accountability beyond this date.', 5, 288);
-    doc.text('5. Pre-Liability: Any legal issues, incidents,challan or claims related to the car that occur prior to the invoice date will be\n    handled by Trust N Ride. The company will assume full responsibility for any such matters before the invoice date.', 5, 298);
+    doc.text('1. Non-Returnable After Delivery: Once the vehicle is delivered, it is understood that the Customer has thoroughly\n    inspected it and accepted its condition. Therefore, the vehicle is considered sold and cannot be returned under any\n    circumstances, except in the case of loan cancellation by the loan company.', 5, 255);
+    doc.text('2. Due Payment from Customer: If this payment is not cleared, the vehicle transfer or NOC process will not be initiated.\n    Trust N Ride will try to complete the process within 90 working days from the date it is initiated.', 5, 269);
+    doc.text('3. Loan Cancellation: If a loan is canceled, Trust N Ride will seek alternative financing. If unsuccessful, the vehicle may\n    be retrieved, and a full refund issued, provided it’s in its original delivery condition.', 5, 278);
+    doc.text('4. Liability Transfer: After the digitally signed date and time, the customer assumes full responsibility for this vehicle.\n    Trust N Ride will not be held accountable for any incidents, damages, accidents, theft, misuse, challans, or third-party-\n    liabilities,including fines or compensation resulting from accidents. The customer will bear all legal, financial, and\n    operational responsibilities for the vehicle after the digitally signed date and time.', 5, 288);
+    doc.text('5. Pre-Liability: Any legal issues, incidents, challans, or claims related to the vehicle before the digitally signed date\n    and time will be handled by Trust N Ride, which assumes full responsibility until that time.', 5, 306);
     
-    doc.text('6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.', 5, 308);
+    doc.text('6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.', 5, 316);
     doc.setFontSize(12);
-    doc.text('By e signing below, the customer confirms reading, understanding, and agreeing to all Terms and - \nConditions,acknowledges the sale, and accepts all liabilities and responsibilities as outlined.', 5, 315);
+    doc.text('By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms\nand Conditions,acknowledges the sale, and accepts all liabilities and responsibilities as outlined.', 5, 322);
     doc.setFont("helvetica", "normal"); 
     doc.setFontSize(10);
-    doc.text(' This is a system-generated invoice, e signed and approved for authenticity. For inquiries or support,please visit our website at \n  https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 350);
+    doc.text(' This is a system-generated invoice, Digitally signed and approved for authenticity. For inquiries or support,please visit our website\n at https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 357);
 
     // Open PDF in a new tab
-   // var blobUrl = doc.output('bloburl');
+   //var blobUrl = doc.output('bloburl');
   
      
-  // window.open(blobUrl, '_blank');
+   //window.open(blobUrl, '_blank');
    //const dataUrl = doc.output('dataurl');
 //window.open(dataUrl);
 

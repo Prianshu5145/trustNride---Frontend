@@ -146,7 +146,7 @@ const TokenForm = () => {
     // Table settings
     const margin = 20; // Left margin
     const startY = 68; // Start position for the table
-    const rowHeights = [8, 37, 9, 60, 20]; // Row heights
+    const rowHeights = [8, 37, 12, 57, 20]; // Row heights
     const colWidths = [81, 87]; // Columns for row 2 (example)
 
     
@@ -176,8 +176,8 @@ const TokenForm = () => {
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.whatsappMobile}`,
             `INVOICE No : TS${tokenCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
-        ['S.No', 'Description of Goods', 'REG NO', 'Token Amount', 'Deal Amount'], // Row 3
-        ['1', `Car Token Payment-${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.tokenAmount}`,  `Rs. ${formData.dealDoneAmount}`], // Row 4
+        ['S.No', 'Description of Goods', 'REGISTRATION NO.', 'Token Amount', 'Deal Amount'], // Row 3
+        ['1', `Vehicle Token Payment of - ${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.tokenAmount}`,  `Rs. ${formData.dealDoneAmount}`], // Row 4
         [`Total Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Total Payment Received: Rs. ${formData.tokenAmount}\nPayment Mode: ${paymentM}`], // Row 5
     ];
 
@@ -225,7 +225,7 @@ const TokenForm = () => {
     drawRow(tableData[3], [20, 61, 29, 29, 29], rowHeights[3]); // Row 4: 5 columns
     drawRow(tableData[4], colWidths, rowHeights[4]); // Row 5: 2 columns
 
-    doc.text(`For TRUSTNRIDE`, pageWidth - 50, 207);
+    doc.text(`For TRUST N RIDE`, pageWidth - 50, 207);
     doc.text(`Place of Supply: Uttar Pradesh`, 8, 210);
 
     const imgWidth1 = 40; // A4 width in mm
@@ -265,10 +265,10 @@ const TokenForm = () => {
     doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 346);
 
     // Open PDF in a new tab
-   // var blobUrl = doc.output('bloburl');
+   //var blobUrl = doc.output('bloburl');
   
      
-  // window.open(blobUrl, '_blank');
+  //window.open(blobUrl, '_blank');
    //doc.save();
    const pdfBlob = doc.output("blob");
    return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
