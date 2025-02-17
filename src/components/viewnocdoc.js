@@ -40,9 +40,9 @@ const fetchData = async (endpoint) => {
   useEffect(() => {
     // Define endpoints based on selected option
     const endpoints = {
-      viewNoc: 'https://trustnride-backend-production.up.railway.app/api/rto/noc/all',
-      viewTransferWithHypo: 'https://trustnride-backend-production.up.railway.app/api/rtotransfer/transferwithloan/all',
-      viewTransferWithoutHypo: 'https://trustnride-backend-production.up.railway.app/api/rtotransferwithouthypo/transferwithoutloan/all',
+      viewNoc: 'https://trustnride-backend.onrender.com/api/rto/noc/all',
+      viewTransferWithHypo: 'https://trustnride-backend.onrender.com/api/rtotransfer/transferwithloan/all',
+      viewTransferWithoutHypo: 'https://trustnride-backend.onrender.com/api/rtotransferwithouthypo/transferwithoutloan/all',
     };
     fetchData(endpoints[option]);
   }, [option]);

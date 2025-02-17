@@ -48,7 +48,7 @@ const persistor = persistStore(store);
 const fetchListings = async (dispatch) => {
   try {
     const response = await axios.get(
-      'https://trustnride-backend-production.up.railway.app/api/listings/Carlisting'
+      'https://trustnride-backend.onrender.com/api/listings/Carlisting'
     );
     const listingsData = response.data.slice(0, 15); // Limit to first 15 listings
     dispatch(setListings(listingsData)); // Dispatch to store

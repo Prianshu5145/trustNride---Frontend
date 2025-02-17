@@ -80,7 +80,7 @@ const TokenForm = () => {
   const fetchTokenCount = async () => {
     try {
       // Send a GET request to the API endpoint
-      const response = await fetch('https://trustnride-backend-production.up.railway.app/api/token/tokens/count');
+      const response = await fetch('https://trustnride-backend.onrender.com/api/token/tokens/count');
   
       // Check if the response status is OK (200)
       if (response.ok) {
@@ -299,7 +299,7 @@ const handleSubmit = async (e) => {
 
     // Submit form data to the backend
     const response = await axios.post(
-      'https://trustnride-backend-production.up.railway.app/api/token/submit-token',
+      'https://trustnride-backend.onrender.com/api/token/submit-token',
       formDataToSend,
       {
         headers: {

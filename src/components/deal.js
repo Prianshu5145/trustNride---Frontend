@@ -44,7 +44,7 @@ const [dealCount, setdealCount] = useState(null);
 const fetchdealCount = async () => {
     try {
       // Send a GET request to the API endpoint
-      const response = await fetch('https://trustnride-backend-production.up.railway.app/api/deal/deal/count');
+      const response = await fetch('https://trustnride-backend.onrender.com/api/deal/deal/count');
   
       // Check if the response status is OK (200)
       if (response.ok) {
@@ -147,7 +147,7 @@ const fetchdealCount = async () => {
   
       // Submit form data to the backend
       const response = await axios.post(
-        'https://trustnride-backend-production.up.railway.app/api/deal/create',
+        'https://trustnride-backend.onrender.com/api/deal/create',
         formDataToSend,
         {
           headers: {

@@ -21,7 +21,7 @@ const ViewDetails = () => {
     useEffect(() => {
         const fetchListing = async () => {
             try {
-                const response = await axios.get(`https://trustnride-backend-production.up.railway.app/api/listings/find/${listingId}`);
+                const response = await axios.get(`https://trustnride-backend.onrender.com/api/listings/find/${listingId}`);
                 setListing(response.data);
 
                 // Extract tire images from the listing data

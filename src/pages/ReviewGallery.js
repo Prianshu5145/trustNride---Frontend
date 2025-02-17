@@ -33,7 +33,7 @@ const SubmitReview = () => {
         setLoading(true); // Start loading
 
         try {
-            const response = await axios.post('https://trustnride-backend-production.up.railway.app/api/reviews/upload', data);
+            const response = await axios.post('https://trustnride-backend.onrender.com/api/reviews/upload', data);
             setSuccessMessage(response.data.message); // Set success message
             setErrorMessage(''); // Clear previous error message
             setFormData({ name: '', place: '', review: '', image: null }); // Reset form

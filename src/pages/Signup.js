@@ -18,7 +18,7 @@ const Signup = () => {
     const userData = { name, email, mobile, password, role };
 
     try {
-      const response = await fetch('https://trustnride-backend-production.up.railway.app/api/auth/register', {
+      const response = await fetch('https://trustnride-backend.onrender.com/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

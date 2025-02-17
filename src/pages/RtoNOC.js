@@ -128,7 +128,7 @@ const CreateNOCForm = () => {
     const savedRole = localStorage.getItem('role');
     if (savedRole === 'Employee') {
       try {
-        await axios.post('https://trustnride-backend-production.up.railway.app/api/rto/noc', formData, {
+        await axios.post('https://trustnride-backend.onrender.com/api/rto/noc', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

@@ -21,7 +21,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const fetchpurchaseTokenCount = async () => {
     try {
       // Send a GET request to the API endpoint
-      const response = await fetch('https://trustnride-backend-production.up.railway.app/api/purchasetoken/count');
+      const response = await fetch('https://trustnride-backend.onrender.com/api/purchasetoken/count');
   
       // Check if the response status is OK (200)
       if (response.ok) {
@@ -75,7 +75,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
     // Submit form data to the backend
     const response = await axios.post(
-      'https://trustnride-backend-production.up.railway.app/api/purchasetoken/create',
+      'https://trustnride-backend.onrender.com/api/purchasetoken/create',
       formDataToSend,
       {
         headers: {

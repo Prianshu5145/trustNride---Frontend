@@ -43,7 +43,7 @@ const ContactUs = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://trustnride-backend-production.up.railway.app/api/contact', {
+            const response = await fetch('https://trustnride-backend.onrender.com/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
