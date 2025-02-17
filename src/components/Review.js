@@ -130,7 +130,7 @@ const ReviewSection = () => {
                     ))}
                     
                     {/* View All Reviews card */}
-                    <div className="relative flex-shrink-0 w-3/4 sm:w-auto bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 h-95 flex items-center justify-center md:hidden lg:hidden">
+                    <div className="relative flex-shrink-0 w-3/4 sm:w-auto bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300  h-90 flex items-center justify-center md:hidden lg:hidden">
                         <button
                             className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full"
                             onClick={() => window.location.href = "/Gallery"} // Adjust link to your reviews page
