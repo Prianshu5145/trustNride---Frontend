@@ -134,7 +134,7 @@ const InspectionBooking = () => {
                         <input
                             type="text"
                             name="vehicleNumber"
-                            placeholder="Vehicle Number"
+                            placeholder="Vehicle Registration Number"
                             value={formData.vehicleNumber}
                             onChange={handleChange}
                             required
