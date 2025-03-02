@@ -1,17 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/footer';
-
+import statesData from "../utils/states.json";
 const InspectionBooking = () => {
     const [formData, setFormData] = useState({
         name: '',
         vehicleNumber: '',
         mobileNumber: '',
+        state:'',
+        district:'',
+        pincode:'',
+        address:''
     });
 
     const [loading, setLoading] = useState(false);
-   
+    
+    const [selectedState, setSelectedState] = useState("");
+    const [districts, setDistricts] = useState([]);
+  
+    useEffect(() => {
+      if (selectedState) {
+        const stateData = statesData.find((s) => s.state === selectedState);
+        setDistricts(stateData ? stateData.districts : []);
+       
+        
+      } else {
+        setDistricts([]);
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        state: selectedState, // Using selectedDate from state
+    }));
+    
+    }, [selectedState]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,6 +46,8 @@ const InspectionBooking = () => {
         if (loading) return;
         setLoading(true);
 
+
+
         try {
             const response = await fetch('https://trustnride-backend.onrender.com/api/inspection', {
                 method: 'POST',
@@ -31,7 +56,7 @@ const InspectionBooking = () => {
             });
 
             if (response.ok) {
-                alert('Your Response is Submitted Successfully and We will getback to You Soon');
+                alert('Your Response is Submitted Successfully and We getback to You Soon');
             } else {
                 alert('Failed to book inspection. Please try again.');
             }
@@ -42,6 +67,9 @@ const InspectionBooking = () => {
             setLoading(false);
         }
     };
+
+    
+    
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white">
@@ -91,7 +119,7 @@ const InspectionBooking = () => {
                         onSubmit={handleSubmit}
                         className="bg-gray-800 p-8 sm:p-12 rounded-2xl shadow-2xl max-w-lg mx-auto border-4 hover:border-gradient-to-r hover:from-blue-500 hover:to-purple-500 transition"
                     >
-                        <h2 className="text-3xl font-semibold text-center mb-6">Enter Your Details</h2>
+                        <h2 className="text-3xl font-semibold text-center mb-6"> Book Your Inspection</h2>
 
                         <input
                             type="text"
@@ -123,9 +151,65 @@ const InspectionBooking = () => {
                             className="w-full p-4 mb-6 bg-gray-700 border border-gray-600 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
                         />
 
-                        <button
+
+     
+      <select
+        className="w-full p-4 mb-6 bg-gray-700 border border-gray-600 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
+        onChange={(e) => setSelectedState(e.target.value)}
+        value={selectedState}
+      >
+        <option value="">-- Select State --</option>
+        {statesData.map((item) => (
+          <option key={item.state} value={item.state}>
+            {item.state}
+          </option>
+        ))}
+      </select>
+
+      {selectedState && (
+        <>
+         
+          <select className="w-full p-4 mb-6 bg-gray-700 border border-gray-600 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
+            value={formData.district} // Set selected value
+    onChange={(e) => setFormData((prev) => ({ ...prev, district: e.target.value }))}>
+            <option value="">-- Select District --</option>
+            {districts.map((district) => (
+              <option key={district} value={district}>
+                {district}
+                
+              </option>
+            ))}
+          </select>
+        </>
+      )}
+
+      
+      <input
+                            type="number"
+                            name="pincode"
+                            placeholder="Enter Your Pin code"
+                            value={formData.pincode}
+                            onChange={handleChange}
+                            required
+                            className="w-full p-4 mb-6 bg-gray-700 border border-gray-600 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
+                        />
+
+
+    <input
+        type="text"
+        name="address"
+        placeholder="Enter Your Address"
+        value={formData.address}
+        onChange={handleChange}
+        required
+        className="w-full p-4 pr-12 bg-gray-700 border border-gray-600 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
+    />
+    
+
+
+                        <button 
                             type="submit"
-                            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 hover:shadow-xl transition transform hover:scale-105"
+                            className="w-full mt-6 bg-blue-600 text-white py-3  rounded-lg hover:bg-blue-700 hover:shadow-xl transition transform hover:scale-105"
                         >
                             Next
                         </button>
@@ -156,12 +240,12 @@ const InspectionBooking = () => {
                                 text: 'Provide your details and book a free inspection.',
                             },
                             {
-                                title: 'Get the Best Price',
-                                text: 'Our partner will offer the best price for your car.',
+                                title: 'Appointment Confirmation Call',
+                                text: 'Our Executive Will Call You to Confirm the Appointment Date & Time',
                             },
                             {
-                                title: 'Redirect to Our Partner',
-                                text: 'You’ll be redirected to our partner site for the final process.',
+                                title: 'Get the Best Price',
+                                text: 'Get your car inspected and secure the best deals for your car."',
                             },
                             {
                                 title: 'Easy Documentation',
