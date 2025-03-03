@@ -169,7 +169,7 @@ const Listings = () => {
                             onClick={handleViewAll} 
                             className="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
                         >
-                            View All Listings
+                            View All Cars
                         </button>
                     </div>
                 </>
