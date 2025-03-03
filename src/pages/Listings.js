@@ -17,7 +17,7 @@ const Listings = () => {
         const fetchListings = async () => {
             try {
                 const response = await axios.get('https://trustnride-backend.onrender.com/api/listings/alllisting');
-                setListings(response.data.slice(0, 15)); // Limit to first 15 listings only
+                setListings(response.data.slice(8, 23)); // Limit to first 15 listings only
             } catch (error) {
                 console.error('Error fetching listings:', error);
             }
