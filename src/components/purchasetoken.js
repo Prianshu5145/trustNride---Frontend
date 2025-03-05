@@ -306,9 +306,10 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
   return (
     <div><Navbar/><div className="max-w-lg mx-auto p-4 border rounded shadow-md">
-    <h2 className="text-2xl font-bold mb-4">Create Purchase Token</h2>
+    <h2 className="text-2xl font-bold mb-4"> Purchase Token Form</h2>
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
+      <div className="relative w-full p-4 border border-blue-700 rounded">
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Owner Name</label>
         <input
           type="text"
@@ -319,7 +320,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Owner WhatsApp</label>
         <input
           type="text"
@@ -330,7 +331,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Car Title</label>
         <input
           type="text"
@@ -341,7 +342,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Car Registration Number</label>
         <input
           type="text"
@@ -352,7 +353,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Token Amount</label>
         <input
           type="number"
@@ -363,7 +364,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Approx Deal Amount</label>
         <input
           type="number"
@@ -374,7 +375,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Owner Address</label>
         <input
           type="text"
@@ -385,7 +386,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         />
       </div>
 
-      <div>
+      <div className="mt-2">
         <label className="block text-sm font-semibold">Car Model</label>
         <input
           type="text"
@@ -394,6 +395,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           className="w-full p-2 border rounded"
           required
         />
+      </div>
       </div>
 
       <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">

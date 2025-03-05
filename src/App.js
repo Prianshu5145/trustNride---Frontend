@@ -22,10 +22,10 @@ import TRANSFERWITHLOAN from './components/Teansferwithloan'
 import TRANSFERWITHOUTLOAN from './components/transferwithoutloan'
 import DispatchOptions from './components/rtodoc';
 import NocDocuments from './components/viewnocdoc';
-import TokenForm from './components/token';
-import DealForm from './components/deal';
+import SellTokenForm from './components/token';
+import SellDealForm from './components/deal';
 import PurchaseTokenForm from './components/purchasetoken';
-
+import PurchaseDealForm from './components/Purchasedeal';
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -63,9 +63,10 @@ function App() {
         
         <Route path="/rtodoc" element={<DispatchOptions/>} />
         <Route path="/viewnoc" element={<NocDocuments/>} />
-        <Route path="/token" element={<TokenForm/>} />
-        <Route path="/deal" element={<DealForm/>} />
+        <Route path="/Selltoken" element={<SellTokenForm/>} />
+        <Route path="/SellDeal" element={<SellDealForm/>} />
         <Route path="/purchasetoken" element={<PurchaseTokenForm/>} />
+        <Route path="/purchaseDeal" element={<PurchaseDealForm/>} />
        
       </Routes>
       

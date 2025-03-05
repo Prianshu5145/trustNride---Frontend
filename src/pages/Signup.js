@@ -8,9 +8,9 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('buyer'); // Default role
   const [message, setMessage] = useState(''); // Store success or error messages
-  const [loading, setLoading] = useState(false); // Loader state
+  
   const navigate = useNavigate();
-
+const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Start loader
@@ -30,7 +30,7 @@ const Signup = () => {
 
       if (response.ok) {
         setMessage(result.message || 'User signed up successfully!');
-        setTimeout(() => navigate('/login'), 1000); // Redirect to login
+        setTimeout(() => navigate('/login'), 2000); // Redirect to login
       } else {
         setMessage(result.message || 'Error signing up');
       }
@@ -133,23 +133,40 @@ const Signup = () => {
 
       <button
         type="submit"
-        disabled={loading}
-        className={`w-full p-2 rounded-lg ${
-          loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'
-        } text-white`}
+        className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition mt-5"
       >
-        {loading ? 'Signing Up...' : 'Sign Up'}
+        {loading ? (
+          <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+            {/* Spinner and Text Container */}
+            <div className="flex flex-col items-center">
+              {/* Outer Circle with Gradient */}
+              <div className="relative w-28 h-28 mb-4">
+                <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+
+                {/* Inner Circle */}
+                <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                  {/* Logo with Flip Animation */}
+                  <img
+                    src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                    alt="Car Logo"
+                    className="w-12 h-12 animate-flip"
+                  />
+                </div>
+              </div>
+
+              {/* Text Below the Spinner */}
+              <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                <strong> PLEASE WAIT.... </strong>
+              </p>
+            </div>
+          </div>
+        ) : (
+          'Sign Up'
+        )}
       </button>
     </form>
 
-    {loading && (
-      <div className="fixed inset-0 bg-white bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 border-4 border-t-transparent border-blue-500 rounded-full animate-spin"></div>
-          <p className="mt-4 text-blue-700 font-medium">Please wait...</p>
-        </div>
-      </div>
-    )}
+    
   </div></div>
   );
 };

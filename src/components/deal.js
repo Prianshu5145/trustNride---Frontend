@@ -3,7 +3,7 @@ import axios from 'axios';
 import withAuthorization from "../components/authentication";
 import Navbar from '../components/Navbar';
 import { jsPDF } from 'jspdf';
-const DealForm = () => {
+const SellDealForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
     totalAmountGotTillNowExcludingToken: '',
@@ -355,11 +355,12 @@ const pdfBlob = doc.output("blob");
 formData.totalAmountGotFromCustomerTillNowIncludingToken = Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount);
 formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount);
   return (
-    <div><Navbar/><div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-    <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Deal Form</h1>
+    <div><Navbar/><div className="max-w-4xl mx-auto p-6 bg-white  shadow-lg rounded-lg ">
+    <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Sell Deal Form</h1>
     <h1 className="text-1xl font-bold text-gray-900 mb-6">Note:  Do not Consider any RTO Charges in your Mind while filling this form. This form is only for Deal Amount Details</h1>
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-6 ">
+      <div className="grid grid-cols-1 sm:grid-cols-1 gap-0 ">
+        <div className="relative w-full p-4 border border-red-700 rounded ">
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
             Total Amount Received <strong className="font-bold text-black">Excluding</strong> Token
@@ -369,7 +370,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotTillNowExcludingToken"
             value={formData.totalAmountGotTillNowExcludingToken}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -381,7 +382,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotTillNowExcludingToken"
             value={ numberToWordsIndian(`${formData.totalAmountGotTillNowExcludingToken}`)}
             
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
        
@@ -394,7 +395,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountPaidToSatish"
             value={formData.amountPaidToSatish}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -406,7 +407,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountPaidToSatishBy"
             value={formData.amountPaidToSatishBy}
             onChange={handleChange}
-            className="border rounded p-2 bg-white"
+            className="border rounded p-2 bg-white mb-3"
           >
             <option value="cash">Cash</option>
             <option value="inpersonalaccount">In Personal Account</option>
@@ -425,7 +426,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountPaidToPiyush"
             value={formData.amountPaidToPiyush}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -436,7 +437,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountPaidToPiyushBy"
             value={formData.amountPaidToPiyushBy}
             onChange={handleChange}
-            className="border rounded p-2 bg-white"
+            className="border rounded p-2 bg-white bg-3"
           >
             <option value="cash">Cash</option>
             <option value="inpersonalaccount">In Personal Account</option>
@@ -446,7 +447,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
           </select>
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+          <label className="text-gray-700 font-medium mt-4">
             Amount Paid to Company Account
           </label>
           <input
@@ -454,11 +455,11 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountPaidToCompanyAccount"
             value={formData.amountPaidToCompanyAccount}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 bg-3"
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+          <label className="text-gray-700 font-medium mt-4">
             Amount Paid to Ompraksh
           </label>
           <input
@@ -466,18 +467,18 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountPaidToOmprakash"
             value={formData.amountPaidToOmprakash}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 bg-3"
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+          <label className="text-gray-700 font-medium mt-4">
             Amount Paid to Omprakash By
           </label>
           <select
             name="amountPaidToOmprakashBy"
             value={formData.amountPaidToOmprakashBy}
             onChange={handleChange}
-            className="border rounded p-2 bg-white"
+            className="border rounded p-2 bg-white mt-2"
           >
             <option value="cash">Cash</option>
             <option value="inpersonalaccount">In Personal Account</option>
@@ -489,14 +490,14 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
         
 
         <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+          <label className="text-gray-700 font-medium mt-4">
             Customer Payment Mode
           </label>
           <select
             name="CustomerPaymentMode"
             value={formData.CustomerPaymentMode}
             onChange={handleChange}
-            className="border rounded p-2 bg-white"
+            className="border rounded p-2 bg-white mt-2"
           >
             <option value="cash">Cash</option>
             <option value="In Account">In Account</option>
@@ -504,9 +505,11 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             
           </select>
         </div>
+        </div>
         
-        <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+        <div className="relative w-full p-4 border border-green-700 rounded ">
+        <div className="flex flex-col ">
+          <label className="text-gray-700 font-medium mb-3">
             Token Amount Received
           </label>
           <input
@@ -514,11 +517,11 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="tokenAmount"
             value={formData.tokenAmount}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+          <label className="text-gray-700 font-medium mb-3">
             Token Amount Received <strong>in Words</strong>
           </label>
           <input
@@ -526,20 +529,20 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="tokenAmountinwords"
             value={numberToWordsIndian(`${formData.tokenAmount}`)}
            
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
 
         <div className="flex flex-col">
-          <label className="text-gray-700 font-medium mb-2">
+          <label className="text-gray-700 font-medium mb-3">
             Token Amount Paid to
           </label>
           <select
             name="tokenAmountPaidTo"
             value={formData.tokenAmountPaidTo}
             onChange={handleChange}
-            className="border rounded p-2 bg-white"
+            className="border rounded p-2 bg-white mb-3"
           >
             <option value="piyush">Piyush</option>
             <option value="omprakash">Omprakash</option>
@@ -563,7 +566,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="dealAmount"
             value={formData.dealAmount}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -575,7 +578,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotTillNowExcludingToken"
             value={ numberToWordsIndian(`${formData.dealAmount}`)}
             
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -587,7 +590,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="anyFinalDiscountFromDealAmount"
             value={formData.anyFinalDiscountFromDealAmount}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -599,7 +602,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotTillNowExcludingToken"
             value={ numberToWordsIndian(`${formData.anyFinalDiscountFromDealAmount}`)}
             
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -612,7 +615,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotFromCustomerTillNowIncludingToken"
             value={Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -624,7 +627,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotTillNowExcludingToken"
             value={ numberToWordsIndian(`${Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}`)}
             
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -636,7 +639,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="amountComeFromLoan"
             value={formData.amountComeFromLoan}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
         <div className="flex flex-col">
@@ -648,7 +651,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="totalAmountGotTillNowExcludingToken"
             value={ numberToWordsIndian(`${formData.amountComeFromLoan}`)}
             
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -662,13 +665,14 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="holdFromCustomer"
             value={Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount)}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
+        </div>
         </div>
      
         
-
-        <div className="flex flex-col">
+<div className="relative w-full p-4 border border-blue-700 rounded" >
+<div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
            Car Title
           </label>
@@ -677,7 +681,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="carTitle"
             value={formData.carTitle}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -690,7 +694,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="carRegistrationNumber"
             value={formData.carRegistrationNumber}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -704,7 +708,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="customerWhatsappNumber"
             value={formData.customerWhatsappNumber}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -717,7 +721,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="customerMobileNumber"
             value={formData.customerMobileNumber}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -730,7 +734,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="customerName"
             value={formData.customerName}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
 
@@ -744,9 +748,11 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             name="customerAddress"
             value={formData.customerAddress}
             onChange={handleChange}
-            className="border rounded p-2"
+            className="border rounded p-2 mb-3"
           />
         </div>
+</div>
+        
 
 
 
@@ -813,4 +819,4 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
   );
 };
 
-export default  withAuthorization(DealForm, ["Employee"]);
+export default  withAuthorization(SellDealForm, ["Employee"]);

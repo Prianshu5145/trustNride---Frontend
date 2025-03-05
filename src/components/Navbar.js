@@ -28,7 +28,7 @@ const Navbar = () => {
 </Link>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex space-x-6 text-black">
+      <div className="hidden md:flex space-x-10 text-black">
         <Link to="/gallery" className="hover:text-gray-400">Gallery</Link>
         <Link to="/buy" className="hover:text-gray-400">Buy a Car</Link>
         <Link to="/sell" className="hover:text-gray-400">Sell a Car</Link>
@@ -55,10 +55,10 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
                   <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
-                  <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
                   <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
-
-                  <Link to="/deal" className="block px-4 py-2 hover:bg-gray-600">Generate Deal Invoice</Link>
+                  <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
+                  <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
+                  <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
                  
                  
                 </>
@@ -101,7 +101,7 @@ const Navbar = () => {
         <div className="md:hidden absolute top-16 right-0 bg-gray-900 text-white w-1/2 z-50 shadow-lg">
           {isLoggedIn && (
             <>
-              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-600">Profile</Link>
+             <Link to="/profile" className="block px-4 py-2 hover:bg-gray-600">Profile</Link>
               <Link to="/logout" className="block px-4 py-2 hover:bg-gray-600">Logout</Link>
 
               {role === 'buyer' && (
@@ -123,12 +123,13 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
                   <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
-                  <Link to="/token" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
+                  
                   <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
-                  <Link to="/deal" className="block px-4 py-2 hover:bg-gray-600">Generate Deal Invoice</Link>
+                  <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
+                  <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
+                  <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
                   
-                  
-
+              
                   
                 </>
               )}

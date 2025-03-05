@@ -4,7 +4,7 @@ import { jsPDF } from 'jspdf';
 import { toWords } from 'number-to-words';
 import withAuthorization from "../components/authentication";
 import Navbar from '../components/Navbar';
-const TokenForm = () => {
+const SellTokenForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
     carTitle: '',
@@ -156,8 +156,7 @@ const TokenForm = () => {
     
     
     // Example usage
-    const number = 499999;
-    console.log(numberToWordsIndian(number));  // Output: "FOUR LAKH NINETY NINE THOUSAND NINE HUNDRED NINETY NINE"
+     // Output: "FOUR LAKH NINETY NINE THOUSAND NINE HUNDRED NINETY NINE"
     const h = numberToWordsIndian(`${formData.tokenAmount}`);    
 
     // PAYMENT MODE
@@ -327,8 +326,9 @@ const handleSubmit = async (e) => {
 
   return (
     <div><Navbar/><div className="container mx-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
-    <h1 className="text-2xl font-bold mb-5">Token Application Form</h1>
+    <h1 className="text-2xl font-bold mb-5">Sell Token Form</h1>
     <form onSubmit={handleSubmit}>
+      <div className="relative w-full p-4 border border-blue-700 rounded">
       <div className="mb-4">
         <label className="block text-gray-700">Car Title</label>
         <input
@@ -406,6 +406,8 @@ const handleSubmit = async (e) => {
           className="w-full p-2 border border-gray-300 rounded mt-2"
         />
       </div>
+      </div>
+      <div className="relative w-full p-4 border border-red-700 rounded">
       <div className="mb-4">
         <label className="block text-gray-700">Token Amount</label>
         <input
@@ -512,6 +514,8 @@ className="border rounded px-2 py-1"
           className="w-full p-2 border border-gray-300 rounded mt-2"
         />
       </div>
+      </div>
+      <div className="relative w-full p-4 border border-green-700 rounded">
       <div className="mb-4">
         <label className="block text-gray-700">Car Registration Number</label>
         <input
@@ -537,12 +541,14 @@ className="border rounded px-2 py-1"
           <option value="Cash">Cash</option>
         </select>
       </div>
+      </div>
+      
       
       
       <div>
       <button
         type="submit"
-        className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+        className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition mt-5"
       >
         {loading ? (
           <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
@@ -598,4 +604,4 @@ className="border rounded px-2 py-1"
   );
 };
 
-export default   withAuthorization(TokenForm, ["Employee"]);
+export default   withAuthorization(SellTokenForm, ["Employee"]);
