@@ -298,7 +298,7 @@ const handleSubmit1 = async (e) => {
       
       
       <div className="mb-4">
-        <label className="block text-gray-700">Customer Email (Optional)</label>
+        <label className="block text-gray-700">Customer Email</label>
         <input
           type="email"
           name="customerEmail"
