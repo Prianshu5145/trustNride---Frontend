@@ -99,49 +99,51 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
     
   };
    // State to handle any errors
-      function numberToWordsIndian(num) {
-        const belowTwenty = [
-          "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-          "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
-        ];
-      
-        const tens = [
-          "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
-        ];
-      
-        const placeValues = ["", "Thousand", "Lakh", "Crore"];
-      
-        if (num === 0) return belowTwenty[0];
-      
-        let parts = []; // Store number parts in words
-        let place = 0;  // Index to track Thousand, Lakh, Crore
-        
-        while (num > 0) {
-          let chunk;
-          if (place === 0) {
-            // First chunk is three digits
-            chunk = num % 1000;
-            num = Math.floor(num / 1000);
-          } else {
-            // After first chunk, all others are two digits
-            chunk = num % 100;
-            num = Math.floor(num / 100);
-          }
-      
-          if (chunk > 0) {
-            parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
-          }
-          place++;
-        }
-      
-        return parts.join(" ").trim().toUpperCase();
+   const numberToWordsIndian = (num) => {
+    if (num === 0) return "ZERO"; // Explicitly handle 0 case
+  
+    const belowTwenty = [
+      "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+    ];
+  
+    const tens = [
+      "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+    ];
+  
+    const placeValues = ["", "Thousand", "Lakh", "Crore"];
+  
+    let parts = []; // Store number parts in words
+    let place = 0;  // Index to track Thousand, Lakh, Crore
+  
+    while (num > 0) {
+      let chunk;
+      if (place === 0) {
+        // First chunk is three digits
+        chunk = num % 1000;
+        num = Math.floor(num / 1000);
+      } else {
+        // After first chunk, all others are two digits
+        chunk = num % 100;
+        num = Math.floor(num / 100);
       }
-      
-      function convertChunk(num, belowTwenty, tens) {
-        if (num < 20) return belowTwenty[num];
-        if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
-        return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
+  
+      if (chunk > 0) {
+        const words = convertChunk(chunk, belowTwenty, tens);
+        parts.unshift(words + (placeValues[place] ? " " + placeValues[place] : ""));
       }
+      place++;
+    }
+  
+    return parts.length > 0 ? parts.join(" ").trim().toUpperCase() : "ZERO";
+  }
+  
+  function convertChunk(num, belowTwenty, tens) {
+    if (num === 0) return ""; // Ensure empty chunks don't contribute
+    if (num < 20) return belowTwenty[num];
+    if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
+    return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
+  }
   const generateInvoice = () => {
       const doc = new jsPDF({
         unit: 'mm',
@@ -190,8 +192,8 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
       
       
       // Example usage
-      const number = 499999;
-      console.log(numberToWordsIndian(number));  // Output: "FOUR LAKH NINETY NINE THOUSAND NINE HUNDRED NINETY NINE"
+     
+        // Output: "FOUR LAKH NINETY NINE THOUSAND NINE HUNDRED NINETY NINE"
       const h = numberToWordsIndian(`${tokenAmount}`);    
   
       // PAYMENT MODE
@@ -363,6 +365,16 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           required
         />
       </div>
+      <div className="mt-2">
+        <label className="block text-sm font-semibold">Token Amount <strong>in Words</strong></label>
+        <input
+          type="text"
+          value={numberToWordsIndian(Number(tokenAmount))}
+         // onChange={(e) => setApproxDealAmount(e.target.value)}
+          className="w-full p-2 border rounded"
+         // required
+        />
+      </div>
 
       <div className="mt-2">
         <label className="block text-sm font-semibold">Approx Deal Amount</label>
@@ -372,6 +384,16 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           onChange={(e) => setApproxDealAmount(e.target.value)}
           className="w-full p-2 border rounded"
           required
+        />
+      </div>
+      <div className="mt-2">
+        <label className="block text-sm font-semibold">Approx Deal Amount in <strong>in Words</strong></label>
+        <input
+          type="text"
+          value={numberToWordsIndian(Number(approxDealAmount))}
+         // onChange={(e) => setApproxDealAmount(e.target.value)}
+          className="w-full p-2 border rounded"
+         // required
         />
       </div>
 

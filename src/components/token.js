@@ -34,7 +34,9 @@ const SellTokenForm = () => {
   
     const [tokenCount, setTokenCount] = useState(null); // State to hold the token count
     const [error, setError] = useState(null); // State to handle any errors
-    function numberToWordsIndian(num) {
+    const numberToWordsIndian = (num) => {
+      if (num === 0) return "ZERO"; // Explicitly handle 0 case
+    
       const belowTwenty = [
         "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
         "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
@@ -46,11 +48,9 @@ const SellTokenForm = () => {
     
       const placeValues = ["", "Thousand", "Lakh", "Crore"];
     
-      if (num === 0) return belowTwenty[0];
-    
       let parts = []; // Store number parts in words
       let place = 0;  // Index to track Thousand, Lakh, Crore
-      
+    
       while (num > 0) {
         let chunk;
         if (place === 0) {
@@ -64,15 +64,17 @@ const SellTokenForm = () => {
         }
     
         if (chunk > 0) {
-          parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
+          const words = convertChunk(chunk, belowTwenty, tens);
+          parts.unshift(words + (placeValues[place] ? " " + placeValues[place] : ""));
         }
         place++;
       }
     
-      return parts.join(" ").trim().toUpperCase();
+      return parts.length > 0 ? parts.join(" ").trim().toUpperCase() : "ZERO";
     }
     
     function convertChunk(num, belowTwenty, tens) {
+      if (num === 0) return ""; // Ensure empty chunks don't contribute
       if (num < 20) return belowTwenty[num];
       if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
       return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
@@ -261,6 +263,7 @@ const SellTokenForm = () => {
     doc.text('5. Jurisdiction: Any disputes are subject to the jurisdiction of Ambedkarnagar Court.', 5, 314);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
+    doc.setTextColor(100, 149, 237);
     doc.text('This is a system-generated invoice, e signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 346);
 
     // Open PDF in a new tab

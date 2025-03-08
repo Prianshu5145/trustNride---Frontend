@@ -71,43 +71,54 @@ const fetchdealCount = async () => {
 
 
 
-  function numberToWordsIndian(num) {
-    const belowTwenty = [
-      "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
-    ];
-  
-    const tens = [
-      "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
-    ];
-  
-    const placeValues = ["", "Thousand", "Lakh", "Crore"];
-  
-    if (num === 0) return belowTwenty[0];
-  
-    let parts = []; // Store number parts in words
-    let place = 0;  // Index to track Thousand, Lakh, Crore
+ // function numberToWordsIndian(num) {
+
+
+    const numberToWordsIndian = (num) => {
+      if (num === 0) return "ZERO"; // Explicitly handle 0 case
     
-    while (num > 0) {
-      let chunk;
-      if (place === 0) {
-        // First chunk is three digits
-        chunk = num % 1000;
-        num = Math.floor(num / 1000);
-      } else {
-        // After first chunk, all others are two digits
-        chunk = num % 100;
-        num = Math.floor(num / 100);
+      const belowTwenty = [
+        "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+        "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+      ];
+    
+      const tens = [
+        "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+      ];
+    
+      const placeValues = ["", "Thousand", "Lakh", "Crore"];
+    
+      let parts = []; // Store number parts in words
+      let place = 0;  // Index to track Thousand, Lakh, Crore
+    
+      while (num > 0) {
+        let chunk;
+        if (place === 0) {
+          // First chunk is three digits
+          chunk = num % 1000;
+          num = Math.floor(num / 1000);
+        } else {
+          // After first chunk, all others are two digits
+          chunk = num % 100;
+          num = Math.floor(num / 100);
+        }
+    
+        if (chunk > 0) {
+          const words = convertChunk(chunk, belowTwenty, tens);
+          parts.unshift(words + (placeValues[place] ? " " + placeValues[place] : ""));
+        }
+        place++;
       }
-  
-      if (chunk > 0) {
-        parts.unshift(convertChunk(chunk, belowTwenty, tens) + (placeValues[place] ? " " + placeValues[place] : ""));
-      }
-      place++;
+    
+      return parts.length > 0 ? parts.join(" ").trim().toUpperCase() : "ZERO";
     }
-  
-    return parts.join(" ").trim().toUpperCase();
-  }
+    
+    function convertChunk(num, belowTwenty, tens) {
+      if (num === 0) return ""; // Ensure empty chunks don't contribute
+      if (num < 20) return belowTwenty[num];
+      if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
+      return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
+    }
   
   function convertChunk(num, belowTwenty, tens) {
     if (num < 20) return belowTwenty[num];
@@ -328,6 +339,7 @@ const fetchdealCount = async () => {
     doc.text('By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms\nand Conditions,acknowledges the sale, and accepts all liabilities and responsibilities as outlined.', 5, 322);
     doc.setFont("helvetica", "normal"); 
     doc.setFontSize(10);
+    doc.setTextColor(100, 149, 237);
     doc.text(' This is a system-generated invoice, Digitally signed and approved for authenticity. For inquiries or support,please visit our website\n at https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 357);
 
     // Open PDF in a new tab
@@ -340,7 +352,7 @@ const fetchdealCount = async () => {
 
 //doc.save('example.pdf');
 const pdfBlob = doc.output("blob");
- return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
+ return new File([pdfBlob], "Deal_invoice_Agreement.pdf", { type: "application/pdf" });
 };
 
 
