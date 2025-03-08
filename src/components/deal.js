@@ -247,7 +247,7 @@ const fetchdealCount = async () => {
         ['DELIVERY - INVOICE FOR PAYMENT RECEIVED'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.customerWhatsappNumber}`,
-            `INVOICE No : D${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
+            `INVOICE No : DS${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REGISTRATION NO.', 'Payment Received', 'Final Deal Amount'], // Row 3
         ['1', `Vehicle Payment of - ${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
