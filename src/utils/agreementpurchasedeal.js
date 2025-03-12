@@ -101,7 +101,7 @@ CashAmount,
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
         'PNG',
         0,
         0,
@@ -442,7 +442,7 @@ doc.text(`2. If the responsibility of loan closure lies with the customer, it is
    const imgWidth2 = 210; // A4 width in mm
     const imgHeight2 = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
         'PNG',
         0,
         0,
@@ -561,13 +561,13 @@ doc.text(`2. If the responsibility of loan closure lies with the customer, it is
     doc.text(`ii.  There are no challans / road tax / interstate NOCs issued/ other encumbrances on this vehicle apart from the what is mentioned in this document.`,4,250,{maxWidth:205})
    
    doc.text(` ACKNOWLEDGED & ACCEPTED`,4,269)
-   doc.text(` Customer's Digital Aadhaar Signature`,4,317)
+   doc.text(` Customer's Digital Aadhaar Signature`,4,315)
    
    doc.addImage(
        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
        'PNG',
        pageWidth - 40,
-       278,
+       277,
        imgWidth1,
        imgHeight1
    );
@@ -575,24 +575,24 @@ doc.text(`2. If the responsibility of loan closure lies with the customer, it is
        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
        'PNG',
        pageWidth - 80,
-       278,
+       277,
        imgWidth1,
        imgHeight1
    );
-   doc.text(`Authorised Signatory`, pageWidth - 40, 304);
+   doc.text(`Authorised Signatory`, pageWidth - 40, 303);
    doc.setFontSize(8);
-   doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 310);
+   doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 309);
    doc.setFont("helvetica", "normal");
    doc.setFontSize(10);
    doc.setTextColor(100, 149, 237); // Light blue color
-   doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 321);
+   doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 320);
    
    
    // #rd Page
    doc.addPage([210, 337]);
    
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
         'PNG',
         0,
         0,
@@ -653,20 +653,20 @@ doc.setTextColor(100, 149, 237); // Light blue color
 doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 332);
 doc.setTextColor(0, 0, 0); // RGB for black
 doc.setFontSize(10);
-doc.text(`Authorised Signatory`, pageWidth - 40, 321);
+doc.text(`Authorised Signatory`, pageWidth - 40, 320);
 doc.setFontSize(8);
-doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 325);
+doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 324);
 
 doc.setFontSize(10);
-doc.text(` ACKNOWLEDGED & ACCEPTED`,4,287)
+doc.text(` ACKNOWLEDGED & ACCEPTED`,4,286)
 doc.setFontSize(10);
-   doc.text(` Customer's Digital Aadhaar Signature`,4,328)
+   doc.text(` Customer's Digital Aadhaar Signature`,4,327)
    
    doc.addImage(
        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
        'PNG',
        pageWidth - 40,
-       297,
+       296,
        imgWidth1,
        imgHeight1
    );
@@ -674,7 +674,7 @@ doc.setFontSize(10);
        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
        'PNG',
        pageWidth - 80,
-       297,
+       296,
        imgWidth1,
        imgHeight1
    );
@@ -685,7 +685,7 @@ doc.setFontSize(10);
    doc.addPage([210, 250]);
    
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
         'PNG',
         0,
         0,
@@ -714,12 +714,12 @@ doc.setFontSize(10);
 doc.text(`ACKNOWLEDGED & ACCEPTED`,4,205)
    
 doc.setFontSize(11);
-doc.text(` Customer's Digital Aadhaar Signature`,4,241)
+doc.text(` Customer's Digital Aadhaar Signature`,4,240)
 
 doc.setFontSize(10);
 doc.text(`Authorised Signatory`, pageWidth - 40, 228);
 doc.setFontSize(8);
-doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 237);
+doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 236);
 doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
   'PNG',
@@ -745,7 +745,7 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
 doc.addPage([210, 296]);
    
 doc.addImage(
-    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
     'PNG',
     0,
     0,
@@ -866,17 +866,17 @@ doc.text(`List Of Items Collected From Owner During Procurement`,pageWidth/2-60,
 doc.text(`ACKNOWLEDGED & ACCEPTED`,4,249)
    
 doc.setFontSize(11);
-doc.text(` Customer's Digital Aadhaar Signature`,4,288)
+doc.text(` Customer's Digital Aadhaar Signature`,4,286)
 
 doc.setFontSize(10);
-doc.text(`Authorised Signatory`, pageWidth - 40, 279);
+doc.text(`Authorised Signatory`, pageWidth - 40, 278);
 doc.setFontSize(8);
-doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 284);
+doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 283);
 doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
   'PNG',
   pageWidth - 40,
-  255,
+  254,
   imgWidth1,
   imgHeight1
 );
@@ -884,13 +884,13 @@ doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
   'PNG',
   pageWidth - 80,
-  255,
+  254,
   imgWidth1,
   imgHeight1
 );
 doc.setFontSize(10);
 doc.setTextColor(100, 149, 237); // Light blue color
-doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 292);
+doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 291);
    
    
    
@@ -898,7 +898,7 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
    doc.addPage([210, 373]);
    
 doc.addImage(
-    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
     'PNG',
     0,
     0,
@@ -955,7 +955,7 @@ doc.text(`1. TRUST N RIDE Services (TRUST N RIDE) is a partnership firm register
 doc.text(`ACKNOWLEDGED & ACCEPTED`,4,250)
    
 doc.setFontSize(11);
-doc.text(` Customer's Digital Aadhaar Signature`,4,288)
+doc.text(` Customer's Digital Aadhaar Signature`,4,287)
 
 doc.setFontSize(10);
 doc.text(`Authorised Signatory`, pageWidth - 40, 278);
@@ -985,11 +985,11 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
 
    
    
-  //var blobUrl = doc.output('bloburl');
+  var blobUrl = doc.output('bloburl');
   
-//window.open(blobUrl, '_blank');
+window.open(blobUrl, '_blank');
   // doc.save();
-  const pdfBlob = doc.output("blob");
-   return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
+  //const pdfBlob = doc.output("blob");
+  // return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
 };
 

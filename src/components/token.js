@@ -120,7 +120,7 @@ const SellTokenForm = () => {
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
         'PNG',
         0,
         0,

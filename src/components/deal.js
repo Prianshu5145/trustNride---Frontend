@@ -3,6 +3,7 @@ import axios from 'axios';
 import withAuthorization from "../components/authentication";
 import Navbar from '../components/Navbar';
 import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 const SellDealForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ const SellDealForm = () => {
     holdFromCustomer: '',
     amountComeFromLoan: '',
     totalAmountGotFromCustomerTillNowIncludingToken: '',
+    loanamountstatus:'Not applicable',
     carTitle: '',
     carRegistrationNumber: '',
     customerWhatsappNumber: '',
@@ -144,6 +146,7 @@ const fetchdealCount = async () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    
     try {
       // Generate the PDF file
       const pdfFile = await generateInvoice();
@@ -159,7 +162,7 @@ const fetchdealCount = async () => {
   
       // Submit form data to the backend
       const response = await axios.post(
-        'https://trustnride-backend.onrender.com/api/deal/create',
+        'https://trustnride-backend-production.up.railway.app/api/deal/create',
         formDataToSend,
         {
           headers: {
@@ -185,14 +188,14 @@ const fetchdealCount = async () => {
   const generateInvoice = () => {
     const doc = new jsPDF({
       unit: 'mm',
-      format: [210, 364], // A4 width (210mm) and increased height (350mm)
+      format: [210, 319], // A4 width (210mm) and increased height (350mm)
     });
 
     // Full-width header image
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
         'PNG',
         0,
         0,
@@ -207,7 +210,13 @@ const fetchdealCount = async () => {
     // Set font to bold for REF and Date
     doc.setFont('helvetica', 'bold');
     doc.text('REF......', 8, 60);
+    doc.setTextColor(139, 0, 0); // Dark Red - bold and authoritative
 
+
+    doc.setFontSize(15);
+   
+    doc.text(`PAYMENT DETAILS — ${formData.carRegistrationNumber}`, pageWidth - 158, 58);
+    doc.setTextColor(0, 0, 0);
     // Date
     const indianDate = new Date(Date.now()).toLocaleDateString("en-IN", {
       timeZone: "Asia/Kolkata",
@@ -220,7 +229,7 @@ const fetchdealCount = async () => {
     // Table settings
     const margin = 20; // Left margin
     const startY = 68; // Start position for the table
-    const rowHeights = [8, 37, 13, 50, 34]; // Row heights
+    const rowHeights = [8, 37, 13, 50, 22]; // Row heights
     const colWidths = [81, 91]; // Columns for row 2 (example)
 
     
@@ -251,8 +260,8 @@ const fetchdealCount = async () => {
             `INVOICE No : DS${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REGISTRATION NO.', 'Payment Received', 'Final Deal Amount'], // Row 3
-        ['1', `Vehicle Payment of - ${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
-        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: Rs. ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}\n-----------------------------------------------------------------------------------\nToken Payment Received Earlier: Rs. ${formData.tokenAmount}\nReceivable Loan Payment Due: Rs. ${formData.amountComeFromLoan}\nDue Payment from Customer: Rs. ${formData.holdFromCustomer}+RTO CHARGES`], // Row 5
+        ['1', `Vehicle Payment of — ${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4
+        [`Payment Received in Rupees:\nRUPEES ${h} ONLY`, `Payment Received: Rs. ${formData.totalAmountGotTillNowExcludingToken}\nPayment Mode: ${formData.CustomerPaymentMode}`], // Row 5
     ];
 
     let y = startY;
@@ -299,52 +308,151 @@ const fetchdealCount = async () => {
     drawRow(tableData[3], [20, 61, 30.344, 30.344, 30.344], rowHeights[3]); // Row 4: 5 columns
     drawRow(tableData[4], colWidths, rowHeights[4]); // Row 5: 2 columns
 
-    doc.text(`For TRUST N RIDE`, pageWidth - 50, 214);
-    doc.text(`Place of Supply: Uttar Pradesh`, 8, 217);
-
-    const imgWidth1 = 40; // A4 width in mm
-    const imgHeight1 = 20;
-    doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
-        'PNG',
-        pageWidth - 45,
-        217,
-        imgWidth1,
-        imgHeight1
-    );
-    doc.addImage(
-        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
-        'PNG',
-        pageWidth - 85,
-        217,
-        imgWidth1,
-        imgHeight1
-    );
-
-    doc.text(`Proprietor`, pageWidth - 40, 242);
-    doc.line(0, 244, pageWidth, 244);
-    doc.setFont("helvetica", "bold"); // Use "bold" for a darker heading
-    doc.setFontSize(18); // Adjust the size for a heading style
-
-    // Add the text with a bold style
-    doc.text('Terms and Conditions', 6, 250);
-    doc.setFontSize(10);
-    doc.text('1. Non-Returnable After Delivery: Once the vehicle is delivered, it is understood that the Customer has thoroughly\n    inspected it and accepted its condition. Therefore, the vehicle is considered sold and cannot be returned under any\n    circumstances, except in the case of loan cancellation by the loan company.', 5, 255);
-    doc.text('2. Due Payment from Customer: If this payment is not cleared, the vehicle transfer or NOC process will not be initiated.\n    Trust N Ride will try to complete the process within 90 working days from the date it is initiated.', 5, 269);
-    doc.text('3. Loan Cancellation: If a loan is canceled, Trust N Ride will seek alternative financing. If unsuccessful, the vehicle may\n    be retrieved, and a full refund issued, provided it’s in its original delivery condition.', 5, 278);
-    doc.text('4. Liability Transfer: After the digitally signed date and time, the customer assumes full responsibility for this vehicle.\n    Trust N Ride will not be held accountable for any incidents, damages, accidents, theft, misuse, challans, or third-party-\n    liabilities,including fines or compensation resulting from accidents. The customer will bear all legal, financial, and\n    operational responsibilities for the vehicle after the digitally signed date and time.', 5, 288);
-    doc.text('5. Pre-Liability: Any legal issues, incidents, challans, or claims related to the vehicle before the digitally signed date\n    and time will be handled by Trust N Ride, which assumes full responsibility until that time.', 5, 306);
-    
-    doc.text('6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.', 5, 316);
     doc.setFontSize(12);
-    doc.text('By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms\nand Conditions,acknowledges the sale, and accepts all liabilities and responsibilities as outlined.', 5, 322);
-    doc.setFont("helvetica", "normal"); 
-    doc.setFontSize(10);
-    doc.setTextColor(100, 149, 237);
-    doc.text(' This is a system-generated invoice, Digitally signed and approved for authenticity. For inquiries or support,please visit our website\n at https://www.trustnride.in/ or mail us at team@trustnride.in.', 3, 357);
+    doc.text(`Complete Payment Details — Till Now`, pageWidth / 2 - 37, 210);
+    doc.line(pageWidth / 2 - 47, 213, pageWidth / 2 + 50, 213);
+    const rowsheldback = [
+      ['Particular', 'Amount (INR)', 'Status'],
+      
+      [ 'Token Payment',  `${formData.tokenAmount}`,'Paid'],
+      [ 'Delivery — Payment',  `${formData.totalAmountGotTillNowExcludingToken}`,'Paid'],
 
-    // Open PDF in a new tab
-   //var blobUrl = doc.output('bloburl');
+     
+      [ 'Due Payment from Customer',  `${formData.holdFromCustomer} + RTO CHARGES`,'Not Paid'],
+  ];
+
+  if (Number(formData.amountComeFromLoan) >= 1000) {
+    rowsheldback.splice(3, 0, [
+      'Receivable Loan Payment from a Finance Company (as the Car is Sold With Finance in the Customer Name)',
+      `${formData.amountComeFromLoan}`,
+      `${formData.loanamountstatus}`
+      
+    ]);
+  }
+  
+autoTable(doc, { 
+    body: rowsheldback,
+    startY: 218, 
+    margin: { left: 10 }, 
+    styles: {
+        fontSize: 10,
+        cellPadding: 2,
+        lineWidth: 0.1,
+        lineColor: [0, 0, 0], // Black border
+        halign: 'left',
+        valign: 'middle',
+        textColor: [0, 0, 0], // Black text
+        fillColor: [255, 255, 255], // White background
+    },
+    columnStyles: {
+        0: { cellWidth: 100 }, // Adjusted to fit content
+        1: { cellWidth: 60 },
+        2: { cellWidth: 30 },
+       
+    },
+    didParseCell: function (data) {
+        if (data.row.index === 0) {
+            data.cell.styles.fontStyle = 'bold'; // Bold header
+        }
+       
+    },
+});
+
+doc.text(`For TRUST N RIDE`, pageWidth - 50, 272);
+const imgWidth1 = 40; // A4 width in mm
+   const imgHeight1 = 20;
+   doc.addImage(
+       'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
+       'PNG',
+       pageWidth - 40,
+       276,
+       imgWidth1,
+       imgHeight1
+   );
+   doc.addImage(
+       'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
+       'PNG',
+       pageWidth - 80,
+       276,
+       imgWidth1,
+       imgHeight1
+   );
+   doc.setFontSize(9);
+   doc.text(`Authorised Signatory`, pageWidth - 40, 300);
+   doc.setFontSize(8);
+   doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 306);
+   doc.setFontSize(10);
+   doc.text(` ACKNOWLEDGED & ACCEPTED`,4,276)
+   doc.text(`Customer's Digital Aadhaar Signature`, 6, 310);
+   doc.setFontSize(10);
+   doc.setTextColor(100, 149, 237); // Light blue color
+   doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 314);
+   
+   doc.addPage([210, 232]);
+   
+    doc.addImage(
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
+        'PNG',
+        0,
+        0,
+        imgWidth,
+        imgHeight
+    );
+    doc.line(0, 50, pageWidth, 50);
+    doc.setTextColor(139, 0, 0); // Dark Red - bold and authoritative
+
+
+    doc.setFontSize(15);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`VEHICLE SALE AGREEMENT & TERMS AND CONDITIONS`, pageWidth - 174, 58);
+    doc.setTextColor(0, 0, 0); // RGB for black
+    doc.setFontSize(11);
+    doc.text(`${formData.carRegistrationNumber}`, 7, 66);
+    doc.text(`Date: ${indianDate}`, pageWidth - 39, 66);
+
+    doc.setFontSize(11);
+
+    doc.text('1. Non-Returnable After Delivery: Once the vehicle is delivered, it is understood that the Customer has thoroughly inspected it and accepted its condition. Therefore, the vehicle is considered sold and cannot be returned under any circumstances, except in the case of loan cancellation by the loan company.', 5, 82,{maxWidth:206});
+   doc.text(`2. Due Payment from Customer: If this payment is not cleared, the vehicle transfer or NOC process will not be initiated.Trust N Ride will try to complete the process within 90 working days from the date it is initiated.`,5, 99,{maxWidth:206})
+   doc.text(`3. Loan Cancellation: If a loan is canceled, Trust N Ride will seek alternative financing. If unsuccessful, the vehicle may be retrieved, and a full refund issued, provided it’s in its original delivery condition.`,5, 111,{maxWidth:206})
+   doc.text(`4. Liability Transfer: After the digitally signed date and time, the customer assumes full responsibility for this vehicle. Trust N Ride will not be held accountable for any incidents, damages, accidents, theft, misuse, challans, or third-party-liabilities,including fines or compensation resulting from accidents. The customer will bear all legal, financial, and operational responsibilities for the vehicle after the digitally signed date and time.`,5, 124,{maxWidth:206})
+   doc.text(`5. Pre-Liability: Any legal issues, incidents, challans, or claims related to the vehicle before the digitally signed date and time will be handled by Trust N Ride, which assumes full responsibility until that time.`,5,148,{maxWidth:206})
+   doc.text(`6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.`,5, 160,{maxWidth:206})
+   
+   doc.setFontSize(13);
+   doc.text(`By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms and Conditions,acknowledges the sale, and accepts all liabilities and responsibilities\nas outlined.`,5, 171,{maxWidth:206})
+   doc.setFontSize(11);
+   doc.text(`For TRUST N RIDE`, pageWidth - 50, 272);
+  
+   doc.addImage(
+       'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
+       'PNG',
+       pageWidth - 40,
+       188,
+       imgWidth1,
+       imgHeight1
+   );
+   doc.addImage(
+       'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
+       'PNG',
+       pageWidth - 80,
+       188,
+       imgWidth1,
+       imgHeight1
+   );
+   doc.setFontSize(9);
+   doc.text(`Authorised Signatory`, pageWidth - 40, 211);
+   doc.setFontSize(8);
+   doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 216);
+   doc.setFontSize(10);
+   doc.text(` ACKNOWLEDGED & ACCEPTED`,4,194)
+   doc.text(`Customer's Digital Aadhaar Signature`, 6, 223);
+   doc.setFontSize(10);
+   doc.setTextColor(100, 149, 237); // Light blue color
+   doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 227);
+   
+   // Open PDF in a new tab
+  // var blobUrl = doc.output('bloburl');
   
      
    //window.open(blobUrl, '_blank');
@@ -667,7 +775,24 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             className="border rounded p-2 mb-3"
           />
         </div>
-
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-medium mb-3">
+            LOAN AMOUNT STATUS
+          </label>
+          <select
+            name="loanamountstatus"
+            value={formData.loanamountstatus}
+            onChange={handleChange}
+            className="border rounded p-2 bg-white mb-3"
+          >
+            <option value="Paid">Received in Bank</option>
+            <option value="Not Paid">Currently Not Recieved in Bank</option>
+            <option value="Not applicable">Not applicable</option>
+            
+            
+            
+          </select>
+        </div>
 
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
