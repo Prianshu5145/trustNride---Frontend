@@ -60,7 +60,7 @@ LoanpaymentStatus:'Not Applicable',
          const data = await response.json(); // Parse the JSON response
          const tokenCount = data.count; 
          // Extract the 'count' field from the response
-         setTokenCount(tokenCount-1);
+         setTokenCount(tokenCount+1);
          console.log('Token count:', tokenCount); // Log the token count (or do something with it)
          
          // You can use the tokenCount in your UI as needed, for example:
@@ -95,8 +95,8 @@ const handleSubmit = async (e) => {
   formData.AfterPickUpReceivableGD = JSON.stringify(selectedField2);
   setLoading(true); 
   
-// generateInvoiceandagreement(formData,tokenCount,Vehicledata);
-try {
+ //generateInvoiceandagreement(formData,tokenCount,Vehicledata);
+ try {
   // Generate the PDF file
   const pdfFile = await generateInvoiceandagreement(formData,tokenCount,Vehicledata);
  

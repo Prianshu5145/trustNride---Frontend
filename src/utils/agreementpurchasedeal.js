@@ -101,7 +101,7 @@ CashAmount,
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
         'PNG',
         0,
         0,
@@ -122,6 +122,12 @@ CashAmount,
     const indianDate = new Date(Date.now()).toLocaleDateString("en-IN", {
       timeZone: "Asia/Kolkata",
     });
+
+    const indianDateAfter90Days = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toLocaleDateString("en-IN", {
+      timeZone: "Asia/Kolkata",
+    });
+    
+   
     const indianTime = new Date().toLocaleTimeString("en-IN", {
       timeZone: "Asia/Kolkata",
       hour12: true, // Set to false for 24-hour format
@@ -222,9 +228,12 @@ doc.text(`Customer Bank Transfer Details`, pageWidth / 2 - 20, 209);
   const rows = [
     ['Particular', 'Amount(INR)', 'A/C Holder Name', 'A/C No.', 'IFSC', 'Bank Name', 'Status'],
     ['Delivery Payment to Customer', `${CxBankPaidAmount}`, `${AccountholderName}`, `${BankACCNo}`, `${BankIfsc}`, `${CxBankName}`, `Paid`],
-    ['Token Payment to Customer', `${tokenAmount}`, '', '', '', '', 'Paid']
+   
   ];
 
+
+if(Number(tokenAmount)>=1000){
+  rows.push(['Token Payment to Customer', `${tokenAmount}`, '', '', '', '', 'Paid']);}
   // Generate table with custom styles
   autoTable(doc, { // Use autoTable function directly
     
@@ -258,7 +267,7 @@ doc.text(`Customer Bank Transfer Details`, pageWidth / 2 - 20, 209);
   });
 
   // HELD BACK FIELD
-  doc.text(`Held-Back Amount Details`, pageWidth/2-20, 254);
+  doc.text(`Held-Back Amount Details`, pageWidth/2-20, 247);
 
 
   const rowsheldback = [
@@ -266,12 +275,12 @@ doc.text(`Customer Bank Transfer Details`, pageWidth / 2 - 20, 209);
     [
         'Party Peshi - Your presence will be required at RTO for ownership transfer', 
         `${PartipeshiHoldbackAmount}`, // Ensure value is not undefined
-        'Presence at RTO for RC transfer process - request raised within 120 days of car delivery, and amount will be released within 24 hours of Party Peshi',
-        '25-03-2025',
+        'Presence at RTO for RC transfer process - request raised within 90 days of car delivery, and amount will be released within 24 hours of Party Peshi',
+        `${indianDateAfter90Days}`,
         'Pending'
     ],
 ];
-console.log('m',Vehicledata.financed);
+
 
 
  if(Vehicledata.financed === true || Vehicledata.financed === "true") {
@@ -289,7 +298,7 @@ console.log('m',Vehicledata.financed);
 // Generate table with custom styles
 autoTable(doc, { 
     body: rowsheldback,
-    startY: 257, 
+    startY: 249, 
     margin: { left: 4 }, 
     styles: {
         fontSize: 10,
@@ -319,7 +328,7 @@ autoTable(doc, {
 
 // loan payment details
 if (Vehicledata.financed === true || Vehicledata.financed === "true") {
-  doc.text(`Loan Payment Details`, pageWidth/2-20, 302);
+  doc.text(`Loan Payment Details`, pageWidth/2-20, 296);
   const rowsloanpayment = [
     ['Particular','Vehicle Reg. No.', 'Amount(INR)', 'Loan Provider', 'Loan Closing Responsibility', 'Status'],
     ['Payment of Vehicle Loan Dues', `${Vehicledata.rc_number}`, `${LoanPaymentAmount}`, `${Vehicledata.financer}`, `${LoanPaidBy}`, `${LoanpaymentStatus}`],
@@ -330,7 +339,7 @@ if (Vehicledata.financed === true || Vehicledata.financed === "true") {
 autoTable(doc, { // Use autoTable function directly
   
   body: rowsloanpayment,
-  startY: 305, 
+  startY: 299, 
   margin: { left: 4 },// Adjust start position
   styles: {
     fontSize: 10, // Set font size
@@ -361,8 +370,8 @@ autoTable(doc, { // Use autoTable function directly
   
 // Cash Payment Amount 
 
-if(CashAmount !== undefined && CashAmount !== null && Number(CashAmount) >= 3000){
-  doc.text(`Cash Payment Details`, pageWidth/2-20, 334);
+if(CashAmount !== undefined && CashAmount !== null && Number(CashAmount) >= 1000){
+  doc.text(`Cash Payment Details`, pageWidth/2-20, 328);
 const rowsCashPayment = [
   ['Particular', 'Amount(INR)','Status',],
   ['Cash disbursement to the customer at the time of delivery.',`${CashAmount}`,`Paid`],
@@ -373,7 +382,7 @@ const rowsCashPayment = [
 autoTable(doc, { // Use autoTable function directly
   
   body: rowsCashPayment,
-  startY: 337, 
+  startY: 331, 
   margin: { left: 4 },// Adjust start position
   styles: {
     fontSize: 10, // Set font size
@@ -399,9 +408,9 @@ autoTable(doc, { // Use autoTable function directly
   },
 });
 }
-  
-doc.text(`Note : 1. If the responsibility of loan closure lies with the customer, it is understood that the loan dues of the vehicle are disbursed to the customer's personal bank account. Therefore, the customer must ensure loan closure within 48 hours of the deal and provide the NOC for the vehicle within 25-30 working days of loan closure. Failure to comply may result in the cancellation of the deal.`,4, 360,{maxWidth:205});
-  doc.text(`2. If Trust N Ride is responsible for loan closure, it will settle the mentioned amount within 48 hours. Any extra amount must be paid by the customer. However, providing the NOC remains the customer's responsibility, and failure to submit it on time may result in deal cancellation.`,4,373,{maxWidth:205})
+  doc.text(`Note : 1. The customer/owner must be present for partipeshi at the RTO Office during the vehicle transfer process. Failure to comply will result in deal cancellation and possible legal action.`,4,353,{maxWidth:205})
+doc.text(`2. If the responsibility of loan closure lies with the customer, it is understood that the loan dues of the vehicle are disbursed to the customer's personal bank account. Therefore, the customer must ensure loan closure within 48 hours of the deal and provide the NOC for the vehicle within 25-30 working days of loan closure. Failure to comply may result in the cancellation of the deal.`,4, 362,{maxWidth:205});
+  doc.text(`3. If Trust N Ride is responsible for loan closure, it will settle the mentioned amount within 48 hours. Any extra amount must be paid by the customer. However, providing the NOC remains the customer's responsibility, and failure to submit it on time may result in deal cancellation.`,4,375,{maxWidth:205})
    
    const imgWidth1 = 40; // A4 width in mm
    const imgHeight1 = 20;
@@ -421,18 +430,19 @@ doc.text(`Note : 1. If the responsibility of loan closure lies with the customer
        imgWidth1,
        imgHeight1
    );
-   doc.setFontSize(8);
+   doc.setFontSize(9);
    doc.text(`Authorised Signatory`, pageWidth - 40, 413);
+   doc.setFontSize(8);
    doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 418);
    doc.setFontSize(10);
-   doc.text(` ACKNOWLEDGED & ACCEPTED`,4,385)
+   doc.text(` ACKNOWLEDGED & ACCEPTED`,4,387)
    doc.text(`Customer's Digital Aadhaar Signature`, 6, 419);
 
    doc.addPage([210, 325]);
    const imgWidth2 = 210; // A4 width in mm
     const imgHeight2 = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
         'PNG',
         0,
         0,
@@ -582,7 +592,7 @@ doc.text(`Note : 1. If the responsibility of loan closure lies with the customer
    doc.addPage([210, 337]);
    
     doc.addImage(
-        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
         'PNG',
         0,
         0,
@@ -675,7 +685,7 @@ doc.setFontSize(10);
    doc.addPage([210, 250]);
    
     doc.addImage(
-        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
         'PNG',
         0,
         0,
@@ -735,7 +745,7 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
 doc.addPage([210, 296]);
    
 doc.addImage(
-    'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
     'PNG',
     0,
     0,
@@ -765,10 +775,9 @@ doc.text(`List Of Items Collected From Owner During Procurement`,pageWidth/2-60,
   
     let items = JSON.parse(formData.PickUpRecievedGD);
 
-    if (items.length === 0) {
-      console.log("No data available, skipping table generation.");
-      return;
-    }
+    if (items.length > 0) {
+      
+    
   
     
   
@@ -800,7 +809,7 @@ doc.text(`List Of Items Collected From Owner During Procurement`,pageWidth/2-60,
     });
    
 
-
+  }
 
 
 
@@ -889,7 +898,7 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
    doc.addPage([210, 373]);
    
 doc.addImage(
-    'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+    'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
     'PNG',
     0,
     0,
@@ -915,7 +924,7 @@ doc.text(`1. TRUST N RIDE Services (TRUST N RIDE) is a partnership firm register
    doc.text(`2. The transaction cannot be cancelled once the Delivery Payment is made to the customer’s bank account. However, if the Customer prefers to cancel the transaction before the release of delivery payment, then he/she shall be liable to immediately refund the Token amount along with any charges incurred/levied by TRUST N RIDE. In case of cancellation, TRUST N RIDE shall possess all rights to retain the original documents submitted by the Customer till such full amount is received by TRUST N RIDE and, in default, initiate appropriate legal action, if required.`,4,90,{ maxWidth: 205 })
    doc.text(`3. As per the new government guidelines, any diesel car that is more than 9 years 6 months old and any petrol car that is more than 14 years 6 months old will be considered as a scrap car in the Delhi-NCR region. For such vehicles, TRUST N RIDE will be unable to provide any assurances on the transfer of RC. Moreover, for these vehicles, TRUST N RIDE will not be liable for any damages (to the car or third-party vehicle or property) in any manner.`,4,110,{maxWidth:205})
    doc.setFont('helvetica', 'bold');
-   doc.text(` 4. The Customer represents to CARS24 as follows :`,4,130,{maxWidth:205})
+   doc.text(` 4. The Customer represents to TRUST N RIDE as follows :`,4,130,{maxWidth:205})
    doc.setFont('helvetica', 'NORMAL');
    doc.text(`i. That the Customer is the Registered/Legal owner and/or has valid authorization from the Registered owner of the Vehicle, the details of which have been mentioned on the front page of this Form and is legally competent to sell the Vehicle. In case of an Authorized Representative, the Authorized Representative represents that he/she is fully authorized and competent to act for and on behalf of the Registered owner for the sale of the Vehicle, including entering into the transaction with TRUST N RIDE and hereby indemnifies TRUST N RIDE in case of any contest/falsity to the said extent, if identified or comes to the knowledge of TRUST N RIDE even at a later stage.`,4,135,{maxWidth:205})
    doc.text(`ii. That as on date, there are no violations under applicable laws, including but not limited to any accident involving the Vehicle. The Customer acknowledges and indemnifies TRUST N RIDE for any pending violations or offenses, traffic issues, prior damage due to any accident or natural calamities, or otherwise involving the Vehicle. The Customer acknowledges that any misrepresented facts about the Vehicle or its condition shall make the Customer solely liable to compensate TRUST N RIDE for the same. In case TRUST N RIDE has to incur any cost(s)/loss(es) for any of the aforementioned representations in this paragraph, then the consequences and expenses shall be borne by the Customer, and TRUST N RIDE and/or the future buyer shall not be liable for the same in any manner whatsoever.`,4,158,{maxWidth:205})
@@ -936,14 +945,14 @@ doc.text(`1. TRUST N RIDE Services (TRUST N RIDE) is a partnership firm register
    doc.text(`11. In case of a scrap vehicle, the Customer acknowledges and accepts that TRUST N RIDE, to the best of its efforts, shall be competent and possess all rights to call upon the Customer for any statutory or regulatory formalities, and the Customer shall cooperate with TRUST N RIDE for the same. The Customer acknowledges that he/she shall be responsible for collecting the chassis plate of the Vehicle from TRUST N RIDE's regional support center as and when suggested by TRUST N RIDE or within 45-60 days from the delivery of the vehicle, whichever is later. TRUST N RIDE shall not be liable to provide the chassis plate in case of any failure to collect it within the specified time by the Customer, and the Customer shall be solely liable for any consequences arising therefrom.`,4,114,{maxWidth:205})
    doc.text(`12. The Customer understands and acknowledges that in case of any change/amendment in any applicable law, if required and mandated, the Customer shall comply with any such change/amendment, and TRUST N RIDE shall not be liable for any resultant effect thereof in any nature whatsoever, including but not limited to any ownership transfer.`,4,140,{maxWidth:205})
    doc.text(`13. The Customer hereby acknowledges and affirms that the Customer shall be solely liable for any and all consequences arising from the payment made by TRUST N RIDE into the bank account as per the Customer's instructions. The Customer shall be solely responsible for indemnifying and compensating TRUST N RIDE in case of any claim arising due to the payment instructions provided by the Customer.`,4,154,{maxWidth:205})
-   doc.text(`14. The Customer acknowledges that removing any personal belongings from the vehicle and closure of the FASTag linked account, if any, before delivering the vehicleto CARS24, is the sole responsibility of the Customer. CARS24 shall not be responsible for any loss or liabilities arising in this respect after taking the physical delivery ofthe vehicle from the Customer`,4,168,{maxWidth:205})
+   doc.text(`14. The Customer acknowledges that removing any personal belongings from the vehicle and closure of the FASTag linked account, if any, before delivering the vehicle to TRUST N RIDE, is the sole responsibility of the Customer. TRUST N RIDE shall not be responsible for any loss or liabilities arising in this respect after taking the physical delivery ofthe vehicle from the Customer`,4,168,{maxWidth:205})
    doc.text(`15. TRUST N RIDE will not be responsible for any charges, costs, or expenses that may be imposed on the Customer for the purchase of any additional vehicles by the RTO, including any additional registration charges on such vehicles.`,4,182,{maxWidth:205})
    doc.text(`16. TRUST N RIDE does not accept any cash amount. Any cash paid to any employees or any third party of TRUST N RIDE, or any cash deposit into the bank account of TRUST N RIDE, will not be accepted. In such cases, any transaction made in cash by the seller will not be considered valid, and TRUST N RIDE shall not be liable for any such transaction. The seller cannot claim any monetary or non-monetary loss/compensation with respect to any cash transaction made to TRUST N RIDE or any of its employees`,4,191,{maxWidth:205})
 
 
    doc.setFont('helvetica', 'bold');
    doc.setFontSize(12);
-doc.text(`ACKNOWLEDGED & ACCEPTED`,4,249)
+doc.text(`ACKNOWLEDGED & ACCEPTED`,4,250)
    
 doc.setFontSize(11);
 doc.text(` Customer's Digital Aadhaar Signature`,4,288)
@@ -978,9 +987,9 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
    
   //var blobUrl = doc.output('bloburl');
   
-// window.open(blobUrl, '_blank');
+//window.open(blobUrl, '_blank');
   // doc.save();
   const pdfBlob = doc.output("blob");
-   return new File([pdfBlob], "Purchase_invoice_Agreement.pdf", { type: "application/pdf" });
+   return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
 };
 

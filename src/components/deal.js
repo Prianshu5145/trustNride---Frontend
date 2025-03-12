@@ -26,6 +26,7 @@ const SellDealForm = () => {
     carRegistrationNumber: '',
     customerWhatsappNumber: '',
     customerMobileNumber: '',
+    customerEmail:'',
     customerName: '',
     customerAddress: ''
   });
@@ -191,7 +192,7 @@ const fetchdealCount = async () => {
     const imgWidth = 210; // A4 width in mm
     const imgHeight = 50;
     doc.addImage(
-        'https://res.cloudinary.com/dunsl7vvf/image/upload/v1735732099/PdfImage_fkpbmn.png',
+        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741737853/output-onlinepngtools_1_uldfmj.png',
         'PNG',
         0,
         0,
@@ -736,7 +737,16 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             className="border rounded p-2 mb-3"
           />
         </div>
-
+        <div className="mb-4">
+        <label className="block text-gray-700">Customer Email (Optional)</label>
+        <input
+          type="email"
+          name="customerEmail"
+          value={formData.customerEmail}
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded mt-2"
+        />
+      </div>
         <div className="flex flex-col">
           <label className="text-gray-700 font-medium mb-2">
            Customer Name
