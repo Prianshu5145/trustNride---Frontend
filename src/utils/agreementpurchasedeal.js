@@ -985,11 +985,11 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
 
    
    
-  var blobUrl = doc.output('bloburl');
+ // var blobUrl = doc.output('bloburl');
   
-window.open(blobUrl, '_blank');
+//window.open(blobUrl, '_blank');
   // doc.save();
-  //const pdfBlob = doc.output("blob");
-  // return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
+  const pdfBlob = doc.output("blob");
+   return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
 };
 
