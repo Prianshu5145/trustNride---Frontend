@@ -162,7 +162,7 @@ const fetchdealCount = async () => {
   
       // Submit form data to the backend
       const response = await axios.post(
-        'https://trustnride-backend-production.up.railway.app/api/deal/create',
+        'https://trustnride-backend.onrender.com/api/deal/create',
         formDataToSend,
         {
           headers: {
