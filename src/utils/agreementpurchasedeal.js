@@ -682,7 +682,7 @@ doc.setFontSize(10);
    
    //4 th page 
 
-   doc.addPage([210, 250]);
+   doc.addPage([210, 296]);
    
     doc.addImage(
         'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
@@ -704,27 +704,27 @@ doc.setFontSize(10);
     doc.setFontSize(11);
     doc.text(`${Vehicledata.rc_number}`, 4, 64);
     doc.text(`Date: ${indianDate}`, pageWidth - 39, 64);
-    doc.setFontSize(10);
-   doc.text(`It is hereby confirmed that TRUST N RIDE has taken the physical delivery of the vehicle bearing Registration No.\n${Vehicledata.rc_number} from ${Vehicledata.owner_name} on ${indianDate} at ${indianTime}. Subsequent to the date and time mentioned,\nTRUST N RIDE Shall be liable for any issues/liabilities arising out of the vehicle till the ownership is transferred to the\nnext vehicle owner, Subject to compliance with the Terms and Conditions of the Customer Application Form and as per\nthe terms of the Seller Protection Policy (SPP).This receipt is governed as per the Terms and Conditions of the Vehicle\nForm bearing the above-mentioned Vehicle Registration No. submitted by the Customer/Authorized Representative.`,4,86);
+    doc.setFontSize(11);
+   doc.text(`It is hereby confirmed that TRUST N RIDE has taken the physical delivery of the vehicle bearing Registration No. ${Vehicledata.rc_number} from ${Vehicledata.owner_name} on ${indianDate} at ${indianTime}. Subsequent to the date and time mentioned, TRUST N RIDE Shall be liable for any issues/liabilities arising out of the vehicle till the ownership is transferred to the next vehicle owner, Subject to compliance with the Terms and Conditions of the Customer Application Form and as per the terms of the Seller Protection Policy (SPP).This receipt is governed as per the Terms and Conditions of the Vehicle Form bearing the above-mentioned Vehicle Registration No. submitted by the Customer/Authorized Representative.`,4,86,{maxWidth:205});
    
    doc.setFont("helvetica", "normal");
-   doc.text(`This receipt is governed as per the Terms and Conditions of the Vehicle Form bearing the above-mentioned Vehicle Registration No. Details submitted by the Customer/Authorized Representative.`,4,120,{maxWidth:205})
+   doc.text(`This receipt is governed as per the Terms and Conditions of the Vehicle Form bearing the above-mentioned Vehicle Registration No. Details submitted by the Customer/Authorized Representative.`,4,140,{maxWidth:205})
    doc.setFont("helvetica", "bold");
    doc.setFontSize(12);
-doc.text(`ACKNOWLEDGED & ACCEPTED`,4,205)
+doc.text(`ACKNOWLEDGED & ACCEPTED`,4,251)
    
 doc.setFontSize(11);
-doc.text(` Customer's Digital Aadhaar Signature`,4,240)
+doc.text(` Customer's Digital Aadhaar Signature`,4,286)
 
 doc.setFontSize(10);
-doc.text(`Authorised Signatory`, pageWidth - 40, 228);
+doc.text(`Authorised Signatory`, pageWidth - 40, 274);
 doc.setFontSize(8);
-doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 236);
+doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 282);
 doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
   'PNG',
   pageWidth - 40,
-  203,
+  249,
   imgWidth1,
   imgHeight1
 );
@@ -732,13 +732,13 @@ doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
   'PNG',
   pageWidth - 80,
-  203,
+  249,
   imgWidth1,
   imgHeight1
 );
 doc.setFontSize(10);
 doc.setTextColor(100, 149, 237); // Light blue color
-doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 245);
+doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 291);
    
    
    //5th page
@@ -985,11 +985,11 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
 
    
    
- // var blobUrl = doc.output('bloburl');
+ //var blobUrl = doc.output('bloburl');
   
 //window.open(blobUrl, '_blank');
   // doc.save();
-  const pdfBlob = doc.output("blob");
-   return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
+ const pdfBlob = doc.output("blob");
+  return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
 };
 

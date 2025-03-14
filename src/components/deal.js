@@ -145,6 +145,7 @@ const fetchdealCount = async () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     setLoading(true);
     
     try {
@@ -388,7 +389,7 @@ const imgWidth1 = 40; // A4 width in mm
    doc.setTextColor(100, 149, 237); // Light blue color
    doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 314);
    
-   doc.addPage([210, 232]);
+   doc.addPage([210, 319]);
    
     doc.addImage(
         'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
@@ -420,7 +421,7 @@ const imgWidth1 = 40; // A4 width in mm
    doc.text(`6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.`,5, 160,{maxWidth:206})
    
    doc.setFontSize(13);
-   doc.text(`By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms and Conditions,acknowledges the sale, and accepts all liabilities and responsibilities\nas outlined.`,5, 171,{maxWidth:206})
+   doc.text(`By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms and Conditions,acknowledges the sale, and accepts all liabilities and responsibilities\nas outlined.`,5, 185,{maxWidth:206})
    doc.setFontSize(11);
    doc.text(`For TRUST N RIDE`, pageWidth - 50, 272);
   
@@ -428,7 +429,7 @@ const imgWidth1 = 40; // A4 width in mm
        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
        'PNG',
        pageWidth - 40,
-       188,
+       275,
        imgWidth1,
        imgHeight1
    );
@@ -436,20 +437,20 @@ const imgWidth1 = 40; // A4 width in mm
        'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
        'PNG',
        pageWidth - 80,
-       188,
+       275,
        imgWidth1,
        imgHeight1
    );
    doc.setFontSize(9);
-   doc.text(`Authorised Signatory`, pageWidth - 40, 211);
+   doc.text(`Authorised Signatory`, pageWidth - 40, 298);
    doc.setFontSize(8);
-   doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 216);
+   doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 303);
    doc.setFontSize(10);
-   doc.text(` ACKNOWLEDGED & ACCEPTED`,4,194)
-   doc.text(`Customer's Digital Aadhaar Signature`, 6, 223);
+   doc.text(` ACKNOWLEDGED & ACCEPTED`,4,281)
+   doc.text(`Customer's Digital Aadhaar Signature`, 6, 310);
    doc.setFontSize(10);
    doc.setTextColor(100, 149, 237); // Light blue color
-   doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 227);
+   doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 314);
    
    // Open PDF in a new tab
   // var blobUrl = doc.output('bloburl');
