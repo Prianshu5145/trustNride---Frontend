@@ -682,7 +682,7 @@ doc.setFontSize(10);
    
    //4 th page 
 
-   doc.addPage([210, 250]);
+   doc.addPage([210, 296]);
    
     doc.addImage(
         'https://res.cloudinary.com/dztz5ltuq/image/upload/v1741759136/PdfImage_dsk0mx.png',
@@ -704,27 +704,27 @@ doc.setFontSize(10);
     doc.setFontSize(11);
     doc.text(`${Vehicledata.rc_number}`, 4, 64);
     doc.text(`Date: ${indianDate}`, pageWidth - 39, 64);
-    doc.setFontSize(10);
-   doc.text(`It is hereby confirmed that TRUST N RIDE has taken the physical delivery of the vehicle bearing Registration No.\n${Vehicledata.rc_number} from ${Vehicledata.owner_name} on ${indianDate} at ${indianTime}. Subsequent to the date and time mentioned,\nTRUST N RIDE Shall be liable for any issues/liabilities arising out of the vehicle till the ownership is transferred to the\nnext vehicle owner, Subject to compliance with the Terms and Conditions of the Customer Application Form and as per\nthe terms of the Seller Protection Policy (SPP).This receipt is governed as per the Terms and Conditions of the Vehicle\nForm bearing the above-mentioned Vehicle Registration No. submitted by the Customer/Authorized Representative.`,4,86);
+    doc.setFontSize(11);
+   doc.text(`It is hereby confirmed that TRUST N RIDE has taken the physical delivery of the vehicle bearing Registration No. ${Vehicledata.rc_number} from ${Vehicledata.owner_name} on ${indianDate} at ${indianTime}. Subsequent to the date and time mentioned, TRUST N RIDE Shall be liable for any issues/liabilities arising out of the vehicle till the ownership is transferred to the next vehicle owner, Subject to compliance with the Terms and Conditions of the Customer Application Form and as per the terms of the Seller Protection Policy (SPP).This receipt is governed as per the Terms and Conditions of the Vehicle Form bearing the above-mentioned Vehicle Registration No. submitted by the Customer/Authorized Representative.`,4,86,{maxWidth:205});
    
    doc.setFont("helvetica", "normal");
-   doc.text(`This receipt is governed as per the Terms and Conditions of the Vehicle Form bearing the above-mentioned Vehicle Registration No. Details submitted by the Customer/Authorized Representative.`,4,120,{maxWidth:205})
+   doc.text(`This receipt is governed as per the Terms and Conditions of the Vehicle Form bearing the above-mentioned Vehicle Registration No. Details submitted by the Customer/Authorized Representative.`,4,140,{maxWidth:205})
    doc.setFont("helvetica", "bold");
    doc.setFontSize(12);
-doc.text(`ACKNOWLEDGED & ACCEPTED`,4,205)
+doc.text(`ACKNOWLEDGED & ACCEPTED`,4,251)
    
 doc.setFontSize(11);
-doc.text(` Customer's Digital Aadhaar Signature`,4,240)
+doc.text(` Customer's Digital Aadhaar Signature`,4,286)
 
 doc.setFontSize(10);
-doc.text(`Authorised Signatory`, pageWidth - 40, 228);
+doc.text(`Authorised Signatory`, pageWidth - 40, 274);
 doc.setFontSize(8);
-doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 236);
+doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 282);
 doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_785b0425-removebg-preview_f8eoli.png',
   'PNG',
   pageWidth - 40,
-  203,
+  249,
   imgWidth1,
   imgHeight1
 );
@@ -732,13 +732,13 @@ doc.addImage(
   'https://res.cloudinary.com/dztz5ltuq/image/upload/v1734425018/WhatsApp_Image_2024-12-17_at_14.05.25_fded720a-removebg-preview_gnew8h.png',
   'PNG',
   pageWidth - 80,
-  203,
+  249,
   imgWidth1,
   imgHeight1
 );
 doc.setFontSize(10);
 doc.setTextColor(100, 149, 237); // Light blue color
-doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 245);
+doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 291);
    
    
    //5th page
@@ -937,17 +937,17 @@ doc.text(`1. TRUST N RIDE Services (TRUST N RIDE) is a partnership firm register
 
    doc.addPage([210, 297]);
    doc.text(`5. The Customer confirms and acknowledges that the TRUST N RIDE offered price, as mentioned in the payment acknowledgment receipt, is the full and final agreed amount for the Vehicle. The Customer agrees that no further claims for a higher price shall be made at any point in the future.`,4,10,{maxWidth:205})
-   doc.text(`6. The Customer has submitted and shall submit all statutory documents required for the transfer of ownership of the Vehicle with TRUST N RIDE as and when necessary. The Customer further understands and agrees to cooperate in completing all formalities for the smooth transfer of ownership, which may include visiting the concerned RTO if required and mandated. Any failure on the part of the Customer to fulfill these obligations shall grant TRUST N RIDE the right to claim compensatory damages resulting therefrom.`,4,24,{maxWidth:205})
-   doc.text(`7. In case of held-back amount: If TRUST N RIDE has withheld an amount payable to the Customer (referred to as the held-back amount), then upon TRUST N RIDE's satisfaction regarding the clearance of the contingency for which the amount was withheld, TRUST N RIDE shall process the payment of the held-back amount in full or in part. The transfer of the said amount to the Customer’s bank account shall be deemed as the final receipt of payment by the Customer.The Customer acknowledges and agrees that the held-back amount shall be forfeited in full or in part if the Customer fails to satisfy, close, or comply with any of the contingencies for which the amount was withheld within the timeframe specified at the date of vehicle delivery. Please note that deductions, charges, and forfeited held-back amounts are non-refundable. All held-back amounts will be released within 24 working hours of fulfilling the release conditions.`,4,42,{maxWidth:205})
-   doc.text(`8. The Customer shall keep TRUST N RIDE and the future buyer indemnified and exonerated from all losses, claims, liabilities, risks, responsibilities, and damages arising on or before the delivery of the Vehicle to TRUST N RIDE.`,4,73,{maxWidth:205})
-   doc.text(`9. The Customer understands and acknowledges that any misrepresentation by the Customer of any facts with TRUST N RIDE shall result in TRUST N RIDE taking appropriate action under the relevant provisions of law with the concerned statutory authorities and/or before the competent Courts/Tribunals.`,4,83,{maxWidth:205})
-   doc.text(`10. In case of any difference and/or dispute between the Customer and TRUST N RIDE, the matter shall be referred to an Arbitration Tribunal consisting of a sole arbitrator to be appointed by TRUST N RIDE, and the award passed by the Arbitration Tribunal shall be final and binding upon both parties. The venue of Arbitration shall be Ambedkar Nagar, Uttar Pradesh, and the language shall be English/Hindi. The courts situated in Ambedkar Nagar, Uttar Pradesh, shall possess exclusive jurisdiction.`,4,96,{maxWidth:205})
-   doc.text(`11. In case of a scrap vehicle, the Customer acknowledges and accepts that TRUST N RIDE, to the best of its efforts, shall be competent and possess all rights to call upon the Customer for any statutory or regulatory formalities, and the Customer shall cooperate with TRUST N RIDE for the same. The Customer acknowledges that he/she shall be responsible for collecting the chassis plate of the Vehicle from TRUST N RIDE's regional support center as and when suggested by TRUST N RIDE or within 45-60 days from the delivery of the vehicle, whichever is later. TRUST N RIDE shall not be liable to provide the chassis plate in case of any failure to collect it within the specified time by the Customer, and the Customer shall be solely liable for any consequences arising therefrom.`,4,114,{maxWidth:205})
-   doc.text(`12. The Customer understands and acknowledges that in case of any change/amendment in any applicable law, if required and mandated, the Customer shall comply with any such change/amendment, and TRUST N RIDE shall not be liable for any resultant effect thereof in any nature whatsoever, including but not limited to any ownership transfer.`,4,140,{maxWidth:205})
-   doc.text(`13. The Customer hereby acknowledges and affirms that the Customer shall be solely liable for any and all consequences arising from the payment made by TRUST N RIDE into the bank account as per the Customer's instructions. The Customer shall be solely responsible for indemnifying and compensating TRUST N RIDE in case of any claim arising due to the payment instructions provided by the Customer.`,4,154,{maxWidth:205})
-   doc.text(`14. The Customer acknowledges that removing any personal belongings from the vehicle and closure of the FASTag linked account, if any, before delivering the vehicle to TRUST N RIDE, is the sole responsibility of the Customer. TRUST N RIDE shall not be responsible for any loss or liabilities arising in this respect after taking the physical delivery ofthe vehicle from the Customer`,4,168,{maxWidth:205})
-   doc.text(`15. TRUST N RIDE will not be responsible for any charges, costs, or expenses that may be imposed on the Customer for the purchase of any additional vehicles by the RTO, including any additional registration charges on such vehicles.`,4,182,{maxWidth:205})
-   doc.text(`16. TRUST N RIDE does not accept any cash amount. Any cash paid to any employees or any third party of TRUST N RIDE, or any cash deposit into the bank account of TRUST N RIDE, will not be accepted. In such cases, any transaction made in cash by the seller will not be considered valid, and TRUST N RIDE shall not be liable for any such transaction. The seller cannot claim any monetary or non-monetary loss/compensation with respect to any cash transaction made to TRUST N RIDE or any of its employees`,4,191,{maxWidth:205})
+   doc.text(`6. The Customer has submitted and shall submit all statutory documents required for the transfer of ownership of the Vehicle with TRUST N RIDE as and when necessary. The Customer further understands and agrees to cooperate in completing all formalities for the smooth transfer of ownership, which may include visiting the concerned RTO if required and mandated. Any failure on the part of the Customer to fulfill these obligations shall grant TRUST N RIDE the right to claim compensatory damages resulting therefrom.`,4,26,{maxWidth:205})
+   doc.text(`7. In case of held-back amount: If TRUST N RIDE has withheld an amount payable to the Customer (referred to as the held-back amount), then upon TRUST N RIDE's satisfaction regarding the clearance of the contingency for which the amount was withheld, TRUST N RIDE shall process the payment of the held-back amount in full or in part. The transfer of the said amount to the Customer’s bank account shall be deemed as the final receipt of payment by the Customer.The Customer acknowledges and agrees that the held-back amount shall be forfeited in full or in part if the Customer fails to satisfy, close, or comply with any of the contingencies for which the amount was withheld within the timeframe specified at the date of vehicle delivery. Please note that deductions, charges, and forfeited held-back amounts are non-refundable. All held-back amounts will be released within 24 working hours of fulfilling the release conditions.`,4,46,{maxWidth:205})
+   doc.text(`8. The Customer shall keep TRUST N RIDE and the future buyer indemnified and exonerated from all losses, claims, liabilities, risks, responsibilities, and damages arising on or before the delivery of the Vehicle to TRUST N RIDE.`,4,77,{maxWidth:205})
+   doc.text(`9. The Customer understands and acknowledges that any misrepresentation by the Customer of any facts with TRUST N RIDE shall result in TRUST N RIDE taking appropriate action under the relevant provisions of law with the concerned statutory authorities and/or before the competent Courts/Tribunals.`,4,92,{maxWidth:205})
+   doc.text(`10. In case of any difference and/or dispute between the Customer and TRUST N RIDE, the matter shall be referred to an Arbitration Tribunal consisting of a sole arbitrator to be appointed by TRUST N RIDE, and the award passed by the Arbitration Tribunal shall be final and binding upon both parties. The venue of Arbitration shall be Ambedkar Nagar, Uttar Pradesh, and the language shall be English/Hindi. The courts situated in Ambedkar Nagar, Uttar Pradesh, shall possess exclusive jurisdiction.`,4,107,{maxWidth:205})
+   doc.text(`11. In case of a scrap vehicle, the Customer acknowledges and accepts that TRUST N RIDE, to the best of its efforts, shall be competent and possess all rights to call upon the Customer for any statutory or regulatory formalities, and the Customer shall cooperate with TRUST N RIDE for the same. The Customer acknowledges that he/she shall be responsible for collecting the chassis plate of the Vehicle from TRUST N RIDE's regional support center as and when suggested by TRUST N RIDE or within 45-60 days from the delivery of the vehicle, whichever is later. TRUST N RIDE shall not be liable to provide the chassis plate in case of any failure to collect it within the specified time by the Customer, and the Customer shall be solely liable for any consequences arising therefrom.`,4,127,{maxWidth:205})
+   doc.text(`12. The Customer understands and acknowledges that in case of any change/amendment in any applicable law, if required and mandated, the Customer shall comply with any such change/amendment, and TRUST N RIDE shall not be liable for any resultant effect thereof in any nature whatsoever, including but not limited to any ownership transfer.`,4,155,{maxWidth:205})
+   doc.text(`13. The Customer hereby acknowledges and affirms that the Customer shall be solely liable for any and all consequences arising from the payment made by TRUST N RIDE into the bank account as per the Customer's instructions. The Customer shall be solely responsible for indemnifying and compensating TRUST N RIDE in case of any claim arising due to the payment instructions provided by the Customer.`,4,171,{maxWidth:205})
+   doc.text(`14. The Customer acknowledges that removing any personal belongings from the vehicle and closure of the FASTag linked account, if any, before delivering the vehicle to TRUST N RIDE, is the sole responsibility of the Customer. TRUST N RIDE shall not be responsible for any loss or liabilities arising in this respect after taking the physical delivery ofthe vehicle from the Customer`,4,187,{maxWidth:205})
+   doc.text(`15. TRUST N RIDE will not be responsible for any charges, costs, or expenses that may be imposed on the Customer for the purchase of any additional vehicles by the RTO, including any additional registration charges on such vehicles.`,4,201,{maxWidth:205})
+   doc.text(`16. TRUST N RIDE does not accept any cash amount. Any cash paid to any employees or any third party of TRUST N RIDE, or any cash deposit into the bank account of TRUST N RIDE, will not be accepted. In such cases, any transaction made in cash by the seller will not be considered valid, and TRUST N RIDE shall not be liable for any such transaction. The seller cannot claim any monetary or non-monetary loss/compensation with respect to any cash transaction made to TRUST N RIDE or any of its employees`,4,214,{maxWidth:205})
 
 
    doc.setFont('helvetica', 'bold');
@@ -985,11 +985,11 @@ doc.text('This is a system-generated Document, e-signed and approved for authent
 
    
    
- // var blobUrl = doc.output('bloburl');
+ //var blobUrl = doc.output('bloburl');
   
 //window.open(blobUrl, '_blank');
   // doc.save();
-  const pdfBlob = doc.output("blob");
-   return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
+ const pdfBlob = doc.output("blob");
+return new File([pdfBlob], "PaymentDetails_Agreement.pdf", { type: "application/pdf" });
 };
 

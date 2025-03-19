@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
   formData.AfterPickUpReceivableGD = JSON.stringify(selectedField2);
   setLoading(true); 
   
- //generateInvoiceandagreement(formData,tokenCount,Vehicledata);
+//generateInvoiceandagreement(formData,tokenCount,Vehicledata);
  try {
   // Generate the PDF file
   const pdfFile = await generateInvoiceandagreement(formData,tokenCount,Vehicledata);
