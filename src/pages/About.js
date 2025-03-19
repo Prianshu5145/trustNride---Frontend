@@ -74,11 +74,11 @@ const About = () => {
             </section>
 
             <section className="mb-12">
-                <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Meet Our Founders</h2>
+                <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">The Visionaries Behind TRUST N RIDE</h2>
                 <div className="flex flex-col lg:flex-row justify-center items-start space-y-6 lg:space-y-0 lg:space-x-8">
                     {[
-                        { name: 'Piyush', title: 'Founder', description: 'Driven by a passion for automobiles, Piyush envisions transforming the second-hand car market to make it more accessible and reliable.', img:"https://res.cloudinary.com/dztz5ltuq/image/upload/c_crop,w_751,h_1000/v1730242442/WhatsApp_Image_2024-10-30_at_04.23.15_f69ce65b_a1cznw.jpg" },
-                        { name: 'Satish', title: 'Co-Founder', description: 'With years of experience in the automotive industry, Satish is dedicated to ensuring every customer leaves satisfied, making their car buying experience seamless.', img: '/path/to/satish.jpg' },
+                        { name: 'Piyush', title: 'Founder', description: 'Driven by his passion for automobiles, Piyush—the Driving Force Behind TRUST N RIDE—strives to revolutionize the used car market, making it more accessible, transparent, and trustworthy for everyone.', img:"https://res.cloudinary.com/dztz5ltuq/image/upload/c_crop,w_751,h_1000/v1730242442/WhatsApp_Image_2024-10-30_at_04.23.15_f69ce65b_a1cznw.jpg" },
+                        { name: 'Satish', title: 'Co-Founder', description: 'Satish, the visionary co-founder of TRUST N RIDE, leverages his sharp business acumen to redefine the car-buying experience.', img: 'https://res.cloudinary.com/dztz5ltuq/image/upload/v1742415359/WhatsApp_Image_2025-03-20_at_01.39.08_914a2692_xgwseo.jpg' },
                     ].map((founder, index) => (
                         <div key={index} className="flex flex-col items-center border border-gray-300 rounded-lg p-6 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 bg-white">
                             <img src={founder.img} alt={founder.name} className="w-32 h-32 rounded-full mb-4 border-4 border-blue-500 shadow-lg" />
