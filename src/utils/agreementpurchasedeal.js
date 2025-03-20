@@ -382,7 +382,7 @@ const rowsCashPayment = [
 autoTable(doc, { // Use autoTable function directly
   
   body: rowsCashPayment,
-  startY: 331, 
+  startY: 330, 
   margin: { left: 4 },// Adjust start position
   styles: {
     fontSize: 10, // Set font size
@@ -408,8 +408,8 @@ autoTable(doc, { // Use autoTable function directly
   },
 });
 }
-  doc.text(`Note : 1. The customer/owner must be present for partipeshi at the RTO Office during the vehicle transfer process. Failure to comply will result in deal cancellation and possible legal action.`,4,353,{maxWidth:205})
-doc.text(`2. If the responsibility of loan closure lies with the customer, it is understood that the loan dues of the vehicle are disbursed to the customer's personal or lending institute bank account .Therefore, the customer must ensure loan closure within 48 hours of the deal and provide the NOC for the vehicle within 25-30 working days of loan closure.Failure to comply may result in the cancellation of the deal.`,4, 362,{maxWidth:205});
+  doc.text(`Note : 1. The customer/owner must be present for partipeshi at the RTO Office during the vehicle transfer process. Failure to comply will result in deal cancellation and possible legal action.`,4,350,{maxWidth:205})
+doc.text(`2. If the responsibility of loan closure lies with the customer, it is understood that the loan dues of the vehicle are disbursed to the customer's personal or lending institute bank account . Therefore, the customer must ensure loan closure within 48 hours of the deal and provide the NOC for the vehicle within 25-30 working days of loan closure. Failure to comply may result in the cancellation of the deal.`,4, 359,{maxWidth:205});
   doc.text(`3. If Trust N Ride is responsible for loan closure, it will settle the mentioned amount within 48 hours. Any extra amount must be paid by the customer. However, providing the NOC remains the customer's responsibility, and failure to submit it on time may result in deal cancellation.`,4,375,{maxWidth:205})
    
    const imgWidth1 = 40; // A4 width in mm
