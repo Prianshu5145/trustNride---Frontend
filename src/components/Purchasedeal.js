@@ -60,7 +60,7 @@ LoanpaymentStatus:'Not Applicable',
          const data = await response.json(); // Parse the JSON response
          const tokenCount = data.count; 
          // Extract the 'count' field from the response
-         setTokenCount(tokenCount+1);
+         setTokenCount(tokenCount-7);
          console.log('Token count:', tokenCount); // Log the token count (or do something with it)
          
          // You can use the tokenCount in your UI as needed, for example:

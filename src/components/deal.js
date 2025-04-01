@@ -54,7 +54,7 @@ const fetchdealCount = async () => {
         const data = await response.json(); // Parse the JSON response
         const dealCount = data.count;
         // Extract the 'count' field from the response
-        setdealCount(dealCount+1);
+        setdealCount(dealCount-19);
         console.log('deal count:', dealCount); // Log the token count (or do something with it)
         
         // You can use the tokenCount in your UI as needed, for example:
@@ -258,7 +258,7 @@ const fetchdealCount = async () => {
         ['DELIVERY - INVOICE FOR PAYMENT RECEIVED'], // Row 1
         [
             `Customer Name:\n ${formData.customerName}\nCustomer Address: ${formData.customerAddress} \nMobile No: ${formData.customerWhatsappNumber}`,
-            `INVOICE No : DS${dealCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
+            `INVOICE No : DS${dealCount}/2025-26\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
         ], // Row 2
         ['S.No', 'Description of Goods', 'REGISTRATION NO.', 'Payment Received', 'Final Deal Amount'], // Row 3
         ['1', `Vehicle Payment of — ${formData.carTitle}`, `${formData.carRegistrationNumber}`, `Rs. ${formData.totalAmountGotTillNowExcludingToken}`,  `Rs. ${formData.dealAmount-formData.anyFinalDiscountFromDealAmount}`], // Row 4

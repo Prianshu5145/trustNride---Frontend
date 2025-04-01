@@ -28,7 +28,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
         const data = await response.json(); // Parse the JSON response
         const purchasetokenCount = data.count; 
         // Extract the 'count' field from the response
-        setpurchaseTokenCount(purchasetokenCount+1);
+        setpurchaseTokenCount(purchasetokenCount-3);
         console.log('Token count:', purchasetokenCount); // Log the token count (or do something with it)
         
         // You can use the tokenCount in your UI as needed, for example:
@@ -204,7 +204,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           ['INVOICE FOR TOKEN PAYMENT'], // Row 1
           [
               `Customer Name:\n ${ownerName}\nCustomer Address: ${address} \nMobile No: ${ownerWhatsApp}`,
-              `INVOICE No : TP${purchasetokenCount}/2024-25\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
+              `INVOICE No : TP${purchasetokenCount}/2025-26\nBank Details For Payment\nBank Name: Bandhan Bank\nAccount Name: TRUST N RIDE\nAccount Number: 20100019064564\nIFSC Code: BDBL0002480\nBranch: Akbarpur Branch`,
           ], // Row 2
           ['S.No', 'Description of Goods', 'REG NO', 'Token Amount', 'Tentative Deal Amount'], // Row 3
           ['1', `Car Token Payment-${carTitle}`, `${carRegistrationNumber}`, `Rs. ${tokenAmount}`,  `Rs. ${approxDealAmount}`], // Row 4
