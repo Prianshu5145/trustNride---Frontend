@@ -23,7 +23,7 @@ const SellDealForm = () => {
     holdFromCustomer: '',
     amountComeFromLoan: '',
     totalAmountGotFromCustomerTillNowIncludingToken: '',
-    loanamountstatus:'Not applicable',
+    loanamountstatus:'Not Applicable',
     carTitle: '',
     carRegistrationNumber: '',
     customerWhatsappNumber: '',
@@ -116,12 +116,7 @@ const fetchdealCount = async () => {
       return parts.length > 0 ? parts.join(" ").trim().toUpperCase() : "ZERO";
     }
     
-    function convertChunk(num, belowTwenty, tens) {
-      if (num === 0) return ""; // Ensure empty chunks don't contribute
-      if (num < 20) return belowTwenty[num];
-      if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + belowTwenty[num % 10] : "");
-      return belowTwenty[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convertChunk(num % 100, belowTwenty, tens) : "");
-    }
+    
   
   function convertChunk(num, belowTwenty, tens) {
     if (num < 20) return belowTwenty[num];
@@ -145,8 +140,10 @@ const fetchdealCount = async () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+    if (loading) return;
     setLoading(true);
+    
+    
     
     try {
       // Generate the PDF file
@@ -181,9 +178,9 @@ const fetchdealCount = async () => {
       console.error('Error submitting Deal form:', error);
       alert('Failed to submit the deal form. Please try again.');
     }
-    finally {
+   finally {
       setLoading(false); // Set loading to false after submission completes
-    }
+     }
  };
   
   const generateInvoice = () => {
@@ -324,7 +321,7 @@ const fetchdealCount = async () => {
 
   if (Number(formData.amountComeFromLoan) >= 1000) {
     rowsheldback.splice(3, 0, [
-      'Receivable Loan Payment from a Finance Company (as the Car is Sold With Finance in the Customer Name)',
+      "Receivable Loan Payment from the Finance Company (as the Car is Sold Under Finance in the Customer's Name)",
       `${formData.amountComeFromLoan}`,
       `${formData.loanamountstatus}`
       
@@ -384,7 +381,7 @@ const imgWidth1 = 40; // A4 width in mm
    doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 306);
    doc.setFontSize(10);
    doc.text(` ACKNOWLEDGED & ACCEPTED`,4,276)
-   doc.text(`Customer's Digital Aadhaar Signature`, 6, 310);
+   doc.text(`Customer's Aadhaar e-Signature`, 6, 310);
    doc.setFontSize(10);
    doc.setTextColor(100, 149, 237); // Light blue color
    doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 314);
@@ -412,16 +409,19 @@ const imgWidth1 = 40; // A4 width in mm
     doc.text(`Date: ${indianDate}`, pageWidth - 39, 66);
 
     doc.setFontSize(11);
-
-    doc.text('1. Non-Returnable After Delivery: Once the vehicle is delivered, it is understood that the Customer has thoroughly inspected it and accepted its condition. Therefore, the vehicle is considered sold and cannot be returned under any circumstances, except in the case of loan cancellation by the loan company.', 5, 82,{maxWidth:206});
-   doc.text(`2. Due Payment from Customer: If this payment is not cleared, the vehicle transfer or NOC process will not be initiated.Trust N Ride will try to complete the process within 90 working days from the date it is initiated.`,5, 99,{maxWidth:206})
-   doc.text(`3. Loan Cancellation: If a loan is canceled, Trust N Ride will seek alternative financing. If unsuccessful, the vehicle may be retrieved, and a full refund issued, provided it’s in its original delivery condition.`,5, 111,{maxWidth:206})
-   doc.text(`4. Liability Transfer: After the digitally signed date and time, the customer assumes full responsibility for this vehicle. Trust N Ride will not be held accountable for any incidents, damages, accidents, theft, misuse, challans, or third-party-liabilities,including fines or compensation resulting from accidents. The customer will bear all legal, financial, and operational responsibilities for the vehicle after the digitally signed date and time.`,5, 124,{maxWidth:206})
-   doc.text(`5. Pre-Liability: Any legal issues, incidents, challans, or claims related to the vehicle before the digitally signed date and time will be handled by Trust N Ride, which assumes full responsibility until that time.`,5,148,{maxWidth:206})
-   doc.text(`6. Jurisdiction: Any disputes will be resolved under the jurisdiction of the Ambedkarnagar Court.`,5, 160,{maxWidth:206})
+    const indianTime = new Date().toLocaleTimeString("en-IN", {
+      timeZone: "Asia/Kolkata",
+      hour12: true, // Set to false for 24-hour format
+    });
+    doc.text('1. Non-Returnable After Delivery: Once the vehicle is delivered, it is understood that the Customer has thoroughly inspected it and accepted its condition. Therefore, the vehicle is considered sold and cannot be returned under any circumstances, except in the case of loan cancellation by the lending company.', 5, 82,{maxWidth:206});
+   doc.text(`2. Due Payment from Customer: If this payment is not cleared, the vehicle transfer or NOC process will not be initiated.Trust N Ride will make reasonable efforts to complete the vehicle transfer and NOC process within 90 working days from the date the process is officially initiated, provided the payment has been cleared.`,5, 101,{maxWidth:206})
+   doc.text(`3. Loan Cancellation: In the event of loan cancellation, Trust N Ride will make reasonable efforts to secure financing from an alternative lending institution. If alternative financing cannot be arranged, Trust N Ride reserves the right to retrieve the vehicle. A full refund will be issued to the Customer, provided the vehicle is returned in its original delivery condition, as determined by Trust N Ride.`,5, 120,{maxWidth:206})
+   doc.text(`4.  Liability Transfer:  I, ${formData.customerName}, acknowledge that, effective from ${indianDate} at ${indianTime}, I assume full responsibility for the purchased vehicle with Registration Number ${formData.carRegistrationNumber}. Trust N Ride will not be held accountable for any incidents, damages, accidents, theft, misuse, challans, or third-party liabilities, including fines or compensation arising from accidents, occurring after this date and time. ${formData.customerName} will bear all legal, financial, and operational responsibilities related to the said vehicle.`,5, 143,{maxWidth:206})
+   doc.text(`5. Pre-Liability: Any legal issues, incidents, or claims related to the vehicle with Registration Number ${formData.carRegistrationNumber} before ${indianDate} at ${indianTime} shall be handled and resolved by Trust N Ride. ${formData.customerName}, the new owner, shall not be held responsible for any liabilities arising before the specified date and time.`,5,172,{maxWidth:206})
+   doc.text(`6. Jurisdiction: Any disputes shall be subject to the jurisdiction of the courts located in Ambedkar Nagar district, Uttar Pradesh.`,5, 193,{maxWidth:206})
    
    doc.setFontSize(13);
-   doc.text(`By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms and Conditions,acknowledges the sale, and accepts all liabilities and responsibilities\nas outlined.`,5, 185,{maxWidth:206})
+   doc.text(`By Digitally signing below, the customer confirms reading, understanding, and agreeing to all Terms and Conditions,acknowledges the sale, and accepts all liabilities and responsibilities\nas outlined.`,5, 222,{maxWidth:206})
    doc.setFontSize(11);
    doc.text(`For TRUST N RIDE`, pageWidth - 50, 272);
   
@@ -447,7 +447,7 @@ const imgWidth1 = 40; // A4 width in mm
    doc.text(`Note: This is an electronically generated letter.The signature and stamp are digital\nand do not require a physical sign or stamp from a TRUST N RIDE representative.`, pageWidth - 115, 303);
    doc.setFontSize(10);
    doc.text(` ACKNOWLEDGED & ACCEPTED`,4,281)
-   doc.text(`Customer's Digital Aadhaar Signature`, 6, 310);
+   doc.text(`Customer's Aadhaar e-Signature`, 6, 310);
    doc.setFontSize(10);
    doc.setTextColor(100, 149, 237); // Light blue color
    doc.text('This is a system-generated Document, e-signed and approved for authenticity. For any inquiries or support, you can reach us via\nour website at https://www.trustnride.in/ or email at team@trustnride.in.', 4, 314);
@@ -456,7 +456,7 @@ const imgWidth1 = 40; // A4 width in mm
   // var blobUrl = doc.output('bloburl');
   
      
-   //window.open(blobUrl, '_blank');
+  // window.open(blobUrl, '_blank');
    //const dataUrl = doc.output('dataurl');
 //window.open(dataUrl);
 
@@ -505,6 +505,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={ numberToWordsIndian(`${formData.totalAmountGotTillNowExcludingToken}`)}
             
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
        
@@ -518,6 +519,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToSatish}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 
@@ -530,6 +532,8 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToSatishBy}
             onChange={handleChange}
             className="border rounded p-2 bg-white mb-3"
+            required
+            
           >
             <option value="cash">Cash</option>
             <option value="inpersonalaccount">In Personal Account</option>
@@ -549,6 +553,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToPiyush}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -560,6 +565,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToPiyushBy}
             onChange={handleChange}
             className="border rounded p-2 bg-white bg-3"
+            required
           >
             <option value="cash">Cash</option>
             <option value="inpersonalaccount">In Personal Account</option>
@@ -578,6 +584,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToCompanyAccount}
             onChange={handleChange}
             className="border rounded p-2 bg-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -590,6 +597,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToOmprakash}
             onChange={handleChange}
             className="border rounded p-2 bg-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -601,6 +609,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountPaidToOmprakashBy}
             onChange={handleChange}
             className="border rounded p-2 bg-white mt-2"
+            required
           >
             <option value="cash">Cash</option>
             <option value="inpersonalaccount">In Personal Account</option>
@@ -620,6 +629,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.CustomerPaymentMode}
             onChange={handleChange}
             className="border rounded p-2 bg-white mt-2"
+            required
           >
             <option value="cash">Cash</option>
             <option value="In Account">In Account</option>
@@ -640,6 +650,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.tokenAmount}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -652,6 +663,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={numberToWordsIndian(`${formData.tokenAmount}`)}
            
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 
@@ -665,6 +677,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.tokenAmountPaidTo}
             onChange={handleChange}
             className="border rounded p-2 bg-white mb-3"
+            required
           >
             <option value="piyush">Piyush</option>
             <option value="omprakash">Omprakash</option>
@@ -689,6 +702,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.dealAmount}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -701,6 +715,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={ numberToWordsIndian(`${formData.dealAmount}`)}
             
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -713,6 +728,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.anyFinalDiscountFromDealAmount}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -725,6 +741,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={ numberToWordsIndian(`${formData.anyFinalDiscountFromDealAmount}`)}
             
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -738,6 +755,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -750,6 +768,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={ numberToWordsIndian(`${Number(formData.totalAmountGotTillNowExcludingToken) + Number(formData.tokenAmount)}`)}
             
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -762,6 +781,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.amountComeFromLoan}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -774,6 +794,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={ numberToWordsIndian(`${formData.amountComeFromLoan}`)}
             
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -785,10 +806,11 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.loanamountstatus}
             onChange={handleChange}
             className="border rounded p-2 bg-white mb-3"
+            required
           >
             <option value="Paid">Received in Bank</option>
             <option value="Not Paid">Currently Not Recieved in Bank</option>
-            <option value="Not applicable">Not applicable</option>
+            <option value="Not Applicable">Not Applicable</option>
             
             
             
@@ -805,6 +827,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={Number(formData.dealAmount)-Number(formData.anyFinalDiscountFromDealAmount)-Number(formData.amountComeFromLoan)-Number(formData.totalAmountGotTillNowExcludingToken) - Number(formData.tokenAmount)}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         </div>
@@ -821,6 +844,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.carTitle}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 
@@ -834,6 +858,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.carRegistrationNumber}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 
@@ -848,6 +873,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.customerWhatsappNumber}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 
@@ -861,16 +887,18 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.customerMobileNumber}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
         <div className="mb-4">
-        <label className="block text-gray-700">Customer Email (Optional)</label>
+        <label className="block text-gray-700">Customer Email</label>
         <input
           type="email"
           name="customerEmail"
           value={formData.customerEmail}
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mt-2"
+          required
         />
       </div>
         <div className="flex flex-col">
@@ -883,6 +911,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.customerName}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 
@@ -897,6 +926,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
             value={formData.customerAddress}
             onChange={handleChange}
             className="border rounded p-2 mb-3"
+            required
           />
         </div>
 </div>
@@ -945,7 +975,7 @@ formData.holdFromCustomer = Number(formData.dealAmount)-Number(formData.anyFinal
           'Submit Deal Form'
         )}
         </button>
-        <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
+        
       </div>
     </form>
     {submissionSuccess && (

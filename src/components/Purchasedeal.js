@@ -31,7 +31,6 @@ CxBankName:'',
 LoanPaymentAmount:'',
 LoanPaidBy:'Not Applicable',
 LoanpaymentStatus:'Not Applicable',
- CashAmount:'',
  DueAmount:'',
  PickUpRecievedGD:'',
  AfterPickUpReceivableGD:''
@@ -87,13 +86,15 @@ LoanpaymentStatus:'Not Applicable',
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  if (loading) return;
+  setLoading(true); 
   formData.carTitle = Vehicledata.maker_model;
   formData.carModel=Vehicledata.manufacturing_date;
   formData.customerName=Vehicledata.owner_name;
   formData.carRegistrationNumber=Vehicledata.rc_number;
   formData.PickUpRecievedGD = JSON.stringify(selectedField1);
   formData.AfterPickUpReceivableGD = JSON.stringify(selectedField2);
-  setLoading(true); 
+ 
   
 //generateInvoiceandagreement(formData,tokenCount,Vehicledata);
  try {
@@ -130,7 +131,7 @@ const handleSubmit = async (e) => {
   alert('Failed to submit the token application. Please try again.');
 }
 finally {
-  setLoading(false); // Set loading to false after submission completes
+ setLoading(false); // Set loading to false after submission completes
 }
   
  
@@ -185,7 +186,7 @@ const handleSubmit1 = async (e) => {
     setState(checked ? [...state, value] : state.filter((v) => v !== value));
   };
 
-  formData.DueAmount=Number(formData.dealDoneAmount)-Number(formData.challanAmount)-Number(formData.CxBankPaidAmount)-Number(formData.LoanPaymentAmount)-Number(formData.PartipeshiHoldbackAmount)-Number(formData.NocHoldbackAmount)-Number(formData.CashAmount)-Number(formData.tokenAmount);
+  formData.DueAmount=Number(formData.dealDoneAmount)-Number(formData.challanAmount)-Number(formData.CxBankPaidAmount)-Number(formData.LoanPaymentAmount)-Number(formData.PartipeshiHoldbackAmount)-Number(formData.NocHoldbackAmount)-Number(formData.tokenAmount);
   return (
     <div><Navbar/><div className="container mx-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
     <h1 className="text-2xl font-bold mb-5">Purchase Deal Form</h1>
@@ -555,17 +556,7 @@ const handleSubmit1 = async (e) => {
 
       
       <div className = "relative w-full p-4 border border-purple-700 rounded">
-      <div className="mb-4 mt-2">
-        <label className="block text-gray-700">Any <strong>Cash Amount Paid</strong> to Customer</label>
-        <input
-          type="number"
-          name="CashAmount"
-          value={formData.CashAmount}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border border-gray-300 rounded mt-2"
-        />
-      </div>
+      
 
 
 
@@ -671,7 +662,7 @@ const handleSubmit1 = async (e) => {
           'Submit Purchase Deal Form'
         )}
       </button>
-      <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
+      
     </div>
     </form>)
     

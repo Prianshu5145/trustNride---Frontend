@@ -260,7 +260,7 @@ const SellTokenForm = () => {
     doc.text('2. Validity: The token is valid for 15 days from this invoice date or In case of a loan, it is valid up to 7 days from the date\n    You got final loan approval from loan Company.', 5, 259);
     doc.text('3. Adjustment: The token will be adjusted against the final payment.', 5, 269);
     doc.text('4. Cancellation: \n\n i. If Deal is canceled by the buyer (for a valid token): Rs.10,000 will be deducted from the token amount,and the remaining\n    will be refunded. If the token amount is less than Rs.10,000, the entire token will be forfeited.\n\n ii. If Deal is canceled by the buyer (for a invalid token): Rs.20,000 will be deducted from the token amount, and the\n     remaining will be refunded. If the token amount is less than Rs.20,000, the entire token will be forfeited.\n\niii. If the Deal is canceled by the TRUST N RIDE: The full token amount will be refunded. ', 5, 275);
-    doc.text('5. Jurisdiction: Any disputes are subject to the jurisdiction of Ambedkarnagar Court.', 5, 314);
+    doc.text('5. Jurisdiction: Any disputes shall be subject to the jurisdiction of the courts located in Ambedkar Nagar district, Uttar Pradesh.', 5, 314);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     doc.setTextColor(100, 149, 237);
@@ -285,6 +285,7 @@ const SellTokenForm = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  if (loading) return;
   setLoading(true);
   try {
     // Generate the PDF file
@@ -582,7 +583,7 @@ className="border rounded px-2 py-1"
           'Submit Token Form'
         )}
       </button>
-      <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
+      
     </div>
     </form>
     {submissionSuccess && (

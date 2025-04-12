@@ -47,6 +47,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
     const formData = {
       ownerName,
@@ -291,7 +292,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
       doc.text('4.Cancellation by Trust N Ride: If Trust N Ride cancels the deal, the token will be forfeited.', 5, 278);
       doc.text('5.Legal Consequences: Any violation, including selling the car outside of Trust N Ride or failing to return the token, will \n   lead to legal action.', 5, 283);
 
-      doc.text('5. Jurisdiction: Any disputes are subject to the jurisdiction of Ambedkarnagar Court.', 5, 292);
+      doc.text('5. Jurisdiction: Any disputes shall be subject to the jurisdiction of the courts located in Ambedkar Nagar district, Uttar Pradesh.', 5, 292);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       doc.text('This is a system-generated invoice, Digitally signed and approved for authenticity. For any inquiries or support, you can reach us via\n our website at https://www.trustnride.in/ or email at team@trustnride.in.', 3, 309);
@@ -450,7 +451,7 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
           'Submit Token Form'
         )}
       </button>
-      <h1 className="text-xl font-bold mt-3 text-center">Please click Submit Button Only Once (Avoid double clicks)</h1>
+      
     </form>
 
     {submissionSuccess && (
