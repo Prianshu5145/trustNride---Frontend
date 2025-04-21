@@ -142,13 +142,9 @@ const handleSubmit1 = async (e) => {
   setLoading(true);
 
   try {
-    const response = await fetch(process.env.REACT_APP_API_URL, {
+    const response = await fetch('https://trustnride-backend.onrender.com/api/purchasedeal/verify', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'clientId': process.env.REACT_APP_CLIENT_ID,  
-        'secretKey': process.env.REACT_APP_SECRET_KEY
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ vehicleNumber: formData.carRegistrationNumber })
     });
 
@@ -164,13 +160,13 @@ const handleSubmit1 = async (e) => {
     } else {
       console.error('Invalid data format:', CarData);
     }
-    
   } catch (error) {
     console.error('Error fetching vehicle data:', error);
   } finally {
     setLoading(false);
   }
 };
+
 
 
 
