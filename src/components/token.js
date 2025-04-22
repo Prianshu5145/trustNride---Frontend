@@ -34,6 +34,8 @@ const SellTokenForm = () => {
   
     const [tokenCount, setTokenCount] = useState(null); // State to hold the token count
     const [error, setError] = useState(null); // State to handle any errors
+    const [showModal, setShowModal] = useState(false);
+
     const numberToWordsIndian = (num) => {
       if (num === 0) return "ZERO"; // Explicitly handle 0 case
     
@@ -284,7 +286,7 @@ const SellTokenForm = () => {
   const [loading, setLoading] = useState(false);
 
 const handleSubmit = async (e) => {
-  e.preventDefault();
+ // e.preventDefault();
   if (loading) return;
   setLoading(true);
   try {
@@ -331,7 +333,7 @@ const handleSubmit = async (e) => {
   return (
     <div><Navbar/><div className="container mx-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
     <h1 className="text-2xl font-bold mb-5">Sell Token Form</h1>
-    <form onSubmit={handleSubmit}>
+    <form >
       <div className="relative w-full p-4 border border-blue-700 rounded">
       <div className="mb-4">
         <label className="block text-gray-700">Car Title</label>
@@ -550,38 +552,11 @@ className="border rounded px-2 py-1"
       
       
       <div>
-      <button
-        type="submit"
+      <button  onClick={() => setShowModal(true)}
+        type="button"
         className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition mt-5"
       >
-        {loading ? (
-          <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
-            {/* Spinner and Text Container */}
-            <div className="flex flex-col items-center">
-              {/* Outer Circle with Gradient */}
-              <div className="relative w-28 h-28 mb-4">
-                <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
-
-                {/* Inner Circle */}
-                <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
-                  {/* Logo with Flip Animation */}
-                  <img
-                    src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
-                    alt="Car Logo"
-                    className="w-12 h-12 animate-flip"
-                  />
-                </div>
-              </div>
-
-              {/* Text Below the Spinner */}
-              <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
-                <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
-              </p>
-            </div>
-          </div>
-        ) : (
-          'Submit Token Form'
-        )}
+       Preview Form
       </button>
       
     </div>
@@ -596,13 +571,132 @@ className="border rounded px-2 py-1"
               className="mt-4 px-6 py-2 bg-blue-500 text
               white rounded-lg hover:bg-blue-600 transition"
             >
-              Close
+            {loading ? (
+              <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+                {/* Spinner and Text Container */}
+                <div className="flex flex-col items-center">
+                  {/* Outer Circle with Gradient */}
+                  <div className="relative w-28 h-28 mb-4">
+                    <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+    
+                    {/* Inner Circle */}
+                    <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                      {/* Logo with Flip Animation */}
+                      <img
+                        src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                        alt="Car Logo"
+                        className="w-12 h-12 animate-flip"
+                      />
+                    </div>
+                  </div>
+    
+                  {/* Text Below the Spinner */}
+                  <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                    <strong>TOKEN FORM IS SUBMITTING.... PLEASE WAIT </strong>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              'Submit Token Form'
+            )}
             </button>
           </div>
         </div>
       )}
 
-
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white w-[95%] max-w-3xl p-6 rounded-2xl shadow-2xl overflow-y-auto max-h-[95vh] border border-black relative">
+      
+            {/* Header with title and edit button */}
+            <div className="flex justify-between items-center mb-6 border-b pb-4">
+              <h2 className="text-2xl font-bold text-gray-800">Form Preview</h2>
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+                className="bg-blue-600 text-white px-4 py-2 text-sm rounded hover:bg-blue-700 transition"
+              >
+                Edit Form
+              </button>
+            </div>
+      
+            {/* Data Section */}
+            <div className="space-y-4 text-md text-gray-800">
+              <p><strong>Car Title :</strong> {formData.carTitle}</p>
+              <p><strong>Car Model :</strong> {formData.carModel}</p>
+              <p><strong>Customer Name :</strong> {formData.customerName}</p>
+              <p><strong>Customer Mobile :</strong> {formData.customerMobile}</p>
+              <p><strong>Whatsapp Mobile :</strong> {formData.whatsappMobile}</p>
+              <p><strong>Customer Address :</strong> {formData.customerAddress}</p>
+              <p><strong>Customer Email :</strong> {formData.customerEmail}</p>
+              <p><strong>Token Amount :</strong> ₹{formData.tokenAmount}</p>
+              <p className="text-indigo-600 font-medium">
+                <strong className="text-gray-800">Token Amount in Words :</strong>{' '} {numberToWordsIndian(`${formData.tokenAmount}`)}
+              </p>
+              <p><strong>Payment Mode :</strong> {formData.paymentMode}</p>
+              <p><strong>Payment To :</strong> {formData.paymentTo}</p>
+              <p><strong>Deal Done Amount :</strong> ₹{formData.dealDoneAmount}</p>
+              <p className="text-indigo-600 font-medium">
+              <strong className="text-gray-800">Deal Done Amount in Words :</strong>{' '}
+              {numberToWordsIndian(`${formData.dealDoneAmount}`)}
+            </p>
+            
+              <p><strong>Fair Market Value :</strong> ₹{formData.fairMarketValue}</p>
+              <p className="text-indigo-600 font-medium">
+                <strong className="text-gray-800">Fair Market Value in Words :</strong>{' '} {numberToWordsIndian(`${formData.fairMarketValue}`)}
+              </p>
+              <p><strong>Car Registration Number :</strong> {formData.carRegistrationNumber}</p>
+              <p><strong>Loan or Cash :</strong> {formData.loanOrCash}</p>
+              
+            </div>
+      
+            {/* Submit Button */}
+            <div className="flex justify-end mt-8">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault(); 
+                  setShowModal(false);
+                  handleSubmit();
+                }}
+                className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition"
+              >
+              {loading ? (
+                <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50 z-50">
+                  {/* Spinner and Text Container */}
+                  <div className="flex flex-col items-center">
+                    {/* Outer Circle with Gradient */}
+                    <div className="relative w-28 h-28 mb-4">
+                      <div className="absolute w-full h-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-300 rounded-full animate-spin"></div>
+      
+                      {/* Inner Circle */}
+                      <div className="absolute top-2 left-2 w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center">
+                        {/* Logo with Flip Animation */}
+                        <img
+                          src="https://res.cloudinary.com/dztz5ltuq/image/upload/v1731448689/apple-touch-icon_jrhfll.png" // Replace with your car logo path
+                          alt="Car Logo"
+                          className="w-12 h-12 animate-flip"
+                        />
+                      </div>
+                    </div>
+      
+                    {/* Text Below the Spinner */}
+                    <p className="text-xl md:text-2xl font-bold text-gray-800 text-center">
+                      <strong>PURCHASE DEAL FORM IS SUBMITTING.... PLEASE WAIT </strong>
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                'Submit Token Form'
+              )}
+              </button>
+            </div>
+      
+          </div>
+        </div>
+      )
+      
+                }
 
   </div></div>
   );
