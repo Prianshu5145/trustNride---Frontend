@@ -274,7 +274,7 @@ const DummyTokenForm = () => {
   
      
   //window.open(blobUrl, '_blank');
-   doc.save();
+   doc.save(`Token_Invoice_id${tokenCount}.pdf`);
 //    const pdfBlob = doc.output("blob");
 //    return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
 };
