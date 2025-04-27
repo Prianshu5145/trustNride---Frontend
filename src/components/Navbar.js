@@ -49,16 +49,18 @@ const Navbar = () => {
                      </>     )}
               {role === 'Employee' && (
                 <>
+                <Link to="/dummytoken" className="block px-4 py-2 hover:bg-gray-600">Dummy Token</Link>
                 <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
+                 
+                  <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
+                  <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
+                  <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sell Token Invoice</Link>
+                  <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
+                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
+                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
-                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
-                  <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
-                  <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
-                  <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
-                  <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
                  
                  
                 </>
@@ -117,17 +119,24 @@ const Navbar = () => {
 
               {role === 'Employee' && (
                 <>
+                <Link to="/dummytoken" className="block px-4 py-2 hover:bg-gray-600">Dummy Token</Link>
                   <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
-                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
-                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
-                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
-                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
+                 
+                  
+                 
+                  
+                  
                   
                   <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
                   <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
-                  <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sale Token Invoice</Link>
+                  <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sell Token Invoice</Link>
                   <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
+                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
+                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
+                 
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
                   
               
                   

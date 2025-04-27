@@ -67,10 +67,10 @@ const fetchdealCount = async () => {
     }
   };
   useEffect(() => {
-  // Call the function to fetch the token count when needed (e.g., on page load or a button click)
-  fetchdealCount();
+    if (submissionSuccess === false) {
+  fetchdealCount();}
   
-  }, []);
+  }, [submissionSuccess]);
 
 
 

@@ -26,6 +26,7 @@ import SellTokenForm from './components/token';
 import SellDealForm from './components/deal';
 import PurchaseTokenForm from './components/purchasetoken';
 import PurchaseDealForm from './components/Purchasedeal';
+import DummyToken from './components/dummytoken';
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -67,6 +68,7 @@ function App() {
         <Route path="/SellDeal" element={<SellDealForm/>} />
         <Route path="/purchasetoken" element={<PurchaseTokenForm/>} />
         <Route path="/purchaseDeal" element={<PurchaseDealForm/>} />
+        <Route path="/dummytoken" element={<DummyToken/>} />
        
       </Routes>
       

@@ -73,8 +73,9 @@ LoanpaymentStatus:'Not Applicable',
    };
    
    useEffect(() => {
-    fetchPurchaseDealCount();
-  }, []);
+    if (submissionSuccess === false) {
+    fetchPurchaseDealCount();}
+  }, [submissionSuccess]);
  
  
 

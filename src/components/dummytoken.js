@@ -4,7 +4,7 @@ import { jsPDF } from 'jspdf';
 import { toWords } from 'number-to-words';
 import withAuthorization from "../components/authentication";
 import Navbar from '../components/Navbar';
-const SellTokenForm = () => {
+const DummyTokenForm = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [formData, setFormData] = useState({
     carTitle: '',
@@ -33,7 +33,7 @@ const SellTokenForm = () => {
   };
   
     const [tokenCount, setTokenCount] = useState(null); // State to hold the token count
-    const [error, setError] = useState(null); // State to handle any errors
+   
     const [showModal, setShowModal] = useState(false);
 
     const numberToWordsIndian = (num) => {
@@ -84,18 +84,18 @@ const SellTokenForm = () => {
   const fetchTokenCount = async () => {
     try {
       // Send a GET request to the API endpoint
-      const response = await fetch('https://trustnride-backend.onrender.com/api/token/tokens/count');
+      const response1 = await fetch('https://trustnride-backend.onrender.com/api/token/tokens/count');
+      const response2 = await fetch('https://trustnride-backend.onrender.com/api/dummytoken/dummytokens/count');
   
       // Check if the response status is OK (200)
-      if (response.ok) {
-        const data = await response.json(); // Parse the JSON response
-        const tokenCount = data.count; 
+      if (response1.ok && response1.ok ) {
+        const data1 = await response1.json();
+        const data2 = await response2.json(); // Parse the JSON response
+        const tokenCount1 = data1.count; 
+        const tokenCount2 = data2.count; 
         // Extract the 'count' field from the response
-        setTokenCount(tokenCount-27);
-        console.log('Token count:', tokenCount); // Log the token count (or do something with it)
+        setTokenCount(tokenCount1-27+tokenCount2);
         
-        // You can use the tokenCount in your UI as needed, for example:
-        // document.getElementById('tokenCountDisplay').textContent = `Token Count: ${tokenCount}`;
       } else {
         console.error('Failed to fetch token count');
       }
@@ -105,9 +105,10 @@ const SellTokenForm = () => {
   };
   useEffect(() => {
     if (submissionSuccess === false) {
-  fetchTokenCount();}
-  
+      fetchTokenCount();
+    }
   }, [submissionSuccess]);
+  
 
 
 
@@ -273,9 +274,9 @@ const SellTokenForm = () => {
   
      
   //window.open(blobUrl, '_blank');
-   //doc.save();
-   const pdfBlob = doc.output("blob");
-   return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
+   doc.save();
+//    const pdfBlob = doc.output("blob");
+//    return new File([pdfBlob], "token_invoice.pdf", { type: "application/pdf" });
 };
 
   //count invoice from backend
@@ -285,54 +286,50 @@ const SellTokenForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-const handleSubmit = async (e) => {
- // e.preventDefault();
-  if (loading) return;
-  setLoading(true);
-  try {
-    // Generate the PDF file
-    const pdfFile = await generateInvoice();
-
-    // Prepare form data for multipart submission
-    const formDataToSend = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataToSend.append(key, formData[key]);
-    });
-
-    // Append the PDF file
-    formDataToSend.append("pdfFile", pdfFile);
-
-    // Submit form data to the backend
-    const response = await axios.post(
-      'https://trustnride-backend.onrender.com/api/token/submit-token',
-      formDataToSend,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
-    // Notify the user
-    setSubmissionSuccess(true);
-
-    // Optionally, reset the form
+  const handleSubmit = async (e) => {
+    if (loading) return;
+    setLoading(true);
    
-  } catch (error) {
-    console.error('Error submitting token:', error);
-    alert('Failed to submit the token application. Please try again.');
-  }
-  finally {
-    setLoading(false); // Set loading to false after submission completes
-  }
- 
-};
+    
+    try {
+     
+       
+      // Prepare form data
+      const formDataToSend = new FormData();
+      Object.keys(formData).forEach((key) => {
+        if (formData[key] !== undefined && formData[key] !== null) {
+          formDataToSend.append(key, formData[key]);
+        }
+      });
+  
+      generateInvoice();
+  
+      const response = await axios.post(
+        'https://trustnride-backend.onrender.com/api/dummytoken/submit-dummytoken',
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+  
+     
+      setSubmissionSuccess(true);
+    } catch (error) {
+      console.error('Error submitting token:', error.response?.data || error.message);
+      alert('Failed to submit the token application. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
   
 
   return (
     <div><Navbar/><div className="container mx-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
-    <h1 className="text-2xl font-bold mb-5">Sell Token Form</h1>
+    <h1 className="text-2xl font-bold mb-5">Dummy Token Form</h1>
     <form >
       <div className="relative w-full p-4 border border-blue-700 rounded">
       <div className="mb-4">
@@ -564,7 +561,7 @@ className="border rounded px-2 py-1"
     {submissionSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
-            <h2 className="text-xl font-semibold text-green-600">Token Form Submitted Successfully!</h2>
+            <h2 className="text-xl font-semibold text-green-600">Token Invoice is downloded Successfully!</h2>
             <p className="mt-2 text-gray-700">THANK YOU.</p>
             <button
               onClick={() => setSubmissionSuccess(false)}
@@ -675,4 +672,4 @@ className="border rounded px-2 py-1"
   );
 };
 
-export default   withAuthorization(SellTokenForm, ["Employee"]);
+export default   withAuthorization(DummyTokenForm, ["Employee"]);

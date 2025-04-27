@@ -41,10 +41,10 @@ const [submissionSuccess, setSubmissionSuccess] = useState(false);
     }
   };
   useEffect(() => {
-  // Call the function to fetch the token count when needed (e.g., on page load or a button click)
-  fetchpurchaseTokenCount();
+    if (submissionSuccess === false) {
+  fetchpurchaseTokenCount();}
   
-  }, []);
+  }, [submissionSuccess]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
