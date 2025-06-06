@@ -24,8 +24,8 @@ const Footer = () => {
                             <li><a href="/" className="hover:text-blue-500 transition">Home</a></li>
                             <li><a href="/Sell" className="hover:text-blue-500 transition">Sell Your Car</a></li>
                             <li><a href="/buy" className="hover:text-blue-500 transition">Buy a Car</a></li>
-                            <li><a href="/Gallery" className="hover:text-blue-500 transition">Trusted Reviews</a></li>
-                            <li><a href="/About" className="hover:text-blue-500 transition">About Us</a></li>
+                            <li><a href="/privacy-policy" className="hover:text-blue-500 transition">Privacy Policy</a></li>
+                            <li><a href="/T&C" className="hover:text-blue-500 transition">Terms and Conditions</a></li>
                             <li><a href="/Contact" className="hover:text-blue-500 transition">Contact Us</a></li>
                            
                         </ul>
@@ -58,7 +58,7 @@ const Footer = () => {
                                 href="mailto:team@trustnride.in" 
                                 className="hover:text-blue-500 transition ml-1"
                             >
-                                team@trustnride.in
+                                contact@trustnride.in
                             </a>
                         </p>
                         <p className="text-gray-400">
