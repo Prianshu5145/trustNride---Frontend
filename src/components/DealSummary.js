@@ -12,7 +12,7 @@ export default function DealSummaryTable() {
 
   const fetchDeals = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/api/deal/summary', {
+      const res = await axios.post('https://trustnride-backend.onrender.com/api/deal/summary', {
         startDate,
         endDate,
       });
