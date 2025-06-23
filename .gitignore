@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/push/src/components/dummytoken
 # misc
 .DS_Store
 .env

@@ -30,6 +30,7 @@ import DummyToken from './components/dummytoken';
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/Term&Condition'
 import DealSummaryTable from './components/DealSummary'
+import CarSearchUI   from './pages/findcar'
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -75,6 +76,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/T&C" element={<TermsAndConditions/>} />
        <Route path="/Deal-summary" element={<DealSummaryTable/>} />
+       <Route path="/find-car" element={<CarSearchUI/>} />
       </Routes>
       
       
