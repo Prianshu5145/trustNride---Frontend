@@ -36,7 +36,7 @@ export default function CarSearchPage() {
     setShowCountdown(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/cars', filters);
+      const res = await axios.post('https://trustnride-backend.onrender.com/api/cars', filters);
       const enrichedResults = res.data.map(car => ({
         ...car,
         input: '',
@@ -55,7 +55,7 @@ export default function CarSearchPage() {
   const handleChassisSearch = async () => {
     setTopChassisLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/ch-verify', {
+      const res = await axios.post('https://trustnride-backend.onrender.com/api/ch-verify', {
         chassis_no: chassisSearch,
       });
       setChassisResult(`${res.data.vehicle_num}`);

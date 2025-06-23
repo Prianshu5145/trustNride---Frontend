@@ -61,7 +61,7 @@ const Navbar = () => {
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
-                 
+                  <Link to="/find-car" className="block px-4 py-2 hover:bg-gray-600">Find Car</Link>
                  
                 </>
               )}
@@ -119,8 +119,10 @@ const Navbar = () => {
 
               {role === 'Employee' && (
                 <>
+                
                 <Link to="/dummytoken" className="block px-4 py-2 hover:bg-gray-600">Dummy Token</Link>
                   <Link to="/create-listing" className="block px-4 py-2 hover:bg-gray-600">Create Listing</Link>
+                  <Link to="/find-car" className="block px-4 py-2 hover:bg-gray-600">Find Car</Link>
                  
                   
                  
