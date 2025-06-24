@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function CarSearchPage() {
-  const [filters, setFilters] = useState({ model: '', make_year: '', variant: '' });
+  const [filters, setFilters] = useState({ model: '', make_year: '', variant: '',fuelType:'',Transmission:'' });
   const [results, setResults] = useState([]);
   const [chassisSearch, setChassisSearch] = useState('');
   const [chassisResult, setChassisResult] = useState('');
@@ -32,7 +32,7 @@ export default function CarSearchPage() {
   const handleSearch = async () => {
     if (loading) return;
     setLoading(true);
-    setCountdown(270); // 4 minutes
+    setCountdown(120); // 4 minutes
     setShowCountdown(true);
 
     try {
@@ -116,28 +116,48 @@ export default function CarSearchPage() {
         <h1 className="text-2xl font-bold text-center text-gray-800">Filter Cars</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <input
-            type="text"
-            placeholder="Model"
-            value={filters.model}
-            onChange={e => setFilters({ ...filters, model: e.target.value })}
-            className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text"
-            placeholder="Make Year"
-            value={filters.make_year}
-            onChange={e => setFilters({ ...filters, make_year: e.target.value })}
-            className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text"
-            placeholder="Variant"
-            value={filters.variant}
-            onChange={e => setFilters({ ...filters, variant: e.target.value })}
-            className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
+  <input
+    type="text"
+    placeholder="Model"
+    value={filters.model}
+    onChange={e => setFilters({ ...filters, model: e.target.value })}
+    className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
+  />
+  <input
+    type="text"
+    placeholder="Make Year"
+    value={filters.make_year}
+    onChange={e => setFilters({ ...filters, make_year: e.target.value })}
+    className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
+  />
+  <input
+    type="text"
+    placeholder="Variant"
+    value={filters.variant}
+    onChange={e => setFilters({ ...filters, variant: e.target.value })}
+    className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
+  />
+  <select
+    value={filters.fuelType}
+    onChange={e => setFilters({ ...filters, fuelType: e.target.value })}
+    className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
+  >
+    <option value="">Select Fuel Type</option>
+    <option value="diesel">DIESEL</option>
+    <option value="petrol">PETROL</option>
+    <option value="cng">CNG</option>
+  </select>
+  <select
+    value={filters.Transmission}
+    onChange={e => setFilters({ ...filters, Transmission: e.target.value })}
+    className="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400"
+  >
+    <option value="">Select Transmission</option>
+    <option value="manual">Manual</option>
+    <option value="automatic">Automatic</option>
+  </select>
+</div>
+
 
         <div className="text-center space-y-2">
           <button
