@@ -115,7 +115,7 @@ const ContactUs = () => {
           </div>
           <div className="flex items-center mb-2">
             <FaPhoneAlt className="text-blue-500 mr-2" />
-            <span>Phone: <a href="tel:+919792983625" className="text-blue-500 hover:underline">+919792983625</a></span>
+            <span>Phone: <a href="tel:+919792983625" className="text-blue-500 hover:underline">+919119913441</a></span>
           </div>
           <div className="flex items-center mb-2">
             <FaMapMarkerAlt className="text-blue-500 mr-2" />
