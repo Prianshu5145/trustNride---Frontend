@@ -64,10 +64,10 @@ const Footer = () => {
                         <p className="text-gray-400">
                             Phone: 
                             <a 
-                                href="tel:+919792983625" 
+                                href="tel:+917518885222" 
                                 className="hover:text-blue-500 transition ml-1"
                             >
-                                +919119913441
+                               +917518885222
                             </a>
                         </p>
                     </div>
