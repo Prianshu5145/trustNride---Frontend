@@ -54,13 +54,14 @@ const Navbar = () => {
                  
                   <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
                   <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
+                   <Link to="/deal24-purchase" className="block px-4 py-2 hover:bg-gray-600">24 Purchase Invoice</Link>
                   <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sell Token Invoice</Link>
                   <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
-                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
-                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
-                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
+                  {/* <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
+                  <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link> */}
+                  {/* <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
-                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link> */}
                   <Link to="/find-car" className="block px-4 py-2 hover:bg-gray-600">Find Car</Link>
                  
                 </>
@@ -131,14 +132,15 @@ const Navbar = () => {
                   
                   <Link to="/purchasetoken" className="block px-4 py-2 hover:bg-gray-600">Purchase Token Invoice</Link>
                   <Link to="/purchaseDeal" className="block px-4 py-2 hover:bg-gray-600">Purchase Deal Invoice</Link>
+                   <Link to="/deal24-purchase" className="block px-4 py-2 hover:bg-gray-600">24 Purchase Invoice</Link>
                   <Link to="/Selltoken" className="block px-4 py-2 hover:bg-gray-600">Sell Token Invoice</Link>
                   <Link to="/SellDeal" className="block px-4 py-2 hover:bg-gray-600">Sell Deal Invoice</Link>
-                  <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
+                  {/* <Link to="/rtodoc" className="block px-4 py-2 hover:bg-gray-600">Dispatch RTO DOC</Link>
                   <Link to="/viewnoc" className="block px-4 py-2 hover:bg-gray-600">View RTO DOC</Link>
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">My Listings</Link>
                  
                   <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Update Your Listing</Link>
-                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link>
+                  <Link to="/my-listings" className="block px-4 py-2 hover:bg-gray-600">Delete Your Listing</Link> */}
                   
               
                   

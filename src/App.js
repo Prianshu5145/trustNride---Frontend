@@ -27,10 +27,11 @@ import SellDealForm from './components/deal';
 import PurchaseTokenForm from './components/purchasetoken';
 import PurchaseDealForm from './components/Purchasedeal';
 import DummyToken from './components/dummytoken';
-import PrivacyPolicy from './components/PrivacyPolicy'
-import TermsAndConditions from './components/Term&Condition'
-import DealSummaryTable from './components/DealSummary'
-import CarSearchUI   from './pages/findcar'
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsAndConditions from './components/Term&Condition';
+import DealSummaryTable from './components/DealSummary';
+import CarSearchUI   from './pages/findcar';
+import Purchase24DealForm from './components/24Purchasedeal'
 function App() {
   
   const location = useLocation();  // Get the current location
@@ -75,8 +76,9 @@ function App() {
         <Route path="/dummytoken" element={<DummyToken/>} />
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/T&C" element={<TermsAndConditions/>} />
-       <Route path="/Deal-summary" element={<DealSummaryTable/>} />
+       {/* <Route path="/Deal-summary" element={<DealSummaryTable/>} /> */}
        <Route path="/find-car" element={<CarSearchUI/>} />
+        <Route path="/deal24-purchase" element={<Purchase24DealForm/>} />
       </Routes>
       
       
